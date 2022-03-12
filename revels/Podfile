@@ -1,0 +1,29 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'revels' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for revels
+pod 'Alamofire'
+	pod 'Disk'
+	pod 'SDWebImage'
+	pod 'BulletinBoard'
+	pod 'Firebase/Analytics'
+	pod 'Firebase/Messaging'
+	pod 'Firebase/Crashlytics'
+	pod 'SAConfettiView'
+  pod 'UBottomSheet'
+  pod 'MBProgressHUD'
+
+  target 'revelsTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'revelsUITests' do
+    # Pods for testing
+  end
+
+end
