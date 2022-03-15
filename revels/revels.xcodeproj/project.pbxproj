@@ -12,7 +12,6 @@
 		62CAE39A27DCC577005BB78A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CAE39927DCC577005BB78A /* AppDelegate.swift */; };
 		62CAE39C27DCC577005BB78A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CAE39B27DCC577005BB78A /* SceneDelegate.swift */; };
 		62CAE39E27DCC577005BB78A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CAE39D27DCC577005BB78A /* ViewController.swift */; };
-		62CAE3A127DCC577005BB78A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62CAE39F27DCC577005BB78A /* Main.storyboard */; };
 		62CAE3A327DCC578005BB78A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62CAE3A227DCC578005BB78A /* Assets.xcassets */; };
 		62CAE3A627DCC578005BB78A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62CAE3A427DCC578005BB78A /* LaunchScreen.storyboard */; };
 		62CAE3B127DCC578005BB78A /* revelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CAE3B027DCC578005BB78A /* revelsTests.swift */; };
@@ -47,7 +46,6 @@
 		62CAE39927DCC577005BB78A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62CAE39B27DCC577005BB78A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		62CAE39D27DCC577005BB78A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		62CAE3A027DCC577005BB78A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		62CAE3A227DCC578005BB78A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62CAE3A527DCC578005BB78A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62CAE3A727DCC578005BB78A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 				BEB6FED9223171B677B34425 /* Pods-revelsTests.debug.xcconfig */,
 				36EBD0A4D4E8683FD03B0AED /* Pods-revelsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -133,7 +130,6 @@
 				62CAE39927DCC577005BB78A /* AppDelegate.swift */,
 				62CAE39B27DCC577005BB78A /* SceneDelegate.swift */,
 				62CAE39D27DCC577005BB78A /* ViewController.swift */,
-				62CAE39F27DCC577005BB78A /* Main.storyboard */,
 				62CAE3A227DCC578005BB78A /* Assets.xcassets */,
 				62CAE3A427DCC578005BB78A /* LaunchScreen.storyboard */,
 				62CAE3A727DCC578005BB78A /* Info.plist */,
@@ -279,7 +275,6 @@
 			files = (
 				62CAE3A627DCC578005BB78A /* LaunchScreen.storyboard in Resources */,
 				62CAE3A327DCC578005BB78A /* Assets.xcassets in Resources */,
-				62CAE3A127DCC577005BB78A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,14 +441,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		62CAE39F27DCC577005BB78A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				62CAE3A027DCC577005BB78A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		62CAE3A427DCC578005BB78A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -594,7 +581,6 @@
 				INFOPLIST_FILE = revels/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -623,7 +609,6 @@
 				INFOPLIST_FILE = revels/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

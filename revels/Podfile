@@ -13,7 +13,7 @@ pod 'Alamofire'
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Messaging'
 	pod 'Firebase/Crashlytics'
-	pod 'SAConfettiView'
+
   pod 'UBottomSheet'
   pod 'MBProgressHUD'
 

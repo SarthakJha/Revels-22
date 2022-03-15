@@ -113,7 +113,6 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
-  - SAConfettiView (0.1.8)
   - SDWebImage (5.12.3):
     - SDWebImage/Core (= 5.12.3)
   - SDWebImage/Core (5.12.3)
@@ -127,7 +126,6 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - Firebase/Messaging
   - MBProgressHUD
-  - SAConfettiView
   - SDWebImage
   - UBottomSheet
 
@@ -149,7 +147,6 @@ SPEC REPOS:
     - MBProgressHUD
     - nanopb
     - PromisesObjC
-    - SAConfettiView
     - SDWebImage
     - UBottomSheet
 
@@ -170,10 +167,9 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  SAConfettiView: c87031a2280659261b730fce3669fb10e73636ee
   SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
   UBottomSheet: a1c528d907b60e7ec65e1f0987fe6074b2ad3762
 
-PODFILE CHECKSUM: dc38d2b5c8b033b98d4a5a90049fac1381135007
+PODFILE CHECKSUM: c0a271e81c273a368f95183e479070d51125475c
 
 COCOAPODS: 1.11.2
