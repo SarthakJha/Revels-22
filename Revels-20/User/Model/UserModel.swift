@@ -15,18 +15,20 @@ struct UserResponse: Decodable {
 }
 
 struct User: Codable{
-    let timeStamp: String
+//    let timestamp: String
     let branch:String?
     let verified:String?
     let regEvents:[Int]?
-    let teamList:[Int]?
+    let teamList:[Int]? // this
     let userID: Int?
     let name: String
+    let token: String
+    let passwordResetToken: String
     let email: String
-    let phoneNo: Int64?
+    let mobileNumber: Int64?
     let college: String?
     let state: String
-    let isMahe: Bool?
+    let isMahe: Int?
     let driveLink: String?
     let __v:Int
     let teamDetails:[TeamDetails]?

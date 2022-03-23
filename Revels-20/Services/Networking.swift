@@ -18,6 +18,7 @@ struct UserKeys{
     let loggedIn = "isLoggedIn"
     let active = "active"
 }
+let baseURL = "https://revels22-api.herokuapp.com/"
 
 let apiKey = "o92PqCYAstWGq1Mx0kou"
 let resultsURL = "https://api.mitrevels.in/results" //"https://api.techtatva.in/results"
@@ -49,9 +50,9 @@ struct NewsLetterApiRespone: Decodable{
 struct Networking {
     
     let userSignUpURL = "https://techtatva.in/app/signup"
-    let userPasswordForgotURL = "https://techtatva.in/api/forgotpass"
+    let userPasswordForgotURL = "\(baseURL)api/user/forgetpass"
     let userPasswordResetURL = "https://register.mitrevels.in/setPassword/"
-    let userLoginURL = "https://techtatva.in/app/status"
+    let userLoginURL = "\(baseURL)api/user/login"
     let userDetailsURL = "https://register.mitrevels.in/userProfile"
     let registerEventURL = "https://techtatva.in/app/createteam"
     let getRegisteredEventsURL = "https://techtatva.in/app/registeredevents"
@@ -262,8 +263,7 @@ struct Networking {
     func loginUser(Email: String, Password: String, dataCompletion: @escaping (_ Data: User) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
         let parameters = [
             "email": Email,
-            "password": Password,
-            "key": apiKey
+            "password": Password
             ] as [String : Any]
 
         Alamofire.request(userLoginURL, method: .post, parameters: parameters, encoding: URLEncoding()).response { response in
@@ -271,11 +271,13 @@ struct Networking {
                 do{
                     let response = try JSONDecoder().decode(UserResponse.self, from: data)
                     if response.success{
+                        print(data)
                         if let data = response.data{
                             let defaults = UserDefaults.standard
-                            defaults.set(Email, forKey: "Email")
-                            defaults.set(Password, forKey: "Password")
-                            defaults.set(data.userID, forKey: "UserID")
+                            defaults.set(data.token, forKey: "token")
+                            defaults.set(data.userID, forKey: "passResetToken")
+                            defaults.set(data.userID, forKey: "userID")
+                            defaults.set(data.name, forKey: "name")
                             dataCompletion(data)
                         }
                     }else{

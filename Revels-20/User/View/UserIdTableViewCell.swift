@@ -25,7 +25,7 @@ class UserIDTableViewCell: UITableViewCell {
                 self.emailLabel.text = user.email
                 self.collegeLabel.text = user.college
                     self.stateLabel.text = user.state
-            if let phoneno = user.phoneNo{
+            if let phoneno = user.mobileNumber{
                 self.phoneLabel.text = String(phoneno)
             }
             if let userid = user.userID{
