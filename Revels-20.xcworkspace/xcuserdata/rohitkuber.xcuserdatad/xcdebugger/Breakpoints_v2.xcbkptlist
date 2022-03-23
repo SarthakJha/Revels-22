@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "CE6F54EF-9986-4BE3-A0C6-829B71F570B1"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43B66161-2088-41EE-A5F4-3EE9DA5D2024"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Revels-20/Categories/Controller/CategoryTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "getCategories()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "43B66161-2088-41EE-A5F4-3EE9DA5D2024 - 4a4fbceb897a6f9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Revels.CategoriesTableViewController.(getCategories in _5BDB269A300210DFA2D171F6739597CE)() -&gt; ()"
+                  moduleName = "Revels"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rohitkuber/Desktop/TechTatva20/Revels-20/Categories/Controller/CategoryTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
+                  offsetFromSymbolStart = "139">
+               </Location>
+               <Location
+                  uuid = "43B66161-2088-41EE-A5F4-3EE9DA5D2024 - 578e1ac500bbcca7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;Revels.Category&gt;) -&gt; () in Revels.CategoriesTableViewController.(getCategories in _5BDB269A300210DFA2D171F6739597CE)() -&gt; ()"
+                  moduleName = "Revels"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rohitkuber/Desktop/TechTatva20/Revels-20/Categories/Controller/CategoryTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "189">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BA8781C-26D8-41AF-9D68-980D2470702B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Revels-20/User/Controller/ResetPassword.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "application(_:continue:restorationHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
