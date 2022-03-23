@@ -93,9 +93,6 @@ PODS:
   - GoogleUtilities/UserDefaults (6.7.2):
     - GoogleUtilities/Logger
   - leveldb-library (1.22)
-  - Mapbox-iOS-SDK (6.2.1):
-    - MapboxMobileEvents (~> 0.10.4)
-  - MapboxMobileEvents (0.10.5)
   - MBProgressHUD (1.2.0)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
@@ -104,7 +101,6 @@ PODS:
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.11)
   - Protobuf (3.13.0)
-  - SAConfettiView (0.1.8)
   - SDWebImage (5.4.2):
     - SDWebImage/Core (= 5.4.2)
   - SDWebImage/Core (5.4.2)
@@ -119,9 +115,7 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - Firebase/Database
   - Firebase/Messaging
-  - Mapbox-iOS-SDK (~> 6.2.1)
   - MBProgressHUD
-  - SAConfettiView
   - SDWebImage
   - UBottomSheet
 
@@ -143,13 +137,10 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - leveldb-library
-    - Mapbox-iOS-SDK
-    - MapboxMobileEvents
     - MBProgressHUD
     - nanopb
     - PromisesObjC
     - Protobuf
-    - SAConfettiView
     - SDWebImage
     - UBottomSheet
 
@@ -170,16 +161,13 @@ SPEC CHECKSUMS:
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
-  Mapbox-iOS-SDK: c5a2ec3a3a0a77ee0ba78f91380e83898cb6aa41
-  MapboxMobileEvents: 7f6fb7fb0360302f524d198d36ccec3a0beae523
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
-  SAConfettiView: c87031a2280659261b730fce3669fb10e73636ee
   SDWebImage: 4ca2dc4eefae4224bea8f504251cda485a363745
   UBottomSheet: adf006980cd6583c8be15967b1868b3b62936f7b
 
-PODFILE CHECKSUM: 3f032e8d4ccd280ef065e916c2c7bf6405788f5e
+PODFILE CHECKSUM: 7ef9db96ef1672852bcee5667a47a0e8b8ba7561
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.2

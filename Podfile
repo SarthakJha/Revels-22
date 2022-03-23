@@ -14,8 +14,6 @@ target 'Revels-20' do
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Messaging'
 	pod 'Firebase/Crashlytics'
-	pod 'SAConfettiView'
   	pod 'UBottomSheet'
   	pod 'MBProgressHUD'
-	pod 'Mapbox-iOS-SDK', '~> 6.2.1'
 end
