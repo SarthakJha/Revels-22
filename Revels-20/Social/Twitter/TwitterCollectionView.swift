@@ -18,7 +18,7 @@ class TwitterCollectionView: UICollectionViewCell, UITableViewDataSource,UITable
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "TechTatva'20"
+        label.text = "Revels-22"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 22)
         label.textColor = UIColor(white: 1, alpha: 0.7)

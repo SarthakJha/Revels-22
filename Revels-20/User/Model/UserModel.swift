@@ -23,11 +23,11 @@ struct User: Codable{
     let userID: Int?
     let name: String
     let token: String
-    let passwordResetToken: String
+    let passwordResetToken: String?
     let email: String
     let mobileNumber: Int64?
     let college: String?
-    let state: String
+//    let state: String
     let isMahe: Int?
     let driveLink: String?
     let __v:Int

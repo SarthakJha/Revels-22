@@ -25,7 +25,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo_dark")
+        imageView.image = UIImage(named: "Revels-Logo")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()

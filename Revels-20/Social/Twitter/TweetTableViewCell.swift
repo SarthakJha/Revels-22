@@ -144,7 +144,7 @@ class TweetTableViewCell: UITableViewCell {
     
     lazy var usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "@mittechtattva"
+        label.text = "@revelsmit"
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.numberOfLines = 1
         label.textAlignment = .left

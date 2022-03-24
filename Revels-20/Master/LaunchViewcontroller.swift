@@ -13,7 +13,7 @@ class LaunchViewController: UIViewController {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 195, height: 191))
-        imageView.image = UIImage(named: "logo_dark")
+        imageView.image = UIImage(named: "Revels-Logo")
         return imageView
     }()
     

@@ -52,6 +52,7 @@ class MasterTabBarController: UITabBarController{
     fileprivate func setupLayout(){
         tabBar.isTranslucent = false
         tabBar.barTintColor = UIColor.CustomColors.Black.background
-        tabBar.tintColor = UIColor.CustomColors.Purple.accent
+        tabBar.tintColor = UIColor(named: "Theme")
+     //   tabBar.tintColor = UIColor.CustomColors.Purple.accent
     }
 }

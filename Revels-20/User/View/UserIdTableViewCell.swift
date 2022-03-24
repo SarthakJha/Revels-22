@@ -24,7 +24,7 @@ class UserIDTableViewCell: UITableViewCell {
                 self.nameLabel.text = user.name
                 self.emailLabel.text = user.email
                 self.collegeLabel.text = user.college
-                    self.stateLabel.text = user.state
+                    self.stateLabel.text = "lavda"
             if let phoneno = user.mobileNumber{
                 self.phoneLabel.text = String(phoneno)
             }
@@ -141,7 +141,7 @@ class UserIDTableViewCell: UITableViewCell {
     lazy var eventsButton: LoadingButton = {
         let button = LoadingButton(type: .system)
         button.startAnimatingPressActions()
-        button.backgroundColor = UIColor.CustomColors.Purple.register
+        button.backgroundColor = UIColor(named:"Theme")
         button.setTitle("Registered Events", for: UIControl.State())
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: UIControl.State())
@@ -155,9 +155,10 @@ class UserIDTableViewCell: UITableViewCell {
         let button = LoadingButton(type: .system)
         button.startAnimatingPressActions()
         button.backgroundColor = UIColor.CustomColors.Purple.logoLightPink
+        button.backgroundColor = UIColor.white
         button.setTitle("Update Drive Link", for: UIControl.State())
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.CustomColors.Purple.logoDarkPink, for: UIControl.State())
+        button.setTitleColor(UIColor(named:"Theme"), for: UIControl.State())
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(updateDriveLink), for: .touchUpInside)
@@ -333,7 +334,7 @@ class UserIDTableViewCell: UITableViewCell {
             _ = containerView.anchor(top: nameLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 64, leftConstant: 12, bottomConstant: 0, rightConstant: 12, heightConstant: UIViewController().view.frame.width/2+20)
             
            
-            let stackInfoView = UIStackView(arrangedSubviews: [userLabel,emailIdLabel,stateInfoLabel,contactLabel,collegeInfoLabel])
+            let stackInfoView = UIStackView(arrangedSubviews: [userLabel,emailIdLabel,contactLabel,collegeInfoLabel])
             stackInfoView.axis = .vertical
             stackInfoView.distribution = .equalSpacing
 //            stackInfoView.backgroundColor = .blue
@@ -341,7 +342,7 @@ class UserIDTableViewCell: UITableViewCell {
             containerView.addSubview(stackInfoView)
             _ = stackInfoView.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: nil,topConstant: 16,leftConstant: 16,bottomConstant: 16,rightConstant: 0,widthConstant: 60)
             
-            let stackView = UIStackView(arrangedSubviews: [userIDLabel,emailLabel,stateLabel,phoneLabel,collegeLabel])
+            let stackView = UIStackView(arrangedSubviews: [userIDLabel,emailLabel,phoneLabel,collegeLabel])
             stackView.axis = .vertical
             stackView.distribution = .equalSpacing
 //            stackView.backgroundColor = .blue
@@ -354,11 +355,11 @@ class UserIDTableViewCell: UITableViewCell {
             addSubview(eventsButton)
             _ = eventsButton.anchor(top: containerView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 24, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
             
-            addSubview(updateDriveButton)
-            _ = updateDriveButton.anchor(top: eventsButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
+//            addSubview(updateDriveButton)
+//            _ = updateDriveButton.anchor(top: eventsButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
             
             addSubview(logoutButton)
-            _ = logoutButton.anchor(top: updateDriveButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 8, leftConstant: 16, bottomConstant: 32, rightConstant: 16, widthConstant: 0, heightConstant: 50)
+            _ = logoutButton.anchor(top: eventsButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 8, leftConstant: 16, bottomConstant: 32, rightConstant: 16, widthConstant: 0, heightConstant: 50)
             
         }
         

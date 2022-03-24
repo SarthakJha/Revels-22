@@ -142,7 +142,7 @@ class TwitterCell: UICollectionViewCell{
     
     lazy var usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "@mittechtattva"
+        label.text = "@revelsmit"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.numberOfLines = 1
         label.textAlignment = .left

@@ -29,7 +29,7 @@ class YoutubeCollectionView: UICollectionViewCell,UITableViewDelegate,UITableVie
         
         lazy var titleLabel: UILabel = {
             let label = UILabel()
-            label.text = "TechTatva'20"
+            label.text = "Revels-22"
             label.font = UIFont.boldSystemFont(ofSize: 22)
             label.textColor = UIColor(white: 1, alpha: 0.7)
             label.textAlignment = .center

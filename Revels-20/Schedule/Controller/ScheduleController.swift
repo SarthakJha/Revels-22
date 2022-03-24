@@ -69,7 +69,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
             self.navigationItem.title = category?.name
         }else if fromFavorite{
             self.navigationItem.title = "Favourites"
-            self.navigationController?.navigationBar.tintColor = UIColor.CustomColors.Purple.accent
+            self.navigationController?.navigationBar.tintColor = UIColor(named: "Theme")
         }else{
             setupNavigationBar()
             setupFavouritesBarButton()
@@ -139,8 +139,8 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
     fileprivate func setupMenuController() {
         menuController.delegate = self
         menuController.menuItems = ["Day 1", "Day 2", "Day 3", "Day 4"]
-        menuController.markerBar.backgroundColor = UIColor.CustomColors.Purple.accent
-        menuController.specialColor = UIColor.CustomColors.Purple.accent
+        menuController.markerBar.backgroundColor = UIColor(named: "Theme")
+        menuController.specialColor = UIColor.white
         menuController.menuBar.backgroundColor = UIColor.CustomColors.Black.background
         menuController.collectionView.backgroundColor = UIColor.CustomColors.Black.background
         menuController.shadowBar.backgroundColor = UIColor.CustomColors.Black.background

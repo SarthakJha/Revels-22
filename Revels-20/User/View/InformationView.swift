@@ -18,7 +18,8 @@ class InformationView: UIView {
     lazy var loginButton: LoadingButton = {
         let button = LoadingButton(type: .system)
         button.startAnimatingPressActions()
-        button.backgroundColor = UIColor.CustomColors.Purple.register
+     //   button.backgroundColor = UIColor.CustomColors.Purple.register
+        button.backgroundColor = UIColor(named:"Theme")
         button.setTitle("Continue", for: UIControl.State())
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: UIControl.State())
@@ -42,7 +43,7 @@ class InformationView: UIView {
     
     let loginTextLabel: UILabel = {
         let label = UILabel()
-        label.text = "TechTatva'20 aims to transform the paradigm of a college fest and unite nation-wide students even in the midst of a global pandemic by going online.An arena for ideas and learning in all domains of technology and the advancing modern world with various kinds of events.\n\nSign in to your TechTatva account to register for exciting events and have a chance to win huge cash prizes!"
+        label.text = "Revels'22 aims to transform the paradigm of a college fest and unite nation-wide students even in the midst of a global pandemic by going online.An arena for ideas and learning in all domains of technology and the advancing modern world with various kinds of events.\n\nSign in to your Revels account to register for exciting events and have a chance to win huge cash prizes!"
         label.textAlignment = .center
         label.textColor = .white
         label.numberOfLines = 0
@@ -57,7 +58,7 @@ class InformationView: UIView {
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo_dark")
+        imageView.image = UIImage(named: "Revels-Logo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         return imageView

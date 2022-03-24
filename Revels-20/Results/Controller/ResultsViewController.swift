@@ -92,6 +92,7 @@ class ResultsViewController: UICollectionViewController {
         let leftItem = UIBarButtonItem(customView: titleLabel)
         self.navigationItem.leftBarButtonItem = leftItem
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshResults))
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named:"Theme")
     }
     
     

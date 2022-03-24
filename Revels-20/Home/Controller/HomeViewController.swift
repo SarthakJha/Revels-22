@@ -112,7 +112,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     lazy var qainaatImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "qainaat")
+        iv.image = UIImage(named: "Revels-Logo")
         iv.contentMode = .scaleAspectFit
         return iv
     }()
@@ -473,13 +473,13 @@ class HomeHeader: UIView, UIGestureRecognizerDelegate{
         super.init(frame: frame)
         
         let titleLabel = UILabel()
-        titleLabel.text = "TechTatva'20"
+        titleLabel.text = "Revels'22"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
         titleLabel.textColor = .white
         titleLabel.sizeToFit()
         
         let subTitleLabel = UILabel()
-        subTitleLabel.text = "Transforming Paradigms"
+        subTitleLabel.text = "Beyond Legacies"
         subTitleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         subTitleLabel.textColor = .white
         subTitleLabel.sizeToFit()

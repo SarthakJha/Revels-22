@@ -97,9 +97,9 @@ class DescriptionTableViewCell: UITableViewCell{
         label.text = """
                     \nThe world as we know today is not what it used to be and is no more than a shadow cast in the dim blue lights from screens, barely a semblance to the lush green of the forests and icy blue of the mountain tops that it should have been. With every new day comes a report of yet another catastrophe and we find ourselves wondering, have we run out of time?\n
 
-                    TechTatva'20 in the midst of our changing world during this pandemic is harnessing the power of 'Transforming Paradigms'.\n
+                    Revels-22 in the midst of our changing world during this pandemic is harnessing the power of 'Transforming Paradigms'.\n
 
-                    TechTatva'20 hopes to derive some lessons from the same. The end goal of development and evolution through as many uncharted paths as possible. We hope that in times ahead, irrespective of the changing eras our attempts to think differently will never end.\n\n
+                    Revels-22 hopes to derive some lessons from the same. The end goal of development and evolution through as many uncharted paths as possible. We hope that in times ahead, irrespective of the changing eras our attempts to think differently will never end.\n\n
                     """
         label.textColor = .lightGray
         label.textAlignment = .center
@@ -134,7 +134,7 @@ class DescriptionTableViewCell: UITableViewCell{
     lazy var creditsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        let attributedString = NSMutableAttributedString(string: "Designed and Developed by the\nApp Dev Team at TechTatva’20")
+        let attributedString = NSMutableAttributedString(string: "Designed and Developed by the\nApp Dev Team at Revels-22")
         
         // *** Create instance of `NSMutableParagraphStyle`
         let paragraphStyle = NSMutableParagraphStyle()
@@ -156,7 +156,7 @@ class DescriptionTableViewCell: UITableViewCell{
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo_dark")
+        imageView.image = UIImage(named: "Revels-Logo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -175,7 +175,7 @@ class DescriptionTableViewCell: UITableViewCell{
     
     lazy var transformingBgView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "logobg1")
+        iv.image = UIImage(named: "Revels-Logo")
         iv.contentMode = .scaleAspectFill
         iv.alpha = 0.195
         return iv
