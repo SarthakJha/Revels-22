@@ -18,7 +18,7 @@ struct UserKeys{
     let loggedIn = "isLoggedIn"
     let active = "active"
 }
-let baseURL = "https://revels22-api.herokuapp.com/"
+let baseURL = "https://revels22-api.herokuapp.com"
 
 let apiKey = "o92PqCYAstWGq1Mx0kou"
 let resultsURL = "https://api.mitrevels.in/results" //"https://api.techtatva.in/results"
@@ -49,10 +49,10 @@ struct NewsLetterApiRespone: Decodable{
 }
 struct Networking {
     
-    let userSignUpURL = "https://techtatva.in/app/signup"
-    let userPasswordForgotURL = "\(baseURL)api/user/forgetpass"
+    let userSignUpURL = "\(baseURL)/app/signup"
+    let userPasswordForgotURL = "\(baseURL)/api/user/forgetpass"
     let userPasswordResetURL = "https://register.mitrevels.in/setPassword/"
-    let userLoginURL = "\(baseURL)api/user/login"
+    let userLoginURL = "\(baseURL)/api/user/login"
     let userDetailsURL = "https://register.mitrevels.in/userProfile"
     let registerEventURL = "https://techtatva.in/app/createteam"
     let getRegisteredEventsURL = "https://techtatva.in/app/registeredevents"
@@ -180,17 +180,16 @@ struct Networking {
     
     // MARK: - Users
     
-    func registerUserWithDetails(name: String, email: String, mobile: String,password:String, collname: String,sname:String, dlink:String, dataCompletion: @escaping (_ Data: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
+    func registerUserWithDetails(name: String, email: String, mobile: String,password:String, collname: String, course:String,regno:Int64,branch:String, dataCompletion: @escaping (_ Data: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
         let parameters = [
             "name": name,
             "email": email,
-            "phoneNo": mobile,
+            "mobileNumber": mobile,
+            "registrationNumber":regno,
             "password":password,
-            "branch":"engineering",
+            "branch":branch,
             "college": collname,
-            "state": sname,
-            "isMahe": true,
-            "driveLink": dlink,
+            "course": course
             ] as [String : Any]
         
         Alamofire.request(userSignUpURL, method: .post, parameters: parameters, encoding: URLEncoding()).response { response in
