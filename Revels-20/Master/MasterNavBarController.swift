@@ -23,7 +23,8 @@ class MasterNavigationBarController: UINavigationController {
         setNeedsStatusBarAppearanceUpdate()
         
         navigationBar.barTintColor = UIColor.CustomColors.Black.background
-        navigationBar.tintColor = UIColor.CustomColors.Purple.accent
+        navigationBar.tintColor = UIColor.CustomColors.Theme.themeColor
+        //navigationBar.tintColor = UIColor.CustomColors.Purple.accent
         
         navigationBar.isTranslucent = false
         navigationBar.shadowImage = UIImage()

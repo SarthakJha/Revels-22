@@ -53,7 +53,8 @@ class UsersViewController: UITableViewController {
         view.backgroundColor = .black
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.CustomColors.Black.background
-        tableView.register(UserIDTableViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(QRDelegateIDTableViewCell.self, forCellReuseIdentifier: "cellId")
+       // tableView.register(UserIDTableViewCell.self, forCellReuseIdentifier: "cellId")
         if UserDefaults.standard.isLoggedIn(){
 
         }else{
@@ -154,7 +155,7 @@ class UsersViewController: UITableViewController {
                     
                     Networking.sharedInstance.toUpdateDriveLink(drivelink: drivelink) { (message) in
                         print(message)
-                        FloatingMessage().longFloatingMessage(Message: message, Color: UIColor.CustomColors.Purple.register, onPresentation: {
+                        FloatingMessage().longFloatingMessage(Message: message, Color:  UIColor.CustomColors.Theme.themeColor!, onPresentation: {
                             Networking.sharedInstance.getStatusUpdate { (user) in
                                 print(user)
                                 Caching.sharedInstance.saveUserDetailsToCache(user: user)
@@ -188,7 +189,8 @@ class UsersViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! UserIDTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! QRDelegateIDTableViewCell
+      //  let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! UserIDTableViewCell
         cell.user = self.user
         cell.contentView.isUserInteractionEnabled = false
         cell.usersViewController = self

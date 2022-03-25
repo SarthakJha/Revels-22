@@ -43,7 +43,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     lazy var loginButton: LoadingButton = {
         let button = LoadingButton(type: .system)
       //  button.backgroundColor = UIColor.CustomColors.Purple.register
-        button.backgroundColor = UIColor(named: "Theme")
+        button.backgroundColor = UIColor.CustomColors.Theme.themeColor
         button.setTitle("Login", for: UIControl.State())
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: UIControl.State())
@@ -69,7 +69,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         }
         button.layer.borderWidth = 1.5
     //    button.layer.borderColor = UIColor.CustomColors.Purple.logoLightPink.cgColor
-        button.layer.borderColor = UIColor(named:"Theme")?.cgColor
+        button.layer.borderColor = UIColor.CustomColors.Theme.themeColor?.cgColor
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
         return button
@@ -80,7 +80,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         button.setTitle("Continue as Guest", for: UIControl.State())
         button.translatesAutoresizingMaskIntoConstraints = false
       //  button.setTitleColor(UIColor.CustomColors.Purple.logoLightPink, for: UIControl.State())
-        button.setTitleColor(UIColor(named:"Theme"), for: UIControl.State())
+        button.setTitleColor(UIColor.CustomColors.Theme.themeColor, for: UIControl.State())
         if isSmalliPhone(){
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         }else{
@@ -275,7 +275,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
 //            guard let user = user[0] else { return}
             Caching.sharedInstance.saveUserDetailsToCache(user: user)
             
-            FloatingMessage().longFloatingMessage(Message: "Successfully logged in!", Color: UIColor.CustomColors.Purple.register, onPresentation: {
+            FloatingMessage().longFloatingMessage(Message: "Successfully logged in!", Color:  UIColor.CustomColors.Theme.themeColor!, onPresentation: {
 //                Networking.sharedInstance.getRegisteredEvents(dataCompletion: { (data) in
 //                    var subscribeDictionary = [String: Bool]()
 //                   if let subsDict = UserDefaults.standard.dictionary(forKey: "subsDictionary") as? [String: Bool]{
@@ -356,7 +356,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         
         Networking.sharedInstance.forgotPasswordFor(Email: email, dataCompletion: { (successMessage) in
             self.forgotPasswordButton.hideLoading()
-            FloatingMessage().longFloatingMessage(Message: "A Reset Password link has been sent to \(email).", Color: UIColor.CustomColors.Purple.register, onPresentation: {
+            FloatingMessage().longFloatingMessage(Message: "A Reset Password link has been sent to \(email).", Color: UIColor.CustomColors.Theme.themeColor!, onPresentation: {
                 self.hideKeyboard()
             }) {}
             print(successMessage)

@@ -24,7 +24,7 @@ class UserIDTableViewCell: UITableViewCell {
                 self.nameLabel.text = user.name
                 self.emailLabel.text = user.email
                 self.collegeLabel.text = user.college
-                    self.stateLabel.text = "lavda"
+                 //   self.stateLabel.text = "lavda"
             if let phoneno = user.mobileNumber{
                 self.phoneLabel.text = String(phoneno)
             }
@@ -40,7 +40,7 @@ class UserIDTableViewCell: UITableViewCell {
     
     lazy var titleBackgroundText: UILabel = {
            let label = UILabel()
-           label.text = "VIDEOS"
+           label.text = "User"
            label.font = UIFont.systemFont(ofSize: 68, weight: .bold)
            label.textColor = UIColor(white: 0.4, alpha: 0.3)
            label.textAlignment = .center
@@ -154,7 +154,7 @@ class UserIDTableViewCell: UITableViewCell {
     lazy var updateDriveButton: LoadingButton = {
         let button = LoadingButton(type: .system)
         button.startAnimatingPressActions()
-        button.backgroundColor = UIColor.CustomColors.Purple.logoLightPink
+        button.backgroundColor = UIColor.CustomColors.Theme.themeColor
         button.backgroundColor = UIColor.white
         button.setTitle("Update Drive Link", for: UIControl.State())
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -269,6 +269,26 @@ class UserIDTableViewCell: UITableViewCell {
     }()
     
     
+    lazy var previewView: QRCodeReaderView = {
+        let view = QRCodeReaderView()
+        view.backgroundColor = .black
+        view.setupComponents(with: QRCodeReaderViewControllerBuilder{
+            $0.reader                 = reader
+            $0.showTorchButton        = false
+            $0.showSwitchCameraButton = false
+            $0.showCancelButton       = false
+            $0.showOverlayView        = true
+            $0.rectOfInterest         = CGRect(x: 0.2, y: 0.2, width: 0.6, height: 0.6)
+        })
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 14
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
+    lazy var reader: QRCodeReader = QRCodeReader()
+
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
@@ -282,6 +302,11 @@ class UserIDTableViewCell: UITableViewCell {
             nameLabel.font = UIFont.boldSystemFont(ofSize: 23)
             addSubview(nameLabel)
             _ = nameLabel.anchor(top: titleBackgroundText.topAnchor, left: leftAnchor, bottom: titleBackgroundText.bottomAnchor, right: rightAnchor, topConstant: 6, leftConstant: 16, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 0)
+            
+            
+            addSubview(previewView)
+            _ = previewView.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 64, leftConstant: -12, bottomConstant: 0, rightConstant: -12, widthConstant: 0, heightConstant: 0)
+            
             
             addSubview(containerView)
             

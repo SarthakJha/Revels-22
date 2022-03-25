@@ -38,7 +38,7 @@ class StateTableViewController: UITableViewController {
     
     func configureNavigationBar(){
         navigationItem.title = "Choose from below"
-        self.navigationController?.navigationBar.tintColor = UIColor.CustomColors.Purple.accent
+        self.navigationController?.navigationBar.tintColor =  UIColor.CustomColors.Theme.themeColor
         let button1 = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(Close))
         self.navigationItem.rightBarButtonItem  = button1
         self.navigationItem.rightBarButtonItem?.title = "Close"

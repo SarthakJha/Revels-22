@@ -19,7 +19,7 @@ class InformationView: UIView {
         let button = LoadingButton(type: .system)
         button.startAnimatingPressActions()
      //   button.backgroundColor = UIColor.CustomColors.Purple.register
-        button.backgroundColor = UIColor(named:"Theme")
+        button.backgroundColor = UIColor.CustomColors.Theme.themeColor
         button.setTitle("Continue", for: UIControl.State())
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: UIControl.State())

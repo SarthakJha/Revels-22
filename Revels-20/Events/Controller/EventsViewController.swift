@@ -270,7 +270,7 @@ class EventsViewController: UITableViewController {
         closedReg.numberOfLines = 2
         closedReg.text = "Registrations are closed for this event"
         
-        createTeam.backgroundColor = UIColor.CustomColors.Purple.register
+        createTeam.backgroundColor = UIColor.CustomColors.Theme.themeColor
         createTeam.setTitle("Register", for: UIControl.State())
         createTeam.translatesAutoresizingMaskIntoConstraints = false
         createTeam.startAnimatingPressActions()
@@ -342,7 +342,7 @@ class EventsViewController: UITableViewController {
                 Networking.sharedInstance.registerEventWith(eventID: eventID,userid: userID, category:self.event.category, successCompletion: { (message) in
                     self.createTeam.hideLoading()
                     print(message)
-                    FloatingMessage().longFloatingMessage(Message: "Successfully Registered for \(self.event.name).", Color: UIColor.CustomColors.Purple.register, onPresentation: {
+                    FloatingMessage().longFloatingMessage(Message: "Successfully Registered for \(self.event.name).", Color: UIColor.CustomColors.Theme.themeColor!, onPresentation: {
                         Networking.sharedInstance.getStatusUpdate { (user) in
                             print(user)
                             Caching.sharedInstance.saveUserDetailsToCache(user: user)
@@ -432,7 +432,7 @@ class EventsViewController: UITableViewController {
         Networking.sharedInstance.joinTeam(eventId: eventID, userID: userID, category: categoryName, partyCode: partyCodeValue, successCompletion: { (message) in
                     self.joinTeam.hideLoading()
                     print(message)
-            FloatingMessage().longFloatingMessage(Message: "Successfully joined the team for \(eventInfo.name). ", Color: UIColor.CustomColors.Purple.register, onPresentation: {
+            FloatingMessage().longFloatingMessage(Message: "Successfully joined the team for \(eventInfo.name). ", Color: UIColor.CustomColors.Theme.themeColor!, onPresentation: {
                 Networking.sharedInstance.getStatusUpdate { (user) in
                     print(user)
                     Caching.sharedInstance.saveUserDetailsToCache(user: user)

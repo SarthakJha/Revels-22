@@ -306,7 +306,7 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
     
     lazy var teamDetailsButton : LoadingButton = {
         let button = LoadingButton(type: .system)
-        button.backgroundColor = UIColor.CustomColors.Purple.register
+        button.backgroundColor = UIColor.CustomColors.Theme.themeColor
         button.setTitle("Team Details", for: UIControl.State())
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: UIControl.State())

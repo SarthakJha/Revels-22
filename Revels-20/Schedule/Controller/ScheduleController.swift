@@ -112,7 +112,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
             if favsDict.count > 0{
                 print(favsDict)
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "star_filled")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(toggleFavourites))//UIBarButtonItem(title: "Favourites", style: .plain, target: self, action: #selector(toggleFavourites))
-                self.navigationItem.rightBarButtonItem?.tintColor = UIColor.CustomColors.Purple.logoLightPink
+                self.navigationItem.rightBarButtonItem?.tintColor =  UIColor.CustomColors.Theme.themeColor
                 return
             }
         }
@@ -146,8 +146,8 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
         menuController.shadowBar.backgroundColor = UIColor.CustomColors.Black.background
         
         if fromFavorite{
-            menuController.markerBar.backgroundColor = UIColor.CustomColors.Purple.logoLightPink
-            menuController.specialColor = UIColor.CustomColors.Purple.logoLightPink
+            menuController.markerBar.backgroundColor =  UIColor.CustomColors.Theme.themeColor
+            menuController.specialColor = UIColor.CustomColors.Theme.themeColor
         }
     }
     
@@ -452,10 +452,10 @@ class DayWiseScheduleCell: UICollectionViewCell, UITableViewDelegate, UITableVie
             cell.delegate = self
             guard let fav = fromFavourite else { return cell}
             if fav{
-                cell.lineSeperator.backgroundColor = UIColor.CustomColors.Purple.logoLightPink
+                cell.lineSeperator.backgroundColor = UIColor.CustomColors.Theme.themeColor
                 
             }else{
-                cell.lineSeperator.backgroundColor = UIColor.CustomColors.Purple.accent
+                cell.lineSeperator.backgroundColor = UIColor.CustomColors.Theme.themeColor
             }
             return cell
         }

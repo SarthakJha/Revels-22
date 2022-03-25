@@ -87,9 +87,9 @@ class ResultsDetailViewController: UICollectionViewController, UICollectionViewD
         navigationItem.largeTitleDisplayMode = .never
         
         menuController.delegate = self
-        menuController.markerBar.backgroundColor = UIColor.CustomColors.Purple.accent
+        menuController.markerBar.backgroundColor = UIColor.CustomColors.Theme.themeColor
         menuController.menuItems = ["Round 1","Round 2","Round 3"]
-        menuController.specialColor = UIColor.CustomColors.Purple.accent
+        menuController.specialColor = UIColor.CustomColors.Theme.themeColor
         menuController.menuBar.backgroundColor = UIColor.CustomColors.Black.background
         menuController.collectionView.backgroundColor = UIColor.CustomColors.Black.background
         menuController.shadowBar.backgroundColor = UIColor.CustomColors.Black.background

@@ -165,7 +165,7 @@ class ScheduleCell: UITableViewCell{
     lazy var favStarButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "star_unfilled")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = UIColor.CustomColors.Purple.logoLightPink
+        button.tintColor = UIColor.CustomColors.Theme.themeColor
         button.addTarget(self, action: #selector(didTapFavButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.contentEdgeInsets = .init(top: 0, left: 32, bottom: 0, right: 0)
