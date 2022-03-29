@@ -13,29 +13,33 @@ struct EventsResponse: Codable{
 
 struct Event: Codable{
 
+    let id: Int
+    let category: Int
     let name: String
-    let category: String
-    let tags: [String]?
-    let mode: String?
+    let eventType: String
+    let mode: String
     let description: String
-    let teamSize: String?
-    let eventID : Int?
-    let round1:[String]
-    let round2: [String]
-    let round3: [String]
+    let minMembers: Int
+    let maxMembers: Int
+    let tags: [String]?
+    let isActive: Bool
+    let teamDelegateCard: Bool
+    let prize: String
+    let eventVenue: String
+    let eventHeads: [EventHead]
 
-    init() {
-        category = ""
-        name = ""
-        tags = []
-        mode = ""
-        description = ""
-        teamSize = ""
-        eventID = 0
-        round1 = []
-        round2 = []
-        round3 = []
-    }
+
+//    init() {
+//        id = 0
+//        category = 0
+//        name = ""
+//        description=""
+//        maxMembers=0
+//        minMembers = 0
+//        
+//        tags = []
+//        isActive=false
+//    }
 }
 
 

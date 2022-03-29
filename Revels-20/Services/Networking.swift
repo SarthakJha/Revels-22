@@ -18,11 +18,12 @@ struct UserKeys{
     let loggedIn = "isLoggedIn"
     let active = "active"
 }
-let baseURL = "https://revels22-api.herokuapp.com"
+//let baseURL = "https://revels22-api.herokuapp.com"
+let baseURL = "https://revelsmit.in"
 
 let apiKey = "o92PqCYAstWGq1Mx0kou"
 let resultsURL = "https://api.mitrevels.in/results" //"https://api.techtatva.in/results"
-let eventsURL = "https://categories.techtatva.in/app/events"
+let eventsURL = "\(baseURL)/api/user/event/getallevents"
 let scheduleURL = "https://techtatvadata.herokuapp.com/schedule"
 //let categoriesURL = "https://api.mitrevels.in/categories"
 let categoriesURL = "https://categories.techtatva.in/app/category"
@@ -116,7 +117,7 @@ struct Networking {
             if let data = response.data{
                 do{
                     let resultsResponse = try JSONDecoder().decode(EventsResponse.self, from: data)
-                    if resultsResponse.success{
+                    if !resultsResponse.success{
                         if let data = resultsResponse.data{
                             dataCompletion(data)
                         }
@@ -214,7 +215,7 @@ struct Networking {
     func forgotPasswordFor(Email email: String, dataCompletion: @escaping (_ Data: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
         let parameters = [
             "email": email
-            ] as [String : Any]
+            ] as [String : String]
         
         Alamofire.request(userPasswordForgotURL, method: .post, parameters: parameters, encoding: URLEncoding()).response { response in
             if let data = response.data{
@@ -228,6 +229,7 @@ struct Networking {
                     }
                 }catch let error{
                     errorCompletion("decoder_error")
+                    print("idhar haga?")
                     print(error)
                 }
             }
@@ -290,32 +292,32 @@ struct Networking {
             }
         }
     }
-    func toUpdateDriveLink(drivelink: String ,successCompletion: @escaping (_ SuccessMessage: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
-            let parameters = [
-                "userID": userIDCached,
-                "driveLink": drivelink,
-                "email": emailCached,
-                "password": passwordCached,
-                "key": apiKey
-                ] as [String : Any]
-
-            Alamofire.request(updateDriveLinkURL, method: .post, parameters: parameters, encoding: URLEncoding()).response { response in
-                if let data = response.data{
-                    do{
-                        let response = try JSONDecoder().decode(RegisterResponse.self, from: data)
-                        if response.success{
-                            successCompletion(response.msg)
-                            }
-                        else{
-                            print(response)
-                            errorCompletion(response.msg)
-                        }
-                    }catch let error{
-                        print("Error in getting status update after registering" ,error)
-                    }
-                }
-            }
-        }
+//    func toUpdateDriveLink(drivelink: String ,successCompletion: @escaping (_ SuccessMessage: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
+//            let parameters = [
+//                "userID": userIDCached,
+//                "driveLink": drivelink,
+//                "email": emailCached,
+//                "password": passwordCached,
+//                "key": apiKey
+//                ] as [String : Any]
+//
+//            Alamofire.request(updateDriveLinkURL, method: .post, parameters: parameters, encoding: URLEncoding()).response { response in
+//                if let data = response.data{
+//                    do{
+//                        let response = try JSONDecoder().decode(RegisterResponse.self, from: data)
+//                        if response.success{
+//                            successCompletion(response.msg)
+//                            }
+//                        else{
+//                            print(response)
+//                            errorCompletion(response.msg)
+//                        }
+//                    }catch let error{
+//                        print("Error in getting status update after registering" ,error)
+//                    }
+//                }
+//            }
+//        }
     
     func getStatusUpdate(dataCompletion: @escaping (_ Data: User) -> ()){
         let parameters = [

@@ -276,7 +276,7 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
         case 1:
             textLabel = "Category"
             let event = eventDict?[teamDetails?.eventID ?? 0]
-            detailedTextLabel = event?.category ?? ""
+            detailedTextLabel = ""
             imageName = "timer"
             break
         case 2:

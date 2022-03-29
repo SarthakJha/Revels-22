@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct UserResponse: Decodable {
+struct UserResponse: Codable {
     let success: Bool
     let msg: String?
     let data : User?
@@ -27,7 +27,6 @@ struct User: Codable{
     let email: String
     let mobileNumber: Int64?
     let college: String?
-    let state: String
     let isMahe: Int?
     let driveLink: String?
     let __v:Int

@@ -531,7 +531,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         registerButton.showLoading()
         registerButton.activityIndicator.color = .white
         
-        Networking.sharedInstance.registerUserWithDetails(name: name, email: email,mobile: phone, password:password, collname: college, sname: state, dlink: dlink, dataCompletion: { (successString) in
+        Networking.sharedInstance.registerUserWithDetails(name: name, email: email,mobile: phone, password:password, collname: college,course:"r",regno:1234,branch:"ll", dataCompletion: { (successString) in
             print(successString)
             FloatingMessage().longFloatingMessage(Message: "Successfully Registered", Color: UIColor.CustomColors.Purple.register, onPresentation: {
                 self.hideKeyboard()
@@ -541,13 +541,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                 self.navigationController?.popViewController(animated: true)
             }
             self.registerButton.hideLoading()
-        }) { (errorString) in
+        },errorCompletion:{ (errorString) in
             FloatingMessage().floatingMessage(Message: errorString, Color: .red, onPresentation: {
             }) {}
             print(errorString)
             self.registerButton.hideLoading()
             return
-        }
+        })
     }
     
     func validateEmail(enteredEmail: String) -> Bool {
