@@ -14,7 +14,7 @@ struct EventsResponse: Codable{
 struct Event: Codable{
 
     let id: Int
-    let category: Int
+    let category: Cat
     let name: String
     let eventType: String
     let mode: String
@@ -42,4 +42,7 @@ struct Event: Codable{
 //    }
 }
 
+struct Cat: Codable {
+    let category:String
+}
 
