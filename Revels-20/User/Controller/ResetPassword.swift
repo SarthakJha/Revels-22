@@ -50,7 +50,9 @@ extension AppDelegate{
                 guard let resetToken = self.resetPasswordToken else{
                     return
                 }
-                Networking.sharedInstance.resetPassword(Token: resetToken, Password: firstPW, dataCompletion: { (successMessage) in
+               
+
+                Revels.Networking.sharedInstance.resetPassword(Token: resetToken, Password: firstPW, dataCompletion: { (successMessage) in
                     print(successMessage)
                         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1/2), execute: {
                             page.next = self.makeCompletionPage()
@@ -62,6 +64,8 @@ extension AppDelegate{
                     item.manager?.displayNextItem()
                     return
                 })
+                
+            
             }else{
                 page.next = self.makeMismatchPasswordPage()
                 item.manager?.displayNextItem()

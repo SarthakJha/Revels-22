@@ -101,7 +101,7 @@ class EventsViewController: UITableViewController {
         var imageName = "calendar"
         let formatter = DateFormatter()
         guard let event = event else { return cell }
-        let category = categoriesDictionary[event.category]
+        let category = categoriesDictionary[event.category.category]
         
         cell.selectionStyle = .none
         switch indexPath.row {
@@ -124,7 +124,7 @@ class EventsViewController: UITableViewController {
                 break
             }else{
                 textLabel = "Team Size"
-                detailedTextLabel = "\(event.teamSize ?? "N/A")"
+                detailedTextLabel = "\(event.maxMembers - event.minMembers)"
                 imageName = "group"
             }
 
@@ -144,7 +144,7 @@ class EventsViewController: UITableViewController {
             }else{
                 textLabel = "Delegate Card"
                 
-                if(event.category == "Gaming"){
+                if(event.category.category == "Gaming"){
                     detailedTextLabel = "Gaming"
                 }
                 else{
@@ -198,7 +198,7 @@ class EventsViewController: UITableViewController {
         case 5:
             if let _ = self.schedule{
                 textLabel = "Team Size"
-                detailedTextLabel = "\(event.teamSize ?? "N/A")"
+                detailedTextLabel = "\(event.maxMembers - event.minMembers)"
                 imageName = "group"
             }else{
                 textLabel = "Contact 2"
@@ -211,7 +211,7 @@ class EventsViewController: UITableViewController {
             break
         case 6:
             textLabel = "Delegate Card"
-            if(event.category == "Gaming"){
+            if(event.category.category == "Gaming"){
                 detailedTextLabel = "Gaming"
             }
             else{
@@ -336,10 +336,12 @@ class EventsViewController: UITableViewController {
                 print("loggined")
                 self.createTeam.showLoading()
                 self.createTeam.activityIndicator.color = .white
-                guard let eventID = self.event.eventID else {return }
-                guard let userID = self.user?.userID else {return}
+                //let eventID = self.event.id else {return }
+                let eventID = self.event.id
+                let userID = self.user?.userID
+               // let userID = self.user?.userID else {return}
                 
-                Networking.sharedInstance.registerEventWith(eventID: eventID,userid: userID, category:self.event.category, successCompletion: { (message) in
+                Networking.sharedInstance.registerEventWith(eventID: eventID,userid: userID!, category:self.event.category.category, successCompletion: { (message) in
                     self.createTeam.hideLoading()
                     print(message)
                     FloatingMessage().longFloatingMessage(Message: "Successfully Registered for \(self.event.name).", Color: UIColor.CustomColors.Theme.themeColor!, onPresentation: {
@@ -415,10 +417,11 @@ class EventsViewController: UITableViewController {
                 self.joinTeam.showLoading()
                 self.joinTeam.activityIndicator.color = .white
                 guard let eventInfo = self.event else { return  }
-                guard let eventID = eventInfo.eventID else {return }
+              //  guard let eventID = eventInfo.id else {return }
+                let eventID = eventInfo.id
                 guard let userID = self.user?.userID else {return}
                 guard let partyCodeValue = self.partyCode.text else{return}
-                let categoryName = eventInfo.category
+                let categoryName = eventInfo.name
                 print("User id:",userID)
                 
                 if partyCodeValue.count != 6{
@@ -520,35 +523,36 @@ class EventsViewController: UITableViewController {
 
         case 2:
             if(fromTags){
-            self.presentDelegateCardInfo(categoryName: event.category)
+            self.presentDelegateCardInfo(categoryName: event.name)
             }
             break
         case 3:
             if (fromTags){
-            let category = categoriesDictionary[event.category]
+                let category = categoriesDictionary[event.category.category]
             if let number = category?.cc?[0].phoneNo{
                 self.callNumber(number: number)
             }
             }
         case 4:
             if (fromTags){
-            let category = categoriesDictionary[event.category]
+                let category = categoriesDictionary[event.category.category]
             if let number = category?.cc?[1].phoneNo{
                 self.callNumber(number: number)
             }
         }
             
         case 6:
-            self.presentDelegateCardInfo(categoryName: event.category)
+            self.presentDelegateCardInfo(categoryName: event.name)
             break
             
         case 7:
-            let category = categoriesDictionary[event.category]
+            let category = categoriesDictionary[event.category.category]
+        //    if let number = category.cc?[0].ph
             if let number = category?.cc?[0].phoneNo{
                 self.callNumber(number: number)
             }
         case 8:
-            let category = categoriesDictionary[event.category]
+            let category = categoriesDictionary[event.category.category]
             if let number = category?.cc?[1].phoneNo{
                 self.callNumber(number: number)
             }

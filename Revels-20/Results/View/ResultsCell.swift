@@ -61,7 +61,7 @@ class ResultsCell: UICollectionViewCell{
     
     @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-            if let id = event?.eventID{
+            if let id = event?.id{
                 print(id)
             }
         }

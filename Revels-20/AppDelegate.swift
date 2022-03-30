@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     
     
     func getNewsletterURL(){
-        Networking.sharedInstance.getNewsLetterUrl(dataCompletion: { (url) in
+        Revels.Networking.sharedInstance.getNewsLetterUrl(dataCompletion: { (url) in
             UserDefaults.standard.set(url, forKey: "newletterurl")
             UserDefaults.standard.synchronize()
             print(url)
@@ -86,15 +86,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
     
     fileprivate func getEvents(){
-//        var eventsDictionary = [Int:Event]()
+        var eventsDictionary = [Int:Event]()
         var tags = [String]()
-        tags.append("All")
-        var eventsDictionary = [Int: Event]()
+    //MARK: 1
+      //  tags.append("All")
+      //  var eventsDictionary = [Int: Event]()
+   
             Networking.sharedInstance.getEvents (dataCompletion: { (data) in
-                
                 for event in data{
-                    if let eventID = event.eventID{
-                        eventsDictionary[eventID] = event
+                    var eventID: String  {
+                     //   eventsDictionary[eventID] = event
                         if let guardedTags = event.tags{
                         let uncapitalizedArray = guardedTags.map { $0.lowercased()}
 //                            print(event.name)
@@ -106,9 +107,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                                 }
                             }
                         }
+                        return event.id
                     }
                 }
-                
+
                 Caching.sharedInstance.saveEventsToCache(events: data)
                 Caching.sharedInstance.saveEventsDictionaryToCache(eventsDictionary: eventsDictionary)
                 Caching.sharedInstance.saveTagsToCache(tags: tags)
@@ -116,12 +118,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
              }) { (errorMessage) in
                 print("Event fetch problem(App Delegate):",errorMessage)
             }
-
     }
+
+        
+    
     
     fileprivate func getSchedule(){
         var schedule = [ScheduleDays]()
-        Networking.sharedInstance.getScheduleData { (data) in
+        Revels.Networking.sharedInstance.getScheduleData { (data) in
             schedule = data
             Caching.sharedInstance.saveSchedulesToCache(schedule: data)
 //            print(data)
@@ -133,7 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     
     fileprivate func getCategories() {
         var categoriesDictionary = [String: Category]()
-        Networking.sharedInstance.getCategories(dataCompletion: { (data) in
+        Revels.Networking.sharedInstance.getCategories(dataCompletion: { (data) in
 //            print("Category data:", data)
             for category in data {
                     categoriesDictionary[category.name] = category
@@ -152,8 +156,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             print("Category cache problem (App delegate):",error)
         }
     }
-}
 
+}
 extension AppDelegate: MessagingDelegate{
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
       print("Firebase registration token: \(String(describing: fcmToken))")

@@ -164,13 +164,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
 //            return false
 //        }
         
-        if textField == branchName{
-            hideKeyboard()
-            stateSearchController.stateDelegate = self
-            present(stateSearchController, animated: true, completion: nil)
-//            searchController.searchResultsController?.view.isHidden = false
-            return false
-        }
+//        if textField == branchName{
+//            hideKeyboard()
+//            stateSearchController.stateDelegate = self
+//            present(stateSearchController, animated: true, completion: nil)
+////            searchController.searchResultsController?.view.isHidden = false
+//            return false
+//        }
         return true
     }
     
@@ -272,7 +272,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         branchName.configure(color: .white,
                             font: isSmalliPhone() ? UIFont.systemFont(ofSize: 15) : UIFont.systemFont(ofSize: 18),
                             cornerRadius: isSmalliPhone() ? 20 : 25,
-                             borderColor: UIColor.CustomColors.Theme.themeColor,
+                            borderColor: UIColor.CustomColors.Theme.themeColor,
                             backgroundColor: UIColor.CustomColors.Black.background,
                             borderWidth: 1.0)
         branchName.keyboardType = .default
@@ -280,7 +280,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         branchName.clipsToBounds = true
         branchName.delegate = self
         branchName.tag = 5
-        branchName.attributedPlaceholder = NSAttributedString(string: "Enter your branch", attributes: [
+        branchName.attributedPlaceholder = NSAttributedString(string: "Enter your branch Name", attributes: [
             .foregroundColor: UIColor.lightGray,
             .font: isSmalliPhone() ? UIFont.systemFont(ofSize: 15) : UIFont.systemFont(ofSize: 18)
             ])
@@ -296,7 +296,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         courseName.clipsToBounds = true
         courseName.delegate = self
         courseName.tag = 6
-        courseName.attributedPlaceholder = NSAttributedString(string: "Enter course name", attributes: [
+        courseName.attributedPlaceholder = NSAttributedString(string: "Enter course Name", attributes: [
             .foregroundColor: UIColor.lightGray,
             .font: isSmalliPhone() ? UIFont.systemFont(ofSize: 15) : UIFont.systemFont(ofSize: 18)
             ])
@@ -327,9 +327,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             view.addSubview(courseName)
             _ = courseName.anchor(top: branchName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 40, bottomConstant: 0, rightConstant: 40, widthConstant: 0, heightConstant: 40)
             
-//            view.addSubview(driveLabel)
-//            _ = driveLabel.anchor(top: driveField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 6, leftConstant: 16, bottomConstant: 0, rightConstant: 16)
-            
+        
             view.addSubview(guestButton)
             _ = guestButton.anchor(top: nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 32, bottomConstant: 16, rightConstant: 32, widthConstant: 0, heightConstant: 30)
             
@@ -359,8 +357,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             view.addSubview(courseName)
             _ = courseName.anchor(top: branchName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 40, bottomConstant: 0, rightConstant: 40, widthConstant: 0, heightConstant: 50)
             
-//            view.addSubview(driveLabel)
-//            _ = driveLabel.anchor(top: driveField.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 6, leftConstant: 16, bottomConstant: 0, rightConstant: 16,heightConstant: 0)
             
             view.addSubview(guestButton)
             _ = guestButton.anchor(top: nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 32, bottomConstant: 16, rightConstant: 32, widthConstant: 0, heightConstant: 30)
@@ -453,8 +449,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         guard let password = passwordField.text else {return}
         guard let phone = phoneField.text else { return }
         guard let college = collegeField.text else { return }
-        guard let bName = branchName.text else {return}
-        guard let cName = courseName.text else { return }
+        guard let branch = branchName.text else {return}
+        guard let course = courseName.text else { return }
         
         
         if name == ""{
@@ -514,14 +510,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             return
         }
         
-        if cName == ""{
-            FloatingMessage().floatingMessage(Message: "Please enter your course name", Color: .red, onPresentation: {
+        if course == ""{
+            FloatingMessage().floatingMessage(Message: "Please enter the course name", Color: .red, onPresentation: {
                 self.courseName.becomeFirstResponder()
             }) {}
             return
         }
         
-        if bName == ""{
+        if branch == ""{
             FloatingMessage().floatingMessage(Message: "Please enter your branch", Color: .red, onPresentation: {
                 self.branchName.becomeFirstResponder()
             }) {}
@@ -531,23 +527,23 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         registerButton.showLoading()
         registerButton.activityIndicator.color = .white
         
-//        Networking.sharedInstance.registerUserWithDetails(name: name, email: email,mobile: phone, password:password, collname: college, sname: state, dlink: dlink, dataCompletion: { (successString) in
-//            print(successString)
-//            FloatingMessage().longFloatingMessage(Message: "Successfully Registered", Color: UIColor.CustomColors.Purple.register, onPresentation: {
-//                self.hideKeyboard()
-//            }) {
-//                self.loginViewController?.emailField.text = email
-//                self.loginViewController?.passwordField.text = password
-//                self.navigationController?.popViewController(animated: true)
-//            }
-//            self.registerButton.hideLoading()
-//        }) { (errorString) in
-//            FloatingMessage().floatingMessage(Message: errorString, Color: .red, onPresentation: {
-//            }) {}
-//            print(errorString)
-//            self.registerButton.hideLoading()
-//            return
-//        }
+        Networking.sharedInstance.registerUserWithDetails(name: name, email: email,mobile: phone, password:password, collname: college,course:"r",regno:1234,branch:"ll", dataCompletion: { (successString) in
+            print(successString)
+            FloatingMessage().longFloatingMessage(Message: "Successfully Registered", Color: UIColor.CustomColors.Purple.register, onPresentation: {
+                self.hideKeyboard()
+            }) {
+                self.loginViewController?.emailField.text = email
+                self.loginViewController?.passwordField.text = password
+                self.navigationController?.popViewController(animated: true)
+            }
+            self.registerButton.hideLoading()
+        },errorCompletion:{ (errorString) in
+            FloatingMessage().floatingMessage(Message: errorString, Color: .red, onPresentation: {
+            }) {}
+            print(errorString)
+            self.registerButton.hideLoading()
+            return
+        })
     }
     
     func validateEmail(enteredEmail: String) -> Bool {

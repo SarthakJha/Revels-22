@@ -83,7 +83,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
     @objc func showInfoOptions(){
         if !UserDefaults.standard.bool(forKey: "firstSchedule"){
             DispatchQueue.main.async(execute: {
-                let alertController = UIAlertController(title: "Welcome to the Schedules Tab", message: "• You can checkout the day wise schedule of TechTatva from here.\n\n• Tap on an Event Schedule to view more information about it, register for the event and view its delegate card.\n\n• You can star the events and access them later through the favourites section!", preferredStyle: .actionSheet)
+                let alertController = UIAlertController(title: "Welcome to the Schedules Tab", message: "• You can checkout the day wise schedule of Revels from here.\n\n• Tap on an Event Schedule to view more information about it, register for the event and view its delegate card.\n\n• You can star the events and access them later through the favourites section!", preferredStyle: .actionSheet)
                 
                 let okayAction = UIAlertAction(title: "Continue", style: .cancel, handler: { (_) in
                     
@@ -175,6 +175,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       
         return menuController.menuItems.count
     }
     
@@ -185,8 +186,9 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
             if fromCategory{
                 cell.schedule = dayOneSchedule.filter({ (scheduleItem) -> Bool in
                     guard let eventId = Int(scheduleItem.eventID) else {return false}
-                    if let category = eventsDictionary[eventId]?.category{
-                        if category == self.categoryID{
+                    if let category = eventsDictionary[eventId]?.category.categoryID{
+                        if category == categoryID?.description
+                        {
                             return true
                         }
                     }
@@ -203,11 +205,12 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
             if fromCategory{
                 cell.schedule = dayTwoSchedule.filter({ (scheduleItem) -> Bool in
                     guard let eventId = Int(scheduleItem.eventID) else {return false}
-                    if let category = eventsDictionary[eventId]?.category{
-                        if category == self.categoryID{
+                    if let category = eventsDictionary[eventId]?.category.categoryID{
+                        if category == categoryID!.description{
                             return true
                         }
                     }
+                    
                     return false
                 })
             }else if fromFavorite{
@@ -221,8 +224,8 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
             if fromCategory{
                 cell.schedule = dayThreeSchedule.filter({ (scheduleItem) -> Bool in
                     guard let eventId = Int(scheduleItem.eventID) else {return false}
-                    if let category = eventsDictionary[eventId]?.category{
-                        if category == self.categoryID{
+                    if let category = eventsDictionary[eventId]?.category.categoryID{
+                        if category == categoryID!.description{
                             return true
                         }
                     }
@@ -239,8 +242,8 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
             if fromCategory{
                 cell.schedule = dayFourSchedule.filter({ (scheduleItem) -> Bool in
                     guard let eventId = Int(scheduleItem.eventID) else {return false}
-                    if let category = eventsDictionary[eventId]?.category{
-                        if category == self.categoryID{
+                    if let category = eventsDictionary[eventId]?.category.categoryID{
+                        if category == categoryID!.description{
                             return true
                         }
                     }
@@ -350,7 +353,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
         if fromCategory{
 //            self.dismiss(animated: true)
         }
-        print(event.eventID)
+        print(event.id)
         print(event.name)
     }
 //    

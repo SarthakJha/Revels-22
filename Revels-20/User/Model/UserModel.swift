@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct UserResponse: Decodable {
+struct UserResponse: Codable {
     let success: Bool
     let msg: String?
     let data : User?

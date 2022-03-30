@@ -86,14 +86,17 @@ class CategoriesTableViewController: UITableViewController, DayTableViewCellProt
     //MARK: - TableView Functions
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories?.count ?? 0
+       return 10
+      //  return categories?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CategoryTableViewCell
         let category = categories?[indexPath.row]
-        cell.titleLabel.text = category?.name
-        cell.descriptionLabel.text = category?.description
+        cell.titleLabel.text = "Catewgory Name"
+        cell.descriptionLabel.text = "Description"
+//        cell.titleLabel.text = category?.name
+//        cell.descriptionLabel.text = category?.description
         return cell
     }
     // Open details popup view

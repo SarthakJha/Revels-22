@@ -37,5 +37,6 @@ struct EventHead : Codable{
     let _id: String
     let name:String
     let phoneNo: Int64
+    let email: String
 }
 

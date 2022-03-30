@@ -125,8 +125,8 @@ class TagsEventsViewController: UIViewController, TagsControllerDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredEvents?.count ?? 0
-//        return
+        return  filteredEvents?.count ?? 0
+//       return
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

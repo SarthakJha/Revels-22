@@ -103,7 +103,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.text = "Revels'20"
+        label.text = "Revels'22"
         label.textAlignment = .center
         label.alpha = 0
         label.font = UIFont.boldSystemFont(ofSize: 16)
@@ -456,7 +456,7 @@ class HomeHeader: UIView, UIGestureRecognizerDelegate{
         iv.clipsToBounds = true
         iv.layer.masksToBounds = true
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.image = UIImage(named: "placeholder")
+        iv.image = UIImage(named: "Show")
         return iv
     }()
     

@@ -214,8 +214,8 @@ extension ResultsViewController: UISearchResultsUpdating {
 extension ResultsViewController: UICollectionViewDelegateFlowLayout{
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return isFiltering() ? filteredEventsWithResults.count : eventsWithResults.count
+        return 10
+    //    return isFiltering() ? filteredEventsWithResults.count : eventsWithResults.count
         }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -234,23 +234,46 @@ extension ResultsViewController: UICollectionViewDelegateFlowLayout{
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ResultsCell
-        if  let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID{
-//            print(selectedEventID)
-        cell.event = eventsDictionary[selectedEventID]
-        }
+//        if  let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID{
+////            print(selectedEventID)
+//        cell.event = eventsDictionary[selectedEventID]
+//        }
         return cell
 }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let resultsDetailViewController = ResultsDetailViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        if  let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID{
-            print(selectedEventID)
-            guard   let selectedEvent = eventsDictionary[selectedEventID] else {return}
-            resultsDetailViewController.event = selectedEvent
-            resultsDetailViewController.firstRoundResults = selectedEvent.round1
-            resultsDetailViewController.secondRoundResults = selectedEvent.round2
-            resultsDetailViewController.thirdRoundResults = selectedEvent.round3 
-        }
+//          let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].id: eventsWithResults[indexPath.item].id{
+//            print(selectedEventID)
+//            guard   let selectedEvent = eventsDictionary[selectedEventID] else {return}
+//            resultsDetailViewController.event = selectedEvent
+//            resultsDetailViewController.firstRoundResults = selectedEvent.round1
+//            resultsDetailViewController.secondRoundResults = selectedEvent.round2
+//            resultsDetailViewController.thirdRoundResults = selectedEvent.round3
+//        }
+        
+//        let fileredEventsWithResults =
+//
+//        filteredEventsWithResults[indexPath.item].id{
+//            guard   let selectedEvent = eventsDictionary[selectedEventID] else {return}
+//            resultsDetailViewController.event = selectedEvent
+//            resultsDetailViewController.firstRoundResults = selectedEvent.round1
+//            resultsDetailViewController.secondRoundResults = selectedEvent.round2
+//            resultsDetailViewController.thirdRoundResults = selectedEvent.round3
+//        }
+        
+//        filteredEventsWithResults[indexPath.item].id{
+//          //  print(selectedEventID)
+//            guard   let selectedEvent = eventsDictionary[selectedEventID] else {return}
+//            resultsDetailViewController.event = selectedEvent
+//            resultsDetailViewController.firstRoundResults = selectedEvent.round1
+//            resultsDetailViewController.secondRoundResults = selectedEvent.round2
+//            resultsDetailViewController.thirdRoundResults = selectedEvent.round3
+//        }
+        
+    //   let selectedEventID = isFiltering() ? fileredEventsWithResults : "Invalid Event ID"
+        
+        
         navigationController?.pushViewController(resultsDetailViewController, animated: true)
         
     }

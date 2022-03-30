@@ -18,7 +18,7 @@ class InstagramCell: UICollectionViewCell {
     
     lazy var usernameLabel : UILabel = {
         let label = UILabel()
-        label.text = "mittechtatva"
+        label.text = "mitRevels"
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 20)
         return label
