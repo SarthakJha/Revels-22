@@ -20,7 +20,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
     var fromFavorite = false
     var favouritesDict = [String: Bool]()
     //Start making mapping changes from here
-    var categoryID: String?
+    var categoryId: String?
     var category: Category?
     var fromCategory = false
     
@@ -186,7 +186,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
                 cell.schedule = dayOneSchedule.filter({ (scheduleItem) -> Bool in
                     guard let eventId = Int(scheduleItem.eventID) else {return false}
                     if let category = eventsDictionary[eventId]?.category{
-                        if category == self.categoryID{
+                        if category == self.categoryId ?? "NA"{
                             return true
                         }
                     }
@@ -204,7 +204,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
                 cell.schedule = dayTwoSchedule.filter({ (scheduleItem) -> Bool in
                     guard let eventId = Int(scheduleItem.eventID) else {return false}
                     if let category = eventsDictionary[eventId]?.category{
-                        if category == self.categoryID{
+                        if category == self.categoryId{
                             return true
                         }
                     }
@@ -222,7 +222,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
                 cell.schedule = dayThreeSchedule.filter({ (scheduleItem) -> Bool in
                     guard let eventId = Int(scheduleItem.eventID) else {return false}
                     if let category = eventsDictionary[eventId]?.category{
-                        if category == self.categoryID{
+                        if category == self.categoryId{
                             return true
                         }
                     }
@@ -240,7 +240,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
                 cell.schedule = dayFourSchedule.filter({ (scheduleItem) -> Bool in
                     guard let eventId = Int(scheduleItem.eventID) else {return false}
                     if let category = eventsDictionary[eventId]?.category{
-                        if category == self.categoryID{
+                        if category == self.categoryId{
                             return true
                         }
                     }

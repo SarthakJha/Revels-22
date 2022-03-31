@@ -7,15 +7,14 @@
 //
 
 struct CategoriesResponse: Codable {
-    let success: Bool
     let data: [Category]?
 }
 
 struct Category: Codable {
-    let tags: [String]
+    let type: String
     let name: String
-    let  cc : [CCInfo]?
     let description: String?
+    let categoryId: String
 }
 
 struct CCInfo : Codable{

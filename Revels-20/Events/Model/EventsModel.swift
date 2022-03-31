@@ -14,6 +14,7 @@ struct EventsResponse: Codable{
 struct Event: Codable{
 
     let id: Int
+    let eventID: Int?
     let category: Cat
     let name: String
     let eventType: String
@@ -27,6 +28,8 @@ struct Event: Codable{
     let prize: String
     let eventVenue: String
     let eventHeads: [EventHead]
+    let registrationDeadline: String
+    let eventDateTime: String
 
 
 //    init() {
@@ -44,5 +47,8 @@ struct Event: Codable{
 
 struct Cat: Codable {
     let category:String
+    let categoryId: String
+    let description: String
+    let type: String
 }
 

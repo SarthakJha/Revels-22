@@ -125,6 +125,7 @@ class UsersViewController: UITableViewController {
             UserDefaults.standard.synchronize()
 
             UserDefaults.standard.setIsLoggedIn(value: false)
+            UserDefaults.standard.set("",forKey: "token")
             self.setupViewForLoggedOutUser()
         }
         actionSheet.addAction(sureAction)
