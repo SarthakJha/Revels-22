@@ -50,7 +50,7 @@ struct NewsLetterApiRespone: Decodable{
 }
 struct Networking {
     
-    let userSignUpURL = "\(baseURL)/app/signup"
+    let userSignUpURL = "\(baseURL)/api/user/register"
     let userPasswordForgotURL = "\(baseURL)/api/user/forgetpass"
     let userPasswordResetURL = "https://register.mitrevels.in/setPassword/"
     let userLoginURL = "\(baseURL)/api/user/login"
@@ -192,6 +192,7 @@ struct Networking {
             "college": collname,
             "course": course
             ] as [String : Any]
+        print(parameters)
         
         Alamofire.request(userSignUpURL, method: .post, parameters: parameters, encoding: URLEncoding()).response { response in
             if let data = response.data{
@@ -274,12 +275,14 @@ struct Networking {
                     if response.success{
                         print(data)
                         if let data = response.data{
-                            let defaults = UserDefaults.standard
-                            defaults.set(data.token, forKey: "token")
-                            defaults.set(data.userID, forKey: "passResetToken")
-                            defaults.set(data.userID, forKey: "userID")
-                            defaults.set(data.name, forKey: "name")
-                            dataCompletion(data)
+                            UserDefaults.standard.set(data.token, forKey: "token")
+                            UserDefaults.standard.set(data.userID, forKey: "userID")
+                            UserDefaults.standard.set(data.name, forKey: "name")
+//                            let defaults = UserDefaults.standard
+//                            defaults.set(data.token, forKey: "token")
+//                            defaults.set(data.userID, forKey: "userID")
+//                            defaults.set(data.name, forKey: "name")
+//                            dataCompletion(data)
                         }
                     }else{
                         print(response)

@@ -264,7 +264,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.tableFooterView = UIView()
         tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
         
-        homeHeader?.headerImageView.image = UIImage(named: "placeholder")
+        homeHeader?.headerImageView.image = UIImage(named: "Show")
         
 //        let widhtConstant = 40
         
@@ -329,7 +329,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         animations: {
             let url = NSURL(string: images[self.sequence[self.i]])
             self.i = (self.i + 1) % images.count
-            view.sd_setImage(with: url! as URL, placeholderImage: UIImage(named: "placeholder"))
+            view.sd_setImage(with: url! as URL, placeholderImage: UIImage(named: "Show"))
             print(url!)
         })
     }

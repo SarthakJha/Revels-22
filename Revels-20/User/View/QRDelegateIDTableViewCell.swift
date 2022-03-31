@@ -17,10 +17,10 @@ class QRDelegateIDTableViewCell: UITableViewCell {
         didSet{
             guard let user = user else { return }
                 DispatchQueue.main.async {
-//                    self.qrImageView.image = self.generateQRCode(from: user.qr)
+//                    self.qrImageView.image = self.generateQRCode(from: UserDefaults.value(forKey: "token"))
                     print(user.qr)
-                    let myString = user.qr
-                    let data = myString?.data(using: String.Encoding.ascii)
+                    let myString = "\(String(describing: UserDefaults.value(forKey: "TOKEN")))"
+                    let data = myString.data(using: String.Encoding.ascii)
                     guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
                     qrFilter.setValue(data, forKey: "inputMessage")
                     guard let qrImage = qrFilter.outputImage else { return }

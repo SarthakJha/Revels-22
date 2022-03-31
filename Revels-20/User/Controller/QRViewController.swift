@@ -51,7 +51,6 @@ class QRViewController: UIViewController, QRCodeReaderViewControllerDelegate {
         return label
     }()
 
-    
     lazy var previewView: QRCodeReaderView = {
         let view = QRCodeReaderView()
         view.backgroundColor = .black
@@ -75,7 +74,7 @@ class QRViewController: UIViewController, QRCodeReaderViewControllerDelegate {
         $0.reader                  = QRCodeReader(metadataObjectTypes: [.qr], captureDevicePosition: .back)
         $0.showTorchButton         = true
         $0.preferredStatusBarStyle = .lightContent
-        $0.showOverlayView        = true
+        $0.showOverlayView         = true
         $0.rectOfInterest          = CGRect(x: 0.2, y: 0.2, width: 0.6, height: 0.6)
       
         $0.reader.stopScanningWhenCodeIsFound = false

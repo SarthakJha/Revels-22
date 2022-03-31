@@ -23,7 +23,7 @@ struct User: Codable{
     let userID: Int?
     let name: String
     let token: String
-    let passwordResetToken: String
+    let passwordResetToken: String?
     let email: String
     let mobileNumber: Int64?
     let college: String?
