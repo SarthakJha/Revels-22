@@ -26,7 +26,7 @@ let resultsURL = "https://api.mitrevels.in/results" //"https://api.techtatva.in/
 let eventsURL = "\(baseURL)/api/user/event/getallevents"
 let scheduleURL = "https://techtatvadata.herokuapp.com/schedule"
 //let categoriesURL = "https://api.mitrevels.in/categories"
-let categoriesURL = "https://categories.techtatva.in/app/category"
+let categoriesURL = "\(baseURL)/api/category/getall"
 //let delegateCardsURL = "https://api.mitrevels.in/delegate_cards"
 let boughtDelegateCardsURL = "https://register.mitrevels.in/boughtCards" 
 //let paymentsURL = "https://register.mitrevels.in/buy?card="
@@ -159,13 +159,14 @@ struct Networking {
     
     func getCategories(dataCompletion: @escaping (_ Data: [Category]) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
         
-        Alamofire.request(categoriesURL, method: .post, parameters: nil, encoding: URLEncoding()).response { response in
+        Alamofire.request(categoriesURL, method: .get, parameters: nil, encoding: URLEncoding()).response { response in
             if let data = response.data{
                 do{
                     let resultsResponse = try JSONDecoder().decode(CategoriesResponse.self, from: data)
                     if resultsResponse.success{
                         if let data = resultsResponse.data{
                             dataCompletion(data)
+                            debugPrint("Category DATA: \(resultsResponse)")
                         }
                     }else{
                         errorCompletion("Category Response Failed(Networking)")

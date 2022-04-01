@@ -97,7 +97,7 @@ class EventsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! EventCell
         
         var textLabel = "N/A"
-        var detailedTextLabel = "N/A"
+   //     var detailedTextLabel = "N/A"
         var imageName = "calendar"
         let formatter = DateFormatter()
         guard let event = event else { return cell }
@@ -108,23 +108,23 @@ class EventsViewController: UITableViewController {
         case 0:
             if let schedule = self.schedule{
                 textLabel = "Round"
-                detailedTextLabel = "\(schedule.round)"
+              //  detailedTextLabel = "\(schedule.round)"
                 imageName = "assessment"
             }else{
                 textLabel = "Category"
-                detailedTextLabel = category?.name ?? ""
+               // detailedTextLabel = category?.name ?? ""
                 imageName = "category"
             }
             break
         case 1:
             if let _ = self.schedule{
                 textLabel = "Category"
-                detailedTextLabel = category?.name ?? ""
+              //  detailedTextLabel = category?.name ?? ""
                 imageName = "category"
                 break
             }else{
                 textLabel = "Team Size"
-                detailedTextLabel = "\(event.maxMembers - event.minMembers)"
+              //  detailedTextLabel = "\(event.maxMembers - event.minMembers)"
                 imageName = "group"
             }
 
@@ -133,29 +133,29 @@ class EventsViewController: UITableViewController {
                 textLabel = "Date"
 
                 if(schedule.day==1){
-                    detailedTextLabel = "05 Nov 2020"
+                   // detailedTextLabel = "05 Nov 2020"
                 }else if(schedule.day==2){
-                    detailedTextLabel = "06 Nov 2020"
+              //      detailedTextLabel = "06 Nov 2020"
                 }else if(schedule.day==3){
-                    detailedTextLabel = "07 Nov 2020"
+                    //    detailedTextLabel = "07 Nov 2020"
                 }else{
-                    detailedTextLabel = "08 Nov 2020"
+                    //    detailedTextLabel = "08 Nov 2020"
                 }
             }else{
                 textLabel = "Delegate Card"
                 
                 if(event.category.category == "Gaming"){
-                    detailedTextLabel = "Gaming"
+                    //    detailedTextLabel = "Gaming"
                 }
                 else{
-                detailedTextLabel = "Free"
+                    //  detailedTextLabel = "Free"
                 }
 
                 imageName = "card"
-                if detailedTextLabel != "" {
-                    cell.selectionStyle = .gray
-                    cell.accessoryType = .disclosureIndicator
-                }
+//                if detailedTextLabel != "" {
+//                    cell.selectionStyle = .gray
+//                    cell.accessoryType = .disclosureIndicator
+//                }
             break
             }
         case 3:
@@ -170,73 +170,76 @@ class EventsViewController: UITableViewController {
 //                endDate = Calendar.current.date(byAdding: .minute, value: -30, to: endDate)!
 //                var dateString = formatter.string(from: startDate)
 //                dateString.append(" - \(formatter.string(from: endDate))")
-                detailedTextLabel = schedule.time
+            //    detailedTextLabel = schedule.time
                 imageName = "timer"
             }else{
                 textLabel = "Contact 1"
-                detailedTextLabel = category?.cc?[0].name ?? "N/A"
-                if detailedTextLabel != "N/A" {
-                    cell.selectionStyle = .gray
-                }
+//                detailedTextLabel = category?.cc?[0].name ?? "N/A"
+//                if detailedTextLabel != "N/A" {
+//                    cell.selectionStyle = .gray
+//                }
+                cell.selectionStyle = .gray
                 imageName = "contact"
             }
             break
         case 4:
             if let schedule = self.schedule{
                 textLabel = "Venue"
-                detailedTextLabel = schedule.location
+              //  detailedTextLabel = schedule.location
                 imageName = "location"
             }else{
                 textLabel = "Contact 2"
-                detailedTextLabel = category?.cc?[1].name ?? "N/A"
-                if detailedTextLabel != "N/A" {
-                    cell.selectionStyle = .gray
-                }
+                //    detailedTextLabel = category?.cc?[1].name ?? "N/A"
+//                if detailedTextLabel != "N/A" {
+//                    cell.selectionStyle = .gray
+//                }
+                cell.selectionStyle = .gray
                 imageName = "contact"
             }
             break
         case 5:
             if let _ = self.schedule{
                 textLabel = "Team Size"
-                detailedTextLabel = "\(event.maxMembers - event.minMembers)"
+//                detailedTextLabel = "\(event.maxMembers - event.minMembers)"
                 imageName = "group"
             }else{
                 textLabel = "Contact 2"
-                detailedTextLabel = category?.cc?[1].name ?? "N/A"
-                if detailedTextLabel != "N/A" {
-                    cell.selectionStyle = .gray
-                }
+//                detailedTextLabel = category?.cc?[1].name ?? "N/A"
+//                if detailedTextLabel != "N/A" {
+//                    cell.selectionStyle = .gray
+//                }
+                cell.selectionStyle = .gray
                 imageName = "contact"
             }
             break
         case 6:
             textLabel = "Delegate Card"
             if(event.category.category == "Gaming"){
-                detailedTextLabel = "Gaming"
+               // detailedTextLabel = "Gaming"
             }
             else{
-            detailedTextLabel = "Free"
+        //    detailedTextLabel = "Free"
             }
             imageName = "card"
-            if detailedTextLabel != "" {
-                cell.selectionStyle = .gray
-                cell.accessoryType = .disclosureIndicator
-            }
+//            if detailedTextLabel != "" {
+//                cell.selectionStyle = .gray
+//                cell.accessoryType = .disclosureIndicator
+//            }
             break
         case 7:
             textLabel = "Contact 1"
-            detailedTextLabel = category?.cc?[0].name ?? "N/A"
-            if detailedTextLabel != "N/A" {
-                cell.selectionStyle = .gray
-            }
+          //  detailedTextLabel = category?.cc?[0].name ?? "N/A"
+//            if detailedTextLabel != "N/A" {
+//                cell.selectionStyle = .gray
+//            }
             imageName = "contact"
             break
         case 8:
             textLabel = "Contact 2"
-            detailedTextLabel = category?.cc?[1].name ?? "N/A"
-            if detailedTextLabel != "N/A" {
-                cell.selectionStyle = .gray
-            }
+//            detailedTextLabel = category?.cc?[1].name ?? "N/A"
+//            if detailedTextLabel != "N/A" {
+//                cell.selectionStyle = .gray
+//            }
             imageName = "contact"
             break
         default:
@@ -246,7 +249,7 @@ class EventsViewController: UITableViewController {
         cell.imageView?.image = UIImage(named: imageName)
         cell.imageView?.setImageColor(color: .white)
         cell.textLabel?.text = textLabel
-        cell.detailTextLabel?.text = detailedTextLabel
+      //  cell.detailTextLabel?.text = detailedTextLabel
         return cell
     }
     
@@ -529,16 +532,16 @@ class EventsViewController: UITableViewController {
         case 3:
             if (fromTags){
                 let category = categoriesDictionary[event.category.category]
-            if let number = category?.cc?[0].phoneNo{
-                self.callNumber(number: number)
-            }
+//            if let number = category?.cc?[0].phoneNo{
+//                self.callNumber(number: number)
+//            }
             }
         case 4:
             if (fromTags){
                 let category = categoriesDictionary[event.category.category]
-            if let number = category?.cc?[1].phoneNo{
-                self.callNumber(number: number)
-            }
+//            if let number = category?.cc?[1].phoneNo{
+//                self.callNumber(number: number)
+//            }
         }
             
         case 6:
@@ -547,15 +550,15 @@ class EventsViewController: UITableViewController {
             
         case 7:
             let category = categoriesDictionary[event.category.category]
-        //    if let number = category.cc?[0].ph
-            if let number = category?.cc?[0].phoneNo{
-                self.callNumber(number: number)
-            }
+//        //    if let number = category.cc?[0].ph
+//            if let number = category?.cc?[0].phoneNo{
+//                self.callNumber(number: number)
+//            }
         case 8:
             let category = categoriesDictionary[event.category.category]
-            if let number = category?.cc?[1].phoneNo{
-                self.callNumber(number: number)
-            }
+//            if let number = category?.cc?[1].phoneNo{
+//                self.callNumber(number: number)
+//            }
         default: return
         }
     }

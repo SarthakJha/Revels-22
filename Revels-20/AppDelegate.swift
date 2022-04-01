@@ -140,7 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         Revels.Networking.sharedInstance.getCategories(dataCompletion: { (data) in
 //            print("Category data:", data)
             for category in data {
-                    categoriesDictionary[category.name] = category
+                    categoriesDictionary[category.category] = category
             }
             self.saveCategoriesDictionaryToCache(categoriesDictionary: categoriesDictionary)
         }) { (errorMessage) in

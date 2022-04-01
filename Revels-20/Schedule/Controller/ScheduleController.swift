@@ -66,7 +66,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
         setupLayout()
         getScheduleData()
         if fromCategory{
-            self.navigationItem.title = category?.name
+            self.navigationItem.title = category?.category
         }else if fromFavorite{
             self.navigationItem.title = "Favourites"
             self.navigationController?.navigationBar.tintColor = UIColor(named: "Theme")

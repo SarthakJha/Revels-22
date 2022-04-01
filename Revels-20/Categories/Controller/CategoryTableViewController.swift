@@ -32,7 +32,7 @@ class CategoriesTableViewController: UITableViewController, DayTableViewCellProt
     var categories: [Category]?{
         didSet{
             self.categories = self.categories!.sorted(by: { (ca1, ca2) -> Bool in
-                ca1.name < ca2.name
+                ca1.category < ca2.category
             })
             self.popUp.hideSpinner()
             tableView.reloadData()
@@ -93,20 +93,21 @@ class CategoriesTableViewController: UITableViewController, DayTableViewCellProt
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CategoryTableViewCell
         let category = categories?[indexPath.row]
-        cell.titleLabel.text = "Catewgory Name"
-        cell.descriptionLabel.text = "Description"
-//        cell.titleLabel.text = category?.name
-//        cell.descriptionLabel.text = category?.description
+//        cell.titleLabel.text = "Catewgory Name"
+//        cell.descriptionLabel.text = "Description"
+        cell.titleLabel.text = category?.category
+        cell.descriptionLabel.text = category?.description
         return cell
     }
     // Open details popup view
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let categoryName = categories?[indexPath.row].name{
-            print(categoryName)
-        showSchedule(category: categoryName)
-        tableView.deselectRow(at: indexPath, animated: true)
-        }
+        //MARK: -Temp Freeze on click
+//        if let categoryName = categories?[indexPath.row].category{
+//            print(categoryName)
+//        showSchedule(category: categoryName)
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        }
     }
     let slideInTransitioningDelegate = SlideInPresentationManager(from: UIViewController(), to: UIViewController())
     
@@ -144,7 +145,7 @@ class CategoriesTableViewController: UITableViewController, DayTableViewCellProt
         var categoriesDictionary = [String: Category]()
         Networking.sharedInstance.getCategories(dataCompletion: { (data) in
             for category in data {
-                    categoriesDictionary[category.name] = category
+                    categoriesDictionary[category.category] = category
                 
             }
             self.saveCategoriesDictionaryToCache(categoriesDictionary: categoriesDictionary)
