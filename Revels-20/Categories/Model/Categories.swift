@@ -8,6 +8,7 @@
 
 struct CategoriesResponse: Codable {
     let data: [Category]?
+    let success: Bool
 }
 
 struct Category: Codable {
@@ -17,7 +18,7 @@ struct Category: Codable {
     let categoryId: String
 }
 
-struct CCInfo : Codable{
-    let name: String
-    let phoneNo: UInt64?
-}
+//struct CCInfo : Codable{
+//    let name: String
+//    let phoneNo: UInt64?
+//}
