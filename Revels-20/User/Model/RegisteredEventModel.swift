@@ -9,7 +9,7 @@
 
 struct RegisteredEventsResponse: Codable {
     let success: Bool
-    let data : [RegEvent]?
+    let data : [RegisteredEvent]?
 }
 
 struct RegEvent: Codable {
@@ -36,7 +36,7 @@ struct RegisteredEvent: Codable{
 struct EventHead : Codable{
     let _id: String
     let name:String
-    let phoneNo: Int64
+    let phoneNo: Int64?
     let email: String
 }
 

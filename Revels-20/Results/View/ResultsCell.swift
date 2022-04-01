@@ -17,6 +17,7 @@ class ResultsCell: UICollectionViewCell{
         didSet{
             guard let event = event else { return }
             eventNameLabel.text = event.name
+            debugPrint("Event Names: \(event.name)")
         }
     }
     
@@ -42,7 +43,8 @@ class ResultsCell: UICollectionViewCell{
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 3
         label.textAlignment = .center
-        label.text = "Event Name"
+        label.text = event?.name
+      //  label.text = "Event Name"
         return label
     }()
     
@@ -61,7 +63,7 @@ class ResultsCell: UICollectionViewCell{
     
     @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-            if let id = event?.id{
+            if let id = event?._id{
                 print(id)
             }
         }

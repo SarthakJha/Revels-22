@@ -92,7 +92,6 @@ class ResultsViewController: UICollectionViewController {
         let leftItem = UIBarButtonItem(customView: titleLabel)
         self.navigationItem.leftBarButtonItem = leftItem
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshResults))
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(named:"Theme")
     }
     
     
@@ -125,7 +124,7 @@ class ResultsViewController: UICollectionViewController {
         let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
         searchController.searchBar.barStyle = UIBarStyle.black
         textFieldInsideSearchBar?.textColor = .white
-        searchController.searchBar.tintColor = UIColor.CustomColors.Theme.themeColor
+        searchController.searchBar.tintColor = UIColor.CustomColors.Purple.accent
         
         definesPresentationContext = true
     }
@@ -214,8 +213,8 @@ extension ResultsViewController: UISearchResultsUpdating {
 extension ResultsViewController: UICollectionViewDelegateFlowLayout{
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    //    return isFiltering() ? filteredEventsWithResults.count : eventsWithResults.count
+        
+        return isFiltering() ? filteredEventsWithResults.count : eventsWithResults.count
         }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -238,41 +237,26 @@ extension ResultsViewController: UICollectionViewDelegateFlowLayout{
 ////            print(selectedEventID)
 //        cell.event = eventsDictionary[selectedEventID]
 //        }
+        let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID
+        cell.event = eventsDictionary[selectedEventID]
+        print("Selected Event ID: \(eventsDictionary[selectedEventID]?.name)")
+       // cell.eventNameLabel.text = eventsDictionary[selectedEventID]!.name
         return cell
 }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let resultsDetailViewController = ResultsDetailViewController(collectionViewLayout: UICollectionViewFlowLayout())
-//          let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].id: eventsWithResults[indexPath.item].id{
+//        if let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID{
 //            print(selectedEventID)
-//            guard   let selectedEvent = eventsDictionary[selectedEventID] else {return}
+//            guard let selectedEvent = eventsDictionary[selectedEventID] else {return}
 //            resultsDetailViewController.event = selectedEvent
 //            resultsDetailViewController.firstRoundResults = selectedEvent.round1
 //            resultsDetailViewController.secondRoundResults = selectedEvent.round2
 //            resultsDetailViewController.thirdRoundResults = selectedEvent.round3
 //        }
-        
-//        let fileredEventsWithResults =
-//
-//        filteredEventsWithResults[indexPath.item].id{
-//            guard   let selectedEvent = eventsDictionary[selectedEventID] else {return}
-//            resultsDetailViewController.event = selectedEvent
-//            resultsDetailViewController.firstRoundResults = selectedEvent.round1
-//            resultsDetailViewController.secondRoundResults = selectedEvent.round2
-//            resultsDetailViewController.thirdRoundResults = selectedEvent.round3
-//        }
-        
-//        filteredEventsWithResults[indexPath.item].id{
-//          //  print(selectedEventID)
-//            guard   let selectedEvent = eventsDictionary[selectedEventID] else {return}
-//            resultsDetailViewController.event = selectedEvent
-//            resultsDetailViewController.firstRoundResults = selectedEvent.round1
-//            resultsDetailViewController.secondRoundResults = selectedEvent.round2
-//            resultsDetailViewController.thirdRoundResults = selectedEvent.round3
-//        }
-        
-    //   let selectedEventID = isFiltering() ? fileredEventsWithResults : "Invalid Event ID"
-        
+        let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID
+        print(selectedEventID)
+     //   guard let selectedEvent = eventsDictionary[selectedEventID] else {return}
         
         navigationController?.pushViewController(resultsDetailViewController, animated: true)
         

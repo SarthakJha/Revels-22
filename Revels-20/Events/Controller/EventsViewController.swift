@@ -340,7 +340,7 @@ class EventsViewController: UITableViewController {
                 self.createTeam.showLoading()
                 self.createTeam.activityIndicator.color = .white
                 //let eventID = self.event.id else {return }
-                let eventID = self.event.id
+                let eventID = self.event._id
                 let userID = self.user?.userID
                // let userID = self.user?.userID else {return}
                 
@@ -421,7 +421,7 @@ class EventsViewController: UITableViewController {
                 self.joinTeam.activityIndicator.color = .white
                 guard let eventInfo = self.event else { return  }
               //  guard let eventID = eventInfo.id else {return }
-                let eventID = eventInfo.id
+                let eventID = eventInfo._id
                 guard let userID = self.user?.userID else {return}
                 guard let partyCodeValue = self.partyCode.text else{return}
                 let categoryName = eventInfo.name

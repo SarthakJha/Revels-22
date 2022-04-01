@@ -186,7 +186,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
             if fromCategory{
                 cell.schedule = dayOneSchedule.filter({ (scheduleItem) -> Bool in
                     guard let eventId = Int(scheduleItem.eventID) else {return false}
-                    if let category = eventsDictionary[eventId]?.category.categoryID{
+                    if let category = eventsDictionary[eventId]?.category.categoryId{
                         if category == categoryID?.description
                         {
                             return true
@@ -205,7 +205,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
             if fromCategory{
                 cell.schedule = dayTwoSchedule.filter({ (scheduleItem) -> Bool in
                     guard let eventId = Int(scheduleItem.eventID) else {return false}
-                    if let category = eventsDictionary[eventId]?.category.categoryID{
+                    if let category = eventsDictionary[eventId]?.category.categoryId{
                         if category == categoryID!.description{
                             return true
                         }
@@ -224,7 +224,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
             if fromCategory{
                 cell.schedule = dayThreeSchedule.filter({ (scheduleItem) -> Bool in
                     guard let eventId = Int(scheduleItem.eventID) else {return false}
-                    if let category = eventsDictionary[eventId]?.category.categoryID{
+                    if let category = eventsDictionary[eventId]?.category.categoryId{
                         if category == categoryID!.description{
                             return true
                         }
@@ -242,7 +242,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
             if fromCategory{
                 cell.schedule = dayFourSchedule.filter({ (scheduleItem) -> Bool in
                     guard let eventId = Int(scheduleItem.eventID) else {return false}
-                    if let category = eventsDictionary[eventId]?.category.categoryID{
+                    if let category = eventsDictionary[eventId]?.category.categoryId{
                         if category == categoryID!.description{
                             return true
                         }
@@ -353,7 +353,7 @@ class ScheduleController: UICollectionViewController, UICollectionViewDelegateFl
         if fromCategory{
 //            self.dismiss(animated: true)
         }
-        print(event.id)
+        print(event._id)
         print(event.name)
     }
 //    

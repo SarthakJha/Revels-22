@@ -113,18 +113,20 @@ struct Networking {
     
     func getEvents(dataCompletion: @escaping (_ Data: [Event]) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
         
-        Alamofire.request(eventsURL, method: .post, parameters: nil, encoding: URLEncoding()).response { response in
+        Alamofire.request(eventsURL, method: .get, parameters: nil, encoding: URLEncoding()).response { response in
             if let data = response.data{
                 do{
                     let resultsResponse = try JSONDecoder().decode(EventsResponse.self, from: data)
+                    print("Data: \(resultsResponse.data![0].name)")
                     if !resultsResponse.success{
                         if let data = resultsResponse.data{
+                            print("before datacompletion")
                             dataCompletion(data)
                         }
                     }else{
                         errorCompletion("Events Response Failed(Networking)")
                     }
-                }catch let error{
+                }catch let error{ 
                     print(error)
                     errorCompletion("Decoding Error in getting Events(Networking)")
                 }
@@ -283,7 +285,7 @@ struct Networking {
 //                            defaults.set(data.token, forKey: "token")
 //                            defaults.set(data.userID, forKey: "userID")
 //                            defaults.set(data.name, forKey: "name")
-//                            dataCompletion(data)
+                            dataCompletion(data)
                         }
                     }else{
                         print(response)
@@ -401,7 +403,7 @@ struct Networking {
         }
     }
     
-    func getRegisteredEvents(dataCompletion: @escaping (_ Data: [RegEvent]) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
+    func getRegisteredEvents(dataCompletion: @escaping (_ Data: [RegisteredEvent]) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
         
         let parameters = [
             "userID": userIDCached,

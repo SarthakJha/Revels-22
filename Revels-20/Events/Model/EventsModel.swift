@@ -12,9 +12,9 @@ struct EventsResponse: Codable{
 
 struct Event: Codable{
 
-    let id: String
+    let _id: String
     let eventID: Int
-    let category: Cat
+    let category: Category
     let name: String
     let eventType: String
     let mode: String
@@ -25,13 +25,12 @@ struct Event: Codable{
     let isActive: Bool
     let teamDelegateCard: Bool
     let prize: String
-    let eventVenue: String
     let eventHeads: [EventHead]
 
     init() {
-        id = "0"
+        _id = "0"
         eventID = 0
-        category = Cat()
+        category = Category(type: "", category: "", description: "", categoryId: "")
         tags = [""]
         name = ""
         eventType = ""
@@ -42,22 +41,21 @@ struct Event: Codable{
         isActive = false
         teamDelegateCard = false
         prize = ""
-        eventVenue = ""
         eventHeads = [EventHead(_id: "", name: "", phoneNo: 1234567890, email: "")]
        
     }
 }
 
-struct Cat: Codable {
-    var category:String
-    var categoryID:String
-    let decription:String
-    let type : String
-    
-    init(){
-        category = ""
-        categoryID = ""
-        decription = ""
-        type = ""
-    }
-}
+//struct Cat: Codable {
+//    var category:String
+//    var categoryID:String
+//    let decription:String
+//    let type : String
+//
+//    init(){
+//        category = ""
+//        categoryID = ""
+//        decription = ""
+//        type = ""
+//    }
+//}

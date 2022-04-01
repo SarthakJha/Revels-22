@@ -92,10 +92,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
       //  tags.append("All")
       //  var eventsDictionary = [Int: Event]()
    
+        print("Before Data")
             Networking.sharedInstance.getEvents (dataCompletion: { (data) in
                 for event in data{
-                    var eventID: String  {
-                     //   eventsDictionary[eventID] = event
+                    print("Eve")
+                    var eventID: Int  {
                         if let guardedTags = event.tags{
                         let uncapitalizedArray = guardedTags.map { $0.lowercased()}
 //                            print(event.name)
@@ -107,8 +108,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                                 }
                             }
                         }
-                        return event.id
+                        return event.eventID
                     }
+                    eventsDictionary[eventID] = event
+                    print("tags:\(tags)")
                 }
 
                 Caching.sharedInstance.saveEventsToCache(events: data)
