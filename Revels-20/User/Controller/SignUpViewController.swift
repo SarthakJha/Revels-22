@@ -72,6 +72,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         return textField
     }()
     
+    lazy var regNo: LeftPaddedTextField = {
+        let textField = LeftPaddedTextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
     lazy var registerButton: LoadingButton = {
         let button = LoadingButton(type: .system)
         button.setTitle("Register", for: UIControl.State())
@@ -301,6 +307,23 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             .font: isSmalliPhone() ? UIFont.systemFont(ofSize: 15) : UIFont.systemFont(ofSize: 18)
             ])
         
+        regNo.configure(color: .white,
+                            font: isSmalliPhone() ? UIFont.systemFont(ofSize: 15) : UIFont.systemFont(ofSize: 18),
+                            cornerRadius: isSmalliPhone() ? 20 : 25,
+                            borderColor: UIColor.CustomColors.Theme.themeColor,
+                            backgroundColor: UIColor.CustomColors.Black.background,
+                            borderWidth: 1.0)
+        regNo.keyboardType = .default
+        regNo.autocorrectionType = .no
+        regNo.clipsToBounds = true
+        regNo.delegate = self
+        regNo.tag = 6
+        regNo.attributedPlaceholder = NSAttributedString(string: "Enter Registeration Number", attributes: [
+            .foregroundColor: UIColor.lightGray,
+            .font: isSmalliPhone() ? UIFont.systemFont(ofSize: 15) : UIFont.systemFont(ofSize: 18)
+            ])
+        
+        
         
         
         if isSmalliPhone(){
@@ -326,6 +349,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             
             view.addSubview(courseName)
             _ = courseName.anchor(top: branchName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 40, bottomConstant: 0, rightConstant: 40, widthConstant: 0, heightConstant: 40)
+            
+            view.addSubview(regNo)
+            _ = regNo.anchor(top: courseName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 40, bottomConstant: 0, rightConstant: 40, widthConstant: 0, heightConstant: 40)
             
         
             view.addSubview(guestButton)
@@ -357,6 +383,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             view.addSubview(courseName)
             _ = courseName.anchor(top: branchName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 40, bottomConstant: 0, rightConstant: 40, widthConstant: 0, heightConstant: 50)
             
+            view.addSubview(regNo)
+            _ = regNo.anchor(top: courseName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 40, bottomConstant: 0, rightConstant: 40, widthConstant: 0, heightConstant: 50)
             
             view.addSubview(guestButton)
             _ = guestButton.anchor(top: nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 32, bottomConstant: 16, rightConstant: 32, widthConstant: 0, heightConstant: 30)
