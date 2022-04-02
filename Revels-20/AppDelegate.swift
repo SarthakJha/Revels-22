@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         var eventsDictionary = [Int:Event]()
         var tags = [String]()
     //MARK: 1
-      //  tags.append("All")
+        tags.append("All")
       //  var eventsDictionary = [Int: Event]()
    
         print("Before Data")
