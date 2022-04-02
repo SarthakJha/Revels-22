@@ -396,8 +396,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     }
     
     fileprivate func observeKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -414,24 +414,73 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         view.endEditing(true)
     }
     
-    @objc func keyboardHide() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-            self.logoImageView.alpha = 1
-        }, completion: nil)
-    }
+//    @objc func keyboardHide(notification: NSNotification) {
+//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+//            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+//            self.logoImageView.alpha = 1
+//        }, completion: nil)
+//        if self.view.frame.origin.y != 0 {
+//               self.view.frame.origin.y = 0
+//           }
+//    }
     
-    @objc func keyboardShow() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-            
-            var y: CGFloat = -90
-            if self.isSmalliPhone(){
-                y = -50
+//    @objc func keyboardShow(notification: NSNotification) {
+//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+//
+//            var y: CGFloat = -90
+//            if self.isSmalliPhone(){
+//                y = -50
+//            }
+//            self.view.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: self.view.frame.height)
+//            self.logoImageView.alpha = 0
+//        }, completion: nil)
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0 {
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+//    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                
+                if nameField.isEditing{
+                    self.view.frame.origin.y = 0
+                }
+                if emailField.isEditing{
+                    self.view.frame.origin.y = 0
+                }
+                if passwordField.isEditing{
+                    self.view.frame.origin.y = 0
+                }
+                if collegeField.isEditing{
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+                if branchName.isEditing{
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+                if courseName.isEditing{
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+                if regNo.isEditing{
+                    self.view.frame.origin.y -= keyboardSize.height
+
+                }
+                
+                
+                
+             //   self.view.frame.origin.y -= keyboardSize.height
             }
-            self.view.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: self.view.frame.height)
-            self.logoImageView.alpha = 0
-        }, completion: nil)
+        }
     }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print(textField.tag)
