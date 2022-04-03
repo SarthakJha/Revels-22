@@ -17,18 +17,23 @@ class QRDelegateIDTableViewCell: UITableViewCell {
         didSet{
             guard let user = user else { return }
                 DispatchQueue.main.async {
-//                    self.qrImageView.image = self.generateQRCode(from: UserDefaults.value(forKey: "token"))
-                    print(user.qr)
-                    let myString = "\(String(describing: UserDefaults.value(forKey: "TOKEN")))"
-                    let data = myString.data(using: String.Encoding.ascii)
-                    guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
-                    qrFilter.setValue(data, forKey: "inputMessage")
-                    guard let qrImage = qrFilter.outputImage else { return }
+                    // MARK: - testing userdefault vals
+                    if let name = UserDefaults.standard.string(forKey: "name"){debugPrint(name,"q")}
+                    if let usID = UserDefaults.standard.string(forKey: "userID"){debugPrint(usID,"l")}
+                    if let token = UserDefaults.standard.string(forKey: "token"){debugPrint(token,"s")}
 
-                    let transform = CGAffineTransform(scaleX: 10, y: 10)
-                    let scaledQrImage = qrImage.transformed(by: transform)
-                    let processedImage = UIImage(ciImage: scaledQrImage)
-                    self.qrImageView.image = processedImage
+                    
+                    if let myString = UserDefaults.standard.string(forKey: "token") {                        let data = myString.data(using: String.Encoding.ascii)
+                        guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
+                        qrFilter.setValue(data, forKey: "inputMessage")
+                        guard let qrImage = qrFilter.outputImage else { return }
+
+                        let transform = CGAffineTransform(scaleX: 10, y: 10)
+                        let scaledQrImage = qrImage.transformed(by: transform)
+                        let processedImage = UIImage(ciImage: scaledQrImage)
+                        self.qrImageView.image = processedImage
+                    }else{return}
+                    
                 }
 //            let url = NSURL(string: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=\(user.qr)")
 //            qrImageView.sd_setImage(with: url! as URL, placeholderImage:nil)
