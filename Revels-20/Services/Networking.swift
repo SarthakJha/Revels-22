@@ -35,7 +35,7 @@ let boughtDelegateCardsURL = "https://register.mitrevels.in/boughtCards"
 let defaults = UserDefaults.standard
 let emailCached = defaults.object(forKey: "Email") as? String ?? ""
 let passwordCached = defaults.object(forKey: "Password") as? String ?? ""
-let userIDCached = defaults.object(forKey: "UserID") as! Int
+let userIDCached = defaults.object(forKey: "userID") as! Int
 
 struct NetworkResponse <T: Decodable>: Decodable{
     let success: Bool
@@ -274,24 +274,21 @@ struct Networking {
         Alamofire.request(userLoginURL, method: .post, parameters: parameters, encoding: URLEncoding()).response { response in
             if let data = response.data{
                 do{
-                    let response = try JSONDecoder().decode(UserResponse.self, from: data)
-                    if response.success{
+                    let response1 = try JSONDecoder().decode(UserResponse.self, from: data)
+                    if response1.success{
                         print(data)
-                        if let data = response.data{
-                            UserDefaults.standard.set(data.token, forKey: "token")
-                            UserDefaults.standard.set(data.userID, forKey: "userID")
-                            UserDefaults.standard.set(data.name, forKey: "name")
-//                            let defaults = UserDefaults.standard
-//                            defaults.set(data.token, forKey: "token")
-//                            defaults.set(data.userID, forKey: "userID")
-//                            defaults.set(data.name, forKey: "name")
-                            dataCompletion(data)
-                        }
+                        let defaults = UserDefaults.standard
+                        defaults.set(response1.data?.token, forKey: "token")
+                        defaults.set(response1.data?.userID, forKey: "userID")
+                        defaults.set(response1.data?.name, forKey: "name")
+                        defaults.synchronize()
+                        dataCompletion(response1.data!)
                     }else{
-                        print(response)
-                        errorCompletion(response.msg ?? "")
+                        print("FFFFFF")
+                        errorCompletion(response1.msg ?? "")
                     }
                 }catch let error{
+                    print("LMAOO")
                     errorCompletion("decoder_error")
                     print(error)
                 }
