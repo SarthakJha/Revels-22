@@ -21,6 +21,7 @@ let eventsCache = "events.json"
 let proshowCache = "proshow.json"
 let delegateCardsCache = "delegateCardsCache.json"
 let memberDictCache = "teamDetailsCache.json"
+let collegesDictCache = "collegesCache.json"
 
 let sponsorsCache = "sponsorsCache.json"
 
@@ -42,6 +43,15 @@ struct Caching{
         do{
             try Disk.save(eventsDictionary, to: .caches, as: eventsDictionaryCache)
         }catch let error{
+            print(error)
+        }
+    }
+    
+    func saveCollegesToCache(collegeDictionary: [Int:College]){
+        do{
+            try Disk.save(collegeDictionary, to: .caches, as: collegesDictCache)
+        }catch let error{
+            print("error saving colleges to cache")
             print(error)
         }
     }

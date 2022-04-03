@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         getSchedule()
         getCategories()
         getNewsletterURL()
+        getColleges()
         
         
         window = UIWindow()
@@ -125,6 +126,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
 
         
     
+    
+    fileprivate func getColleges(){
+        var collegeDict = [Int:College]()
+        Networking.sharedInstance.getColleges { Data in
+            for i in 0...(Data.count-1) {
+                collegeDict[i+1] = Data[i]
+            }
+            debugPrint(collegeDict)
+            Caching.sharedInstance.saveCollegesToCache(collegeDictionary: collegeDict)
+        } errorCompletion: { ErrorMessage in
+            print(ErrorMessage)
+        }
+
+    }
     
     fileprivate func getSchedule(){
         var schedule = [ScheduleDays]()

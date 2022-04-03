@@ -8,6 +8,15 @@
 
 import Alamofire
 
+struct CollegesResponse:Decodable {
+    let success: Bool
+    let data: [College]?
+}
+struct College:Decodable, Encodable {
+    let name:String
+    let state:String?
+}
+
 struct UserKeys{
     static let sharedInstance = UserKeys()
     let mobile = "mobile"
@@ -25,6 +34,7 @@ let apiKey = "o92PqCYAstWGq1Mx0kou"
 let resultsURL = "https://api.mitrevels.in/results" //"https://api.techtatva.in/results"
 let eventsURL = "\(baseURL)/api/user/event/getallevents"
 let scheduleURL = "https://techtatvadata.herokuapp.com/schedule"
+let collegesURL = "\(baseURL)/api/colleges"
 //let categoriesURL = "https://api.mitrevels.in/categories"
 let categoriesURL = "\(baseURL)/api/category/getall"
 //let delegateCardsURL = "https://api.mitrevels.in/delegate_cards"
@@ -570,5 +580,27 @@ struct Networking {
         }
     }
     
+    // MARK: - Colleges
+    func getColleges(dataCompletion: @escaping (_ Data:[College]) -> (), errorCompletion: @escaping(_ ErrorMessage: String) -> ()){
+        Alamofire.request(collegesURL, method: .get, parameters: nil, encoding: URLEncoding()).response { response in
+            if let data = response.data{
+                do{
+                    let collegeResponse = try JSONDecoder().decode(CollegesResponse.self, from: data)
+                    if collegeResponse.success{
+                        if let dat = collegeResponse.data{
+                            dataCompletion(dat)
+                        }else{
+                            errorCompletion("Couldnt fetch colleges")
+                        }
+                    }
+                }catch let error{
+                    print(error)
+                    errorCompletion("Error fetching colleges")
+                
+            }
+        }
+    }
+        
+    }
     
 }
