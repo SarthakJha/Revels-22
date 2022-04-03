@@ -11,7 +11,12 @@ import UIKit
 
 struct RegisterResponse: Decodable{
     let success: Bool
-    let msg: String
+    let msg : String?
+}
+
+enum msgResponse{
+    case string(String)
+    case array([String])
 }
 struct LeaveResponse: Decodable{
     let succes: Bool
@@ -67,6 +72,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     }()
     
     lazy var passwordField: LeftPaddedTextField = {
+        let textField = LeftPaddedTextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    lazy var regNo: LeftPaddedTextField = {
         let textField = LeftPaddedTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -301,6 +312,23 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             .font: isSmalliPhone() ? UIFont.systemFont(ofSize: 15) : UIFont.systemFont(ofSize: 18)
             ])
         
+        regNo.configure(color: .white,
+                            font: isSmalliPhone() ? UIFont.systemFont(ofSize: 15) : UIFont.systemFont(ofSize: 18),
+                            cornerRadius: isSmalliPhone() ? 20 : 25,
+                            borderColor: UIColor.CustomColors.Theme.themeColor,
+                            backgroundColor: UIColor.CustomColors.Black.background,
+                            borderWidth: 1.0)
+        regNo.keyboardType = .default
+        regNo.autocorrectionType = .no
+        regNo.clipsToBounds = true
+        regNo.delegate = self
+        regNo.tag = 6
+        regNo.attributedPlaceholder = NSAttributedString(string: "Enter Registeration Number", attributes: [
+            .foregroundColor: UIColor.lightGray,
+            .font: isSmalliPhone() ? UIFont.systemFont(ofSize: 15) : UIFont.systemFont(ofSize: 18)
+            ])
+        
+        
         
         
         if isSmalliPhone(){
@@ -326,6 +354,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             
             view.addSubview(courseName)
             _ = courseName.anchor(top: branchName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 40, bottomConstant: 0, rightConstant: 40, widthConstant: 0, heightConstant: 40)
+            
+            view.addSubview(regNo)
+            _ = regNo.anchor(top: courseName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 40, bottomConstant: 0, rightConstant: 40, widthConstant: 0, heightConstant: 40)
             
         
             view.addSubview(guestButton)
@@ -357,6 +388,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             view.addSubview(courseName)
             _ = courseName.anchor(top: branchName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 40, bottomConstant: 0, rightConstant: 40, widthConstant: 0, heightConstant: 50)
             
+            view.addSubview(regNo)
+            _ = regNo.anchor(top: courseName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 40, bottomConstant: 0, rightConstant: 40, widthConstant: 0, heightConstant: 50)
             
             view.addSubview(guestButton)
             _ = guestButton.anchor(top: nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 32, bottomConstant: 16, rightConstant: 32, widthConstant: 0, heightConstant: 30)
@@ -368,8 +401,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     }
     
     fileprivate func observeKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -386,24 +419,73 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         view.endEditing(true)
     }
     
-    @objc func keyboardHide() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-            self.logoImageView.alpha = 1
-        }, completion: nil)
-    }
+//    @objc func keyboardHide(notification: NSNotification) {
+//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+//            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+//            self.logoImageView.alpha = 1
+//        }, completion: nil)
+//        if self.view.frame.origin.y != 0 {
+//               self.view.frame.origin.y = 0
+//           }
+//    }
     
-    @objc func keyboardShow() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-            
-            var y: CGFloat = -90
-            if self.isSmalliPhone(){
-                y = -50
+//    @objc func keyboardShow(notification: NSNotification) {
+//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+//
+//            var y: CGFloat = -90
+//            if self.isSmalliPhone(){
+//                y = -50
+//            }
+//            self.view.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: self.view.frame.height)
+//            self.logoImageView.alpha = 0
+//        }, completion: nil)
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0 {
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+//    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                
+                if nameField.isEditing{
+                    self.view.frame.origin.y = 0
+                }
+                if emailField.isEditing{
+                    self.view.frame.origin.y = 0
+                }
+                if passwordField.isEditing{
+                    self.view.frame.origin.y = 0
+                }
+                if collegeField.isEditing{
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+                if branchName.isEditing{
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+                if courseName.isEditing{
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+                if regNo.isEditing{
+                    self.view.frame.origin.y -= keyboardSize.height
+
+                }
+                
+                
+                
+             //   self.view.frame.origin.y -= keyboardSize.height
             }
-            self.view.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: self.view.frame.height)
-            self.logoImageView.alpha = 0
-        }, completion: nil)
+        }
     }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print(textField.tag)
@@ -429,6 +511,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             courseName.becomeFirstResponder()
             break
         case 6:
+            regNo.becomeFirstResponder()
+        case 7:
         hideKeyboard()
         default: break
         }
@@ -451,7 +535,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         guard let college = collegeField.text else { return }
         guard let branch = branchName.text else {return}
         guard let course = courseName.text else { return }
-        
+        guard let reg = regNo.text else {return}
         
         if name == ""{
             FloatingMessage().floatingMessage(Message: "Please enter your Details", Color: .red, onPresentation: {
@@ -524,10 +608,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             return
         }
         
+        if reg == ""{
+            FloatingMessage().floatingMessage(Message: "Please enter your registeration no", Color: .red, onPresentation: {
+                self.branchName.becomeFirstResponder()
+            }) {}
+            return
+        }
+        
+        
         registerButton.showLoading()
         registerButton.activityIndicator.color = .white
         
-        Networking.sharedInstance.registerUserWithDetails(name: name, email: email,mobile: phone, password:password, collname: college,course:"r",regno:1234,branch:"ll", dataCompletion: { (successString) in
+        Networking.sharedInstance.registerUserWithDetails(name: name, email: email,mobile: phone, password:password, collname: college,course:course,regno: Int64(reg)!,branch:branch, dataCompletion: { (successString) in
             print(successString)
             FloatingMessage().longFloatingMessage(Message: "Successfully Registered", Color: UIColor.CustomColors.Purple.register, onPresentation: {
                 self.hideKeyboard()

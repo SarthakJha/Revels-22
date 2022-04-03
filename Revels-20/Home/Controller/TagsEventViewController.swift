@@ -232,7 +232,7 @@ class TagsController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TagCell
-        cell.label.text = tags?[indexPath.item] ?? ""
+        cell.label.text = tags?[indexPath.item].capitalizingFirstLetter() ?? ""
         if let color = specialColor{
             cell.color = color
         }
@@ -331,3 +331,13 @@ class TagCell: UICollectionViewCell {
         fatalError()
     }
 }
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}
+
