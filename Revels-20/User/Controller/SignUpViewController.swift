@@ -11,7 +11,12 @@ import UIKit
 
 struct RegisterResponse: Decodable{
     let success: Bool
-    let msg: String
+    let msg : String?
+}
+
+enum msgResponse{
+    case string(String)
+    case array([String])
 }
 struct LeaveResponse: Decodable{
     let succes: Bool
@@ -506,6 +511,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             courseName.becomeFirstResponder()
             break
         case 6:
+            regNo.becomeFirstResponder()
+        case 7:
         hideKeyboard()
         default: break
         }
@@ -528,7 +535,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         guard let college = collegeField.text else { return }
         guard let branch = branchName.text else {return}
         guard let course = courseName.text else { return }
-        
+        guard let reg = regNo.text else {return}
         
         if name == ""{
             FloatingMessage().floatingMessage(Message: "Please enter your Details", Color: .red, onPresentation: {
@@ -601,10 +608,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             return
         }
         
+        if reg == ""{
+            FloatingMessage().floatingMessage(Message: "Please enter your registeration no", Color: .red, onPresentation: {
+                self.branchName.becomeFirstResponder()
+            }) {}
+            return
+        }
+        
+        
         registerButton.showLoading()
         registerButton.activityIndicator.color = .white
         
-        Networking.sharedInstance.registerUserWithDetails(name: name, email: email,mobile: phone, password:password, collname: college,course:"r",regno:1234,branch:"ll", dataCompletion: { (successString) in
+        Networking.sharedInstance.registerUserWithDetails(name: name, email: email,mobile: phone, password:password, collname: college,course:course,regno: Int64(reg)!,branch:branch, dataCompletion: { (successString) in
             print(successString)
             FloatingMessage().longFloatingMessage(Message: "Successfully Registered", Color: UIColor.CustomColors.Purple.register, onPresentation: {
                 self.hideKeyboard()

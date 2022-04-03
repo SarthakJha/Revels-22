@@ -203,10 +203,10 @@ struct Networking {
                     let response = try JSONDecoder().decode(RegisterResponse.self, from: data)
                     if response.success{
 //                        defaults.set(data[0].userID, forKey: "userId")
-                        dataCompletion(response.msg)
+                        dataCompletion(response.msg ?? "Successful")
                     }else{
                         print(response)
-                        errorCompletion(response.msg)
+                        errorCompletion(response.msg ?? "Someting went wrong")
                     }
                 }catch let error{
                     errorCompletion("decoder_error")
@@ -226,10 +226,10 @@ struct Networking {
                 do{
                     let response = try JSONDecoder().decode(RegisterResponse.self, from: data)
                     if response.success{
-                        dataCompletion(response.msg)
+                        dataCompletion(response.msg ?? "Successful")
                     }else{
                         print(response)
-                        errorCompletion(response.msg)
+                        errorCompletion(response.msg ?? "Something went wrong")
                     }
                 }catch let error{
                     errorCompletion("decoder_error")
@@ -252,10 +252,10 @@ struct Networking {
                 do{
                     let response = try JSONDecoder().decode(RegisterResponse.self, from: data)
                     if response.success{
-                        dataCompletion(response.msg)
+                        dataCompletion(response.msg ?? "Success")
                     }else{
                         print(response)
-                        errorCompletion(response.msg)
+                        errorCompletion(response.msg ?? "Something went wrong")
                     }
                 }catch let error{
                     errorCompletion("decoder_error")
@@ -444,10 +444,10 @@ struct Networking {
                     let response = try JSONDecoder().decode(RegisterResponse.self, from: data)
                     if response.success{
                         print(response.msg)
-                        successCompletion(response.msg)
+                        successCompletion(response.msg ?? "Successful")
                     }else{
                         print(response)
-                        errorCompletion(response.msg)
+                        errorCompletion(response.msg ?? "Something went wrong")
                     }
                 }catch let error{
                     errorCompletion("decoder_error")
@@ -473,10 +473,10 @@ struct Networking {
                 do{
                     let response = try JSONDecoder().decode(RegisterResponse.self, from: data)
                     if response.success{
-                        successCompletion(response.msg)
+                        successCompletion(response.msg ?? "Successful")
                     }else{
                         print(response)
-                        errorCompletion(response.msg)
+                        errorCompletion(response.msg ?? "Something went wrong")
                     }
                 }catch let error{
                     errorCompletion("decoder_error")
