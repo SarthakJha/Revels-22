@@ -133,7 +133,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             for i in 0...(Data.count-1) {
                 collegeDict[i+1] = Data[i]
             }
-            debugPrint(collegeDict)
             Caching.sharedInstance.saveCollegesToCache(collegeDictionary: collegeDict)
         } errorCompletion: { ErrorMessage in
             print(ErrorMessage)

@@ -159,6 +159,17 @@ struct Caching{
         }
     }
     
+    func getCollegesFromCache() -> [Int:College]{
+        do{
+            let collegeData = try Disk.retrieve(collegesDictCache, from: .caches, as: [Int:College].self)
+            return collegeData
+        }catch let error{
+            print("error fetching colleges from cache")
+            print(error)
+            return [Int:College]()
+        }
+    }
+    
     func getDelegateCardsFromCache() -> [DelegateCard]? {
         do{
             let retrievedData = try Disk.retrieve(delegateCardsCache, from: .caches, as: [DelegateCard].self)
