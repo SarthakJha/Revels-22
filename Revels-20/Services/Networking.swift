@@ -27,7 +27,7 @@ struct UserKeys{
     let loggedIn = "isLoggedIn"
     let active = "active"
 }
-//let baseURL = "https://revels22-api.herokuapp.com"
+let testURL = "https://revels22-api.herokuapp.com"
 let baseURL = "https://revelsmit.in"
 
 let apiKey = "o92PqCYAstWGq1Mx0kou"
@@ -46,6 +46,7 @@ let defaults = UserDefaults.standard
 let emailCached = defaults.object(forKey: "Email") as? String ?? ""
 let passwordCached = defaults.object(forKey: "Password") as? String ?? ""
 let userIDCached = defaults.object(forKey: "userID") as! Int
+let token = defaults.object(forKey: "token") as! String
 
 struct NetworkResponse <T: Decodable>: Decodable{
     let success: Bool
@@ -60,13 +61,13 @@ struct NewsLetterApiRespone: Decodable{
 }
 struct Networking {
     
-    let userSignUpURL = "\(baseURL)/api/user/register"
-    let userPasswordForgotURL = "\(baseURL)/api/user/forgetpass"
+    let userSignUpURL = "\(testURL)/api/user/register"
+    let userPasswordForgotURL = "\(testURL)/api/user/forgetpass"
     let userPasswordResetURL = "https://register.mitrevels.in/setPassword/"
-    let userLoginURL = "\(baseURL)/api/user/login"
+    let userLoginURL = "\(testURL)/api/user/login"
     let userDetailsURL = "https://register.mitrevels.in/userProfile"
-    let registerEventURL = "https://techtatva.in/app/createteam"
-    let getRegisteredEventsURL = "https://techtatva.in/app/registeredevents"
+    let registerEventURL = "\(testURL)/api/user/event/register"
+    let getRegisteredEventsURL = "\(testURL)/api/user/event/getevents"
     let leaveTeamURL = "https://techtatva.in/app/leaveteam"
     let joinTeamURL = "https://techtatva.in/app/jointeam"
     let removeTeammateURL = "https://techtatva.in/app/removeuser"
@@ -381,18 +382,18 @@ struct Networking {
     //MARK: - EVENTS
     
     
-    func registerEventWith(eventID: String, userid:Int, category:String, successCompletion: @escaping (_ SuccessMessage: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
+    func registerEventWith(eventID: Int, userid:Int, category:String, successCompletion: @escaping (_ SuccessMessage: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
         
         let parameters = [
-            "email": emailCached,
-            "password": passwordCached,
-            "key":apiKey,
-            "userID": userid,
-            "eventID":"\(eventID)",
-            "category":category,
+            "eventID":eventID,
             ] as [String : Any]
-        
-        Alamofire.request(registerEventURL, method: .post, parameters: parameters, encoding: URLEncoding()).response { response in
+        debugPrint("yeh hai eventy id",eventID)
+        debugPrint("lell",token)
+        let tok = UserDefaults.standard.object(forKey: "token") as! String
+        let headers: HTTPHeaders = [
+            "authorization": tok
+        ]
+        Alamofire.request(registerEventURL, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headers).response { response in
             if let data = response.data{
                 do{
                     let response = try JSONDecoder().decode(CreateTeamResponse.self, from: data)
@@ -410,19 +411,18 @@ struct Networking {
         }
     }
     
-    func getRegisteredEvents(dataCompletion: @escaping (_ Data: [RegisteredEvent]) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
+    func getRegisteredEvents(dataCompletion: @escaping (_ Data: [RegEvents]) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
+        let tok = UserDefaults.standard.object(forKey: "token") as! String
+
+        let headers: HTTPHeaders = [
+            "authorization": tok
+        ]
         
-        let parameters = [
-            "userID": userIDCached,
-            "email": emailCached,
-            "password": passwordCached,
-            "key":apiKey,
-            ] as [String : Any]
-        
-        Alamofire.request(getRegisteredEventsURL, method: .post, parameters: parameters, encoding: URLEncoding()).response { response in
+        Alamofire.request(getRegisteredEventsURL, method: .get, parameters: nil, encoding: URLEncoding(),headers: headers).response { response in
             if let data = response.data{
                 do{
                     let resultsResponse = try JSONDecoder().decode(RegisteredEventsResponse.self, from: data)
+                    print("ye hai registered events ka data", resultsResponse)
                     if resultsResponse.success{
                         if let data = resultsResponse.data{
                             dataCompletion(data)
@@ -438,17 +438,17 @@ struct Networking {
         }
     }
     
-    func leaveTeamForEventWith(userID: Int, teamID:Int, eventID:Int, successCompletion: @escaping (_ SuccessMessage: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
+    func leaveTeamForEventWith(userID: Int, teamID:String, eventID:Int, successCompletion: @escaping (_ SuccessMessage: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
         let parameters = [
-            "userID":userID,
-            "teamID":teamID,
-            "eventID": eventID,
-            "email":emailCached,
-            "password":passwordCached,
-            "key":apiKey
+            "teamID":teamID
             ] as [String : Any]
+        let tok = UserDefaults.standard.object(forKey: "token") as! String
+
+        let headers: HTTPHeaders = [
+            "authorization": tok
+        ]
         
-        Alamofire.request(leaveTeamURL, method: .post, parameters: parameters, encoding: URLEncoding()).response { response in
+        Alamofire.request(leaveTeamURL, method: .post, parameters: parameters, encoding: URLEncoding(),headers: headers).response { response in
             if let data = response.data{
                 do{
                     let response = try JSONDecoder().decode(RegisterResponse.self, from: data)
@@ -467,7 +467,7 @@ struct Networking {
         }
     }
     
-    func removeTeammate(userID: Int, teamID:Int, eventID:Int,removeID: Int, successCompletion: @escaping (_ SuccessMessage: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
+    func removeTeammate(userID: Int, teamID:String, eventID:Int,removeID: Int, successCompletion: @escaping (_ SuccessMessage: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
         let parameters = [
             "userID":userID,
             "teamID":teamID,
@@ -526,7 +526,7 @@ struct Networking {
     }
     
     
-    func getTeamDetails(teamID:Int, dataCompletion: @escaping (_ Data: TeamMemberDetails) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
+    func getTeamDetails(teamID:String, dataCompletion: @escaping (_ Data: TeamMemberDetails) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
         let parameters = [
             "teamID": teamID,
             "email": emailCached,

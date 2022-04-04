@@ -15,14 +15,15 @@ struct CreateTeamResponse:Codable{
 }
 
 struct CreateTeam:Codable{
-    let timeStamp: String
-    let members: [Int]?
+//    let timeStamp: String
+//    let members: [Int]?
     let _id: String
-    let teamID: Int
-    let eventName: String
-    let minMembers: Int?
-    let partyCode: String
-    let maxMembers : Int?
-    let leader: Int
+    let teamID: String
+    let event: String?
+//    let eventName: String
+//    let minMembers: Int?
+//    let partyCode: String
+//    let maxMembers : Int?
+    let createdBy: String
     let __v: Int
 }

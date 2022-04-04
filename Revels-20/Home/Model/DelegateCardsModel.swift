@@ -7,23 +7,23 @@
 //
 
 struct DelegateCard: Codable {
-    let id: Int
+    let _id: String
     let name: String
+    let cardID: String
     let description: String
-    let MAHE_price: Int
-    let non_price: Int
-    let forSale: Int
+    let mitPrice: Int
+    let nonMahePrice: Int
+    let isActive: Bool
     let type: String
-    let payment_mode: Int
     init() {
-        id = 0
+        _id = ""
         name = ""
         description = ""
-        MAHE_price = 0
-        non_price = 0
-        forSale = 0
+        mitPrice = 0
+        nonMahePrice = 0
+        isActive = false
         type = ""
-        payment_mode = 0
+        cardID = ""
     }
 }
 

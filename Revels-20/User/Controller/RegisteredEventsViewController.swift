@@ -175,7 +175,7 @@ class RegisteredEventsViewController: UIViewController, UITableViewDataSource, U
     }
     
     
-    func leaveTeam(teamId: Int, eventId: Int, indexValue:Int){
+    func leaveTeam(teamId: String, eventId: Int, indexValue:Int){
         let actionSheet = UIAlertController(title: "Are you Sure?", message: nil, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let sureAction = UIAlertAction(title: "Yes", style: .destructive) { (_) in
@@ -217,7 +217,7 @@ class RegisteredEventsViewController: UIViewController, UITableViewDataSource, U
     }
     
     
-    func handleTeamDetailsTap(teamID: Int, eventID: Int){
+    func handleTeamDetailsTap(teamID: String, eventID: Int){
         AudioServicesPlaySystemSound(1519)
         let teamTableViewController = TeamTableViewController()
 //        let teamNav = MasterNavigationBarController(rootViewController: teamTableViewController)
@@ -271,7 +271,7 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
         case 0:
             textLabel = "Team ID"
             imageName = "group"
-            detailedTextLabel = "\(teamDetails?.teamID ?? 0)"
+            detailedTextLabel = "\(teamDetails?.teamID ?? "0")"
             break
         case 1:
             textLabel = "Category"

@@ -24,6 +24,9 @@ struct ApiStruct {
     /// Parameter Body
     let body: [String : Any]?
     
+    /// headers
+    let headers: HTTPHeaders?
+    
 }
 
 class WSManager {

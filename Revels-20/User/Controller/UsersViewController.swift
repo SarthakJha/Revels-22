@@ -123,7 +123,9 @@ class UsersViewController: UITableViewController {
                 }
             }
             UserDefaults.standard.set([:], forKey: "subsDictionary")
+            UserDefaults.standard.removeObject(forKey: "token")
             UserDefaults.standard.synchronize()
+
 
             UserDefaults.standard.setIsLoggedIn(value: false)
             self.setupViewForLoggedOutUser()
@@ -150,22 +152,7 @@ class UsersViewController: UITableViewController {
                 
                 let sureAction = UIAlertAction(title: "Continue", style: .destructive) { (_) in
                         guard let userID = self.user?.userID else {return}
-                        guard let drivelink = self.driveLink.text else{return}
                         print("User id:",userID)
-                    
-//                    Networking.sharedInstance.toUpdateDriveLink(drivelink: drivelink) { (message) in
-//                        print(message)
-//                        FloatingMessage().longFloatingMessage(Message: message, Color:  UIColor.CustomColors.Theme.themeColor!, onPresentation: {
-//                            Networking.sharedInstance.getStatusUpdate { (user) in
-//                                print(user)
-//                                Caching.sharedInstance.saveUserDetailsToCache(user: user)
-//                            }
-//                                }){}
-//                    } errorCompletion: { (errorMessage) in
-//                        print(errorMessage)
-//                        FloatingMessage().longFloatingMessage(Message: errorMessage, Color: .red, onPresentation: {
-//                                }){}
-//                    }
                 }
                 alertController.addAction(sureAction)
                 alertController.addAction(cancel)

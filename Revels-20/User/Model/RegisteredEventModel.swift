@@ -9,13 +9,18 @@
 
 struct RegisteredEventsResponse: Codable {
     let success: Bool
-    let data : [RegisteredEvent]?
+    let data : [RegEvents]?
 }
 
-struct RegEvent: Codable {
-    let regEvent:[RegisteredEvent]?
-}
+//struct RegEvent: Codable {
+//    let regEvent:[RegisteredEvent]?
+//}
 
+struct RegEvents: Codable{
+    let _id: String
+    let teamID: String
+    let event: Event
+}
 struct RegisteredEvent: Codable{
         let tags : [String]
         let eventID: Int?

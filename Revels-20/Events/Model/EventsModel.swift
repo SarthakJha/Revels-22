@@ -14,7 +14,7 @@ struct Event: Codable{
 
     let _id: String
     let eventID: Int
-    let category: Category
+    let category: Category?
     let name: String
     let eventType: String
     let mode: String

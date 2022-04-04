@@ -36,5 +36,5 @@ struct User: Codable{
 
 struct TeamDetails:Codable{
     let eventID:Int
-    let teamID: Int
+    let teamID: String
 }

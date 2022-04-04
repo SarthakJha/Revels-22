@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import Alamofire
 
 class QRDelegateIDTableViewCell: UITableViewCell {
 
@@ -171,11 +172,16 @@ class QRDelegateIDTableViewCell: UITableViewCell {
             self.eventsButton.hideLoading()
             self.eventsButton.isEnabled = true
             print(data)
+            var teamDetails = [TeamDetails]()
+            for x in data{
+                let td = TeamDetails(eventID: x.event.eventID, teamID: x.teamID)
+                teamDetails.append(td)
+            }
             if data.count == 0{
                 FloatingMessage().longFloatingMessage(Message: "You have not registered for any events.", Color: .orange, onPresentation: {}) {}
                 return
             }else{
-               self.usersViewController?.showRegisteredEvents(RegisteredEvents: data as! [TeamDetails])
+                self.usersViewController?.showRegisteredEvents(RegisteredEvents: teamDetails)
             }
 
         }) { (message) in
@@ -193,10 +199,15 @@ class QRDelegateIDTableViewCell: UITableViewCell {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
             self.delegateCardButton.animateUp(sender: self.delegateCardButton)
         }
-        let apiStruct = ApiStruct(url: boughtDelegateCardsURL, method: .get, body: nil)
+        let tok = UserDefaults.standard.object(forKey: "token") as! String
+        let headers: HTTPHeaders = [
+            "authorization": tok
+        ]
+        let apiStruct = ApiStruct(url: boughtDelegateCardsURL, method: .get, body: nil, headers: headers)
         WSManager.shared.getJSONResponse(apiStruct: apiStruct, success: { (boughtCards: BoughtDelegateCard) in
            self.delegateCardButton.hideLoading()
            self.delegateCardButton.isEnabled = true
+            debugPrint("aagye aap :)")
             var cards = [Int]()
             for card in boughtCards.data{
                 cards.append(card.card_type)
@@ -204,6 +215,7 @@ class QRDelegateIDTableViewCell: UITableViewCell {
 //            self.usersViewController?.showDelegateCards(BoughtCards: cards)
         }) { (error) in
            print(error)
+            print("lmaooo FF")
             self.delegateCardButton.hideLoading()
             self.delegateCardButton.isEnabled = true
         }

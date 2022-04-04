@@ -28,7 +28,7 @@ class TeamTableViewController: UITableViewController {
     
     var regEventViewCell: RegisteredEventTableViewCell?
     
-    var teamID: Int?
+    var teamID: String?
     var eventID: Int?
     var teamMemberDetails: TeamMemberDetails?{
         didSet{
