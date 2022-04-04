@@ -41,7 +41,7 @@ let categoriesURL = "\(baseURL)/api/category/getall"
 let boughtDelegateCardsURL = "https://register.mitrevels.in/boughtCards" 
 //let paymentsURL = "https://register.mitrevels.in/buy?card="
 //let mapsDataURL = "https://appdev.mitrevels.in/maps"
-//let collegeDataURL = "http://api.mitrevels.in/colleges"
+let collegeDataURL = "http://api.mitrevels.in/colleges"
 let defaults = UserDefaults.standard
 let emailCached = defaults.object(forKey: "Email") as? String ?? ""
 let passwordCached = defaults.object(forKey: "Password") as? String ?? ""

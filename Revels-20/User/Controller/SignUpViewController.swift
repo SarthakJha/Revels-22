@@ -123,7 +123,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         label.textColor = .systemRed
         return label
     }()
-    
+//
    
     var collegeSearchearchController = collegeSearchTableViewController()
     var searchController = UISearchController()
@@ -134,7 +134,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     var maheColleges = [String]()
     var filteredColleges = [String]()
 
-    // MARK: - Table view data source
+    // MARK: - Table view data source Set Up College
     func setupColleges(){
 //        let apiStruct = ApiStruct(url: collegeDataURL, method: .get, body: nil)
 //        WSManager.shared.getJSONResponse(apiStruct: apiStruct, success: { (map: collegeDataResponse) in
@@ -153,27 +153,35 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
 //        }) { (error) in
 //            print(error)
 //        }
+        let collegeDetails = Caching.sharedInstance.getCollegesFromCache()
+        //var name = [String]()
+        for i in 0...(collegeDetails.count-1){
+            colleges.append(collegeDetails[i+1]?.name ?? "Other Colleges")
+            colleges.sort()
+         
+        }
+        print("College Names: \(colleges)")
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        if textField == collegeField {
-//            hideKeyboard()
-//            collegeSearchearchController.collegeDelegate = self
-//            collegeSearchearchController.colleges = self.colleges
-//            collegeSearchearchController.maheColleges = self.maheColleges
-//            collegeSearchearchController.filteredColleges = self.filteredColleges
-//            searchController = UISearchController(searchResultsController: collegeSearchearchController)
-//            searchController.searchResultsUpdater = collegeSearchearchController
-//            searchController.searchBar.barStyle = .blackTranslucent
-//            searchController.searchBar.backgroundImage = UIImage.init(color: .clear)
-//            searchController.searchBar.barTintColor = .black
-//            searchController.dimsBackgroundDuringPresentation = false
-//            searchController.hidesNavigationBarDuringPresentation = false
-//
-//            present(searchController, animated: true, completion: nil)
-//            searchController.searchResultsController?.view.isHidden = false
-//            return false
-//        }
+        if textField == collegeField {
+            hideKeyboard()
+            collegeSearchearchController.collegeDelegate = self
+            collegeSearchearchController.colleges = self.colleges
+            collegeSearchearchController.maheColleges = self.maheColleges
+            collegeSearchearchController.filteredColleges = self.filteredColleges
+            searchController = UISearchController(searchResultsController: collegeSearchearchController)
+            searchController.searchResultsUpdater = collegeSearchearchController
+            searchController.searchBar.barStyle = .blackTranslucent
+            searchController.searchBar.backgroundImage = UIImage.init(color: .clear)
+            searchController.searchBar.barTintColor = .black
+            searchController.dimsBackgroundDuringPresentation = false
+            searchController.hidesNavigationBarDuringPresentation = false
+
+            present(searchController, animated: true, completion: nil)
+            searchController.searchResultsController?.view.isHidden = false
+            return false
+        }
         
 //        if textField == branchName{
 //            hideKeyboard()
@@ -191,9 +199,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         observeKeyboardNotifications()
         setupViews()
-//        setupColleges()
+        setupColleges()
     }
     
+    //MARK: -Set Up Ui
     func setupViews(){
         //Make the bordercolor changes here for the registration page
         //The logo looks blurry , get a high quality image to replace it
@@ -270,6 +279,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                             borderColor: UIColor.CustomColors.Theme.themeColor,
                             backgroundColor: UIColor.CustomColors.Black.background,
                             borderWidth: 1.0)
+        collegeField.adjustsFontSizeToFitWidth = true
         collegeField.keyboardType = .default
         collegeField.autocorrectionType = .no
         collegeField.clipsToBounds = true
@@ -318,7 +328,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                             borderColor: UIColor.CustomColors.Theme.themeColor,
                             backgroundColor: UIColor.CustomColors.Black.background,
                             borderWidth: 1.0)
-        regNo.keyboardType = .default
+        regNo.keyboardType = .numberPad
         regNo.autocorrectionType = .no
         regNo.clipsToBounds = true
         regNo.delegate = self
@@ -527,6 +537,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         self.dismiss(animated: true)
     }
     
+    //MARK: -Register Function
     @objc func handleRegister(){
         guard let name = nameField.text else { return }
         guard let email = emailField.text else { return }
@@ -688,8 +699,6 @@ extension SignUpViewController: StateSelected{
         stateSearchController.dismiss(animated: false, completion: nil)
         
     }
-    
-    
     
     
 }

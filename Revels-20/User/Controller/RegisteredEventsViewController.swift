@@ -18,7 +18,7 @@ class RegisteredEventsViewController: UIViewController, UITableViewDataSource, U
 //    let teamDetailsButton = LoadingButton(type: .system)
     var user: User? {
         didSet{
-            tableView.isScrollEnabled = true
+            tableView.isScrollEnabled = false
             tableView.reloadData()
             tableView.showsVerticalScrollIndicator = false
         }
@@ -232,6 +232,7 @@ class RegisteredEventsViewController: UIViewController, UITableViewDataSource, U
     
     
 }
+//MARK: -RETableViewCell
 
 class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
     
@@ -256,6 +257,7 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
         return 0
     }
     
+    //MARK: -Cell for Row At
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! RegisteredEventCell
         
@@ -320,7 +322,7 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
 //        return teamDetailsButton
         return button
     }()
-    
+    //MARK: -Ui Cell
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = UIColor.CustomColors.Black.card
@@ -343,7 +345,7 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
         button2.addTarget(self, action: #selector(leaveTeam), for: .touchUpInside)
         
         view.addSubview(label)
-        _ = label.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 12, leftConstant: 16, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 25)
+        _ = label.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 16, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 25)
         
         
         view.addSubview(teamDetailsButton)
@@ -425,6 +427,7 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
     }
 }
 
+//MARK: - RECell
 
 class RegisteredEventCell: UITableViewCell{
     

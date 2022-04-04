@@ -43,7 +43,9 @@ class TagsEventsViewController: UIViewController, TagsControllerDelegate, UITabl
         
         self.filteredEvents = self.events.filter({ (event) -> Bool in
             event.tags!.contains(tag)
+            
         })
+       // eventsTableView.reloadData()
 //        print(self.filteredEvents)
     }
     
