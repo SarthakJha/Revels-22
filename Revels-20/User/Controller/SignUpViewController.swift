@@ -28,6 +28,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     
     var loginViewController: LoginViewController?
     
+    //MARK: -UI Declaration
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Revels-Logo")
@@ -126,6 +127,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
 //
    
     var collegeSearchearchController = collegeSearchTableViewController()
+    var collegeTVC = CollegesTableViewController()
     var searchController = UISearchController()
     var stateSearchController = StateTableViewController()
 //    let navController = UINavigationController(rootViewController: stateSearchController)
@@ -166,20 +168,33 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == collegeField {
             hideKeyboard()
-            collegeSearchearchController.collegeDelegate = self
-            collegeSearchearchController.colleges = self.colleges
-            collegeSearchearchController.maheColleges = self.maheColleges
-            collegeSearchearchController.filteredColleges = self.filteredColleges
-            searchController = UISearchController(searchResultsController: collegeSearchearchController)
-            searchController.searchResultsUpdater = collegeSearchearchController
-            searchController.searchBar.barStyle = .blackTranslucent
-            searchController.searchBar.backgroundImage = UIImage.init(color: .clear)
-            searchController.searchBar.barTintColor = .black
-            searchController.dimsBackgroundDuringPresentation = false
-            searchController.hidesNavigationBarDuringPresentation = false
-
-            present(searchController, animated: true, completion: nil)
-            searchController.searchResultsController?.view.isHidden = false
+        
+            collegeTVC.collegeDelegate = self
+            collegeTVC.colleges = self.colleges
+            present(collegeTVC, animated: true
+                    , completion: nil)
+            
+            
+            
+            
+            
+            
+            
+            
+//            collegeSearchearchController.collegeDelegate = self
+//            collegeSearchearchController.colleges = self.colleges
+//            collegeSearchearchController.maheColleges = self.maheColleges
+//            collegeSearchearchController.filteredColleges = self.filteredColleges
+//            searchController = UISearchController(searchResultsController: collegeSearchearchController)
+//            searchController.searchResultsUpdater = collegeSearchearchController
+//            searchController.searchBar.barStyle = .blackTranslucent
+//            searchController.searchBar.backgroundImage = UIImage.init(color: .clear)
+//            searchController.searchBar.barTintColor = .black
+//            searchController.dimsBackgroundDuringPresentation = false
+//            searchController.hidesNavigationBarDuringPresentation = false
+//
+//            present(searchController, animated: true, completion: nil)
+//            searchController.searchResultsController?.view.isHidden = false
             return false
         }
         
@@ -680,10 +695,15 @@ extension SignUpViewController: collegeSelected
 {
     func collegeTapped(name: String) {
         
-        searchController.dismiss(animated: true) {
+        
+        collegeTVC.dismiss(animated: true) {
             self.collegeField.text = name
-            self.branchName.becomeFirstResponder()
         }
+        
+//        searchController.dismiss(animated: true) {
+//            self.collegeField.text = name
+//           // self.branchName.becomeFirstResponder()
+//        }
         
         searchController.dismiss(animated: false, completion: nil)
     }

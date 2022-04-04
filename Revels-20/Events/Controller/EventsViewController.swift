@@ -47,9 +47,7 @@ class EventsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.backgroundColor = UIColor.CustomColors.Black.background
-//        tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         tableView.register(EventCell.self, forCellReuseIdentifier: "cellId")
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
@@ -108,22 +106,28 @@ class EventsViewController: UITableViewController {
         case 0:
             if let schedule = self.schedule{
                 textLabel = "Round"
+                
               //  detailedTextLabel = "\(schedule.round)"
                 imageName = "assessment"
             }else{
-                textLabel = "Category"
+            //    textLabel = "Category"
+                textLabel = "Category: \(event.category!.category)"
                // detailedTextLabel = category?.name ?? ""
                 imageName = "category"
             }
             break
         case 1:
             if let _ = self.schedule{
-                textLabel = "Category"
+               // textLabel = "Category"
+                textLabel = "Category: \(event.category!.category)"
+
               //  detailedTextLabel = category?.name ?? ""
                 imageName = "category"
                 break
             }else{
-                textLabel = "Team Size"
+             //   textLabel = "Team Size"
+                textLabel = "Team Size: \(event.minMembers)"
+
               //  detailedTextLabel = "\(event.maxMembers - event.minMembers)"
                 imageName = "group"
             }
@@ -142,14 +146,21 @@ class EventsViewController: UITableViewController {
                     //    detailedTextLabel = "08 Nov 2020"
                 }
             }else{
-                textLabel = "Delegate Card"
                 
-                if(event.category?.category == "Gaming"){
-                    //    detailedTextLabel = "Gaming"
+                if event.teamDelegateCard == true{
+                    textLabel = "Delegate Card: Required"
                 }
                 else{
-                    //  detailedTextLabel = "Free"
+                    textLabel = "Delegate Card: Not Required"
                 }
+               
+//
+//                if(event.category?.category == "Gaming"){
+//                    //    detailedTextLabel = "Gaming"
+//                }
+//                else{
+//                    //  detailedTextLabel = "Free"
+//                }
 
                 imageName = "card"
 //                if detailedTextLabel != "" {
@@ -173,7 +184,7 @@ class EventsViewController: UITableViewController {
             //    detailedTextLabel = schedule.time
                 imageName = "timer"
             }else{
-                textLabel = "Contact 1"
+                textLabel = "\(String(describing: event.eventHeads[0].phoneNo!))"
 //                detailedTextLabel = category?.cc?[0].name ?? "N/A"
 //                if detailedTextLabel != "N/A" {
 //                    cell.selectionStyle = .gray
@@ -188,7 +199,15 @@ class EventsViewController: UITableViewController {
               //  detailedTextLabel = schedule.location
                 imageName = "location"
             }else{
-                textLabel = "Contact 2"
+                if event.eventHeads.count > 1{
+                    textLabel = "\(event.eventHeads[1].phoneNo!)"
+                    imageName = "contact"
+                }
+                else{
+                    textLabel = "\(event.eventHeads[0].email)"
+                    imageName = "email"
+                }
+              
                 //    detailedTextLabel = category?.cc?[1].name ?? "N/A"
 //                if detailedTextLabel != "N/A" {
 //                    cell.selectionStyle = .gray
@@ -204,6 +223,7 @@ class EventsViewController: UITableViewController {
                 imageName = "group"
             }else{
                 textLabel = "Contact 2"
+                
 //                detailedTextLabel = category?.cc?[1].name ?? "N/A"
 //                if detailedTextLabel != "N/A" {
 //                    cell.selectionStyle = .gray

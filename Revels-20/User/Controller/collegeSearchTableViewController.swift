@@ -23,7 +23,7 @@ struct collegeDataResponse: Decodable{
 
 class collegeSearchTableViewController: UITableViewController {
 
-    var collegeDelegate:collegeSelected? = nil
+    var collegeDelegate: collegeSelected? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +67,15 @@ class collegeSearchTableViewController: UITableViewController {
 //        }) { (error) in
 //            print(error)
 //        }
+        
+        let collegeDetails = Caching.sharedInstance.getCollegesFromCache()
+        //var name = [String]()
+        for i in 0...(collegeDetails.count-1){
+            colleges.append(collegeDetails[i+1]?.name ?? "Other Colleges")
+            colleges.sort()
+         
+        }
+        print("College Names: \(colleges)")
     }
   
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -74,14 +83,14 @@ class collegeSearchTableViewController: UITableViewController {
         view.backgroundColor = .black
         let label = UILabel()
         
-        if !isSearching && section == 0
-        {
-            label.text =  "MAHE Colleges"
-        }
-        else
-        {
+//        if !isSearching && section == 0
+//        {
+//            label.text =  "MAHE Colleges"
+//        }
+//        else
+  //      {
             label.text =  "All Colleges"
-        }
+    //    }
         label.textColor = .white
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -101,11 +110,11 @@ class collegeSearchTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if isSearching
-        {
+//        if isSearching
+//        {
             return 1
-        }
-        return 2
+//        }
+    //    return 2
     }
     
 
@@ -113,10 +122,11 @@ class collegeSearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if !isSearching
         {
-            if section == 0
-            {
-                return maheColleges.count
-            }
+           
+//            if section == 0
+//            {
+//                return maheColleges.count
+//            }
         }
         if filteredColleges.count == 0 && isSearching
         {
@@ -131,14 +141,15 @@ class collegeSearchTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! collegeTableViewCell
         if !isSearching
         {
-            if indexPath.section == 0
-            {
-                college = maheColleges[indexPath.row]
-            }
-            else
-            {
-                 college = filteredColleges[indexPath.row]
-            }
+//            if indexPath.section == 0
+//            {
+//                college = maheColleges[indexPath.row]
+//            }
+//            else
+        //    {
+            print("First Time ; \(filteredColleges.count), \(colleges.count)")
+                college = filteredColleges[indexPath.row] //Crashing here
+          //  }
         }
         else
         {
@@ -159,7 +170,8 @@ class collegeSearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if !isSearching && indexPath.section == 0{
-            collegeDelegate?.collegeTapped(name: maheColleges[indexPath.row])
+            collegeDelegate?.collegeTapped(name: filteredColleges[indexPath.row])
+    //        collegeDelegate?.collegeTapped(name: maheColleges[indexPath.row])
         }
         else{
             collegeDelegate?.collegeTapped(name: filteredColleges[indexPath.row])
