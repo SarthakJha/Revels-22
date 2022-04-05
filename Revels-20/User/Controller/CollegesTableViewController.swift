@@ -2,7 +2,7 @@
 //  CollegesTableViewController.swift
 //  Revels-20
 //
-//  Created by Tushar Elangovan on 05/04/22.
+//  Created by sarthak jha on 05/04/22.
 //  Copyright © 2022 Naman Jain. All rights reserved.
 //
 
@@ -44,7 +44,6 @@ class CollegesTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1

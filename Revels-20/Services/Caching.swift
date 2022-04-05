@@ -81,7 +81,7 @@ struct Caching{
     }
     
 
-    func saveDelegateCardsDictionaryToCache(dict: [Int: DelegateCard]){
+    func saveDelegateCardsDictionaryToCache(dict: [String: DelegateCard]){
         do{
             try Disk.save(dict, to: .caches, as: delegateCardsDictionaryCache)
         }catch let error{

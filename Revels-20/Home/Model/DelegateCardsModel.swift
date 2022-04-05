@@ -13,6 +13,7 @@ struct DelegateCard: Codable {
     let description: String
     let mitPrice: Int
     let nonMahePrice: Int
+    let mahePrice: Int
     let isActive: Bool
     let type: String
     init() {
@@ -24,6 +25,7 @@ struct DelegateCard: Codable {
         isActive = false
         type = ""
         cardID = ""
+        mahePrice = 0
     }
 }
 
@@ -49,5 +51,5 @@ struct BoughtDelegateCard: Codable {
 }
 
 struct CardTypeStruct: Codable{
-    var card_type: Int
+    var type: String
 }

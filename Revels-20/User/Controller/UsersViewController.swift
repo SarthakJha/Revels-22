@@ -165,6 +165,12 @@ class UsersViewController: UITableViewController {
                 })
 
     }
+    func showDelegateCards(BoughtCards: [String]){
+        let vc = DelegateCardsController()
+        vc.Cards = Caching.sharedInstance.getDelegateCardsFromCache()
+        vc.boughtCards = BoughtCards
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

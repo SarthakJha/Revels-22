@@ -158,7 +158,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         let collegeDetails = Caching.sharedInstance.getCollegesFromCache()
         //var name = [String]()
         for i in 0...(collegeDetails.count-1){
-            colleges.append(collegeDetails[i+1]?.name ?? "Other Colleges")
+            colleges.append(collegeDetails[i+1]?.name ?? " MANIPAL INSTITUTE OF TECHNOLOGY")
             colleges.sort()
          
         }

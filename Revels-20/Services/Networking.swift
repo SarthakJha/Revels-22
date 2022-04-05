@@ -16,6 +16,10 @@ struct College:Decodable, Encodable {
     let name:String
     let state:String?
 }
+struct CheckTokenRes: Decodable,Encodable {
+    let success: Bool
+    let msg: String?
+}
 
 struct UserKeys{
     static let sharedInstance = UserKeys()
@@ -32,13 +36,13 @@ let baseURL = "https://revelsmit.in"
 
 let apiKey = "o92PqCYAstWGq1Mx0kou"
 let resultsURL = "https://api.mitrevels.in/results" //"https://api.techtatva.in/results"
-let eventsURL = "\(baseURL)/api/user/event/getallevents"
+let eventsURL = "\(testURL)/api/user/event/getallevents"
 let scheduleURL = "https://techtatvadata.herokuapp.com/schedule"
-let collegesURL = "\(baseURL)/api/colleges"
+let collegesURL = "\(testURL)/api/colleges"
 //let categoriesURL = "https://api.mitrevels.in/categories"
 let categoriesURL = "\(baseURL)/api/category/getall"
-//let delegateCardsURL = "https://api.mitrevels.in/delegate_cards"
-let boughtDelegateCardsURL = "https://register.mitrevels.in/boughtCards" 
+let delegateCardsURL = "\(testURL)/delegate_cards"
+let boughtDelegateCardsURL = "\(testURL)/api/user/delegatecard/getmydelegatecards"
 //let paymentsURL = "https://register.mitrevels.in/buy?card="
 //let mapsDataURL = "https://appdev.mitrevels.in/maps"
 let collegeDataURL = "http://api.mitrevels.in/colleges"
@@ -68,6 +72,7 @@ struct Networking {
     let userDetailsURL = "https://register.mitrevels.in/userProfile"
     let registerEventURL = "\(testURL)/api/user/event/register"
     let getRegisteredEventsURL = "\(testURL)/api/user/event/getevents"
+    let checkTokenURL = "\(testURL)/api/user/getuser"
     let leaveTeamURL = "https://techtatva.in/app/leaveteam"
     let joinTeamURL = "https://techtatva.in/app/jointeam"
     let removeTeammateURL = "https://techtatva.in/app/removeuser"
@@ -101,9 +106,9 @@ struct Networking {
         }
     }
     
-    func getData<T: Decodable>(url: String, decode: T, dataCompletion: @escaping (_ Data: [T]) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
+    func getData<T: Decodable>(url: String,headers:HTTPHeaders, decode: T, dataCompletion: @escaping (_ Data: [T]) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
 
-        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding()).response { response in
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding(),headers:headers).response { response in
             if let data = response.data{
                 do{
                     let resultsResponse = try JSONDecoder().decode(NetworkResponse<T>.self, from: data)
@@ -427,6 +432,30 @@ struct Networking {
                         if let data = resultsResponse.data{
                             dataCompletion(data)
                         }
+                    }else{
+                        errorCompletion("Coudn't Fetch Registered Events")
+                    }
+                }catch let error{
+                    print(error)
+                    errorCompletion("Decoding Error")
+                }
+            }
+        }
+    }
+    func checkTokenExpiry(dataCompletion: @escaping (_ Data: Bool) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
+        let tok = UserDefaults.standard.object(forKey: "token") as! String
+        print("ye hai check karne ka tok", tok)
+        let headers: HTTPHeaders = [
+            "authorization": tok
+        ]
+        
+        Alamofire.request(checkTokenURL, method: .get, parameters: nil, encoding: URLEncoding(),headers: headers).response { response in
+            if let data = response.data{
+                do{
+                    let resultsResponse = try JSONDecoder().decode(CheckTokenRes.self, from: data)
+                    print("ye hai registered events ka data", resultsResponse)
+                    if resultsResponse.success{
+                        dataCompletion(true)
                     }else{
                         errorCompletion("Coudn't Fetch Registered Events")
                     }

@@ -208,9 +208,9 @@ class QRDelegateIDTableViewCell: UITableViewCell {
            self.delegateCardButton.hideLoading()
            self.delegateCardButton.isEnabled = true
             debugPrint("aagye aap :)")
-            var cards = [Int]()
+            var cards = [String]()
             for card in boughtCards.data{
-                cards.append(card.card_type)
+                cards.append(card.type)
             }
 //            self.usersViewController?.showDelegateCards(BoughtCards: cards)
         }) { (error) in

@@ -11,6 +11,7 @@ import BLTNBoard
 import Firebase
 import FirebaseMessaging
 import UserNotifications
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
@@ -34,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         getCategories()
         getNewsletterURL()
         getColleges()
-        
+        getDelegateCards()
+        checkTokenForExpiry()
         
         window = UIWindow()
         window?.makeKeyAndVisible()
@@ -124,6 +126,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             }
     }
 
+    fileprivate func getDelegateCards(){
+        var delegateCardsDictionary = [String: DelegateCard]()
+        let tok = UserDefaults.standard.object(forKey: "token") as! String
+        let headers: HTTPHeaders = [
+            "authorization":tok
+        ]
+        Networking.sharedInstance.getData(url: delegateCardsURL,headers:headers, decode: DelegateCard(), dataCompletion: { (data) in
+            for card in data{
+                delegateCardsDictionary[card._id] = card
+            }
+            Caching.sharedInstance.saveDelegateCardsToCache(cards: data)
+            Caching.sharedInstance.saveDelegateCardsDictionaryToCache(dict: delegateCardsDictionary)
+        }) { (errorMessage) in
+            print("FFFs")
+            print(errorMessage)
+        }
+    }
+    
+    fileprivate func checkTokenForExpiry(){
+        Networking.sharedInstance.checkTokenExpiry { res in
+            if(!res){
+                print("invalid token, logging user off")
+                UserDefaults.standard.removeObject(forKey: "token")
+                UserDefaults.standard.setIsLoggedIn(value: false)
+                UserDefaults.standard.synchronize()
+            }else{
+                print("token is valid")
+            }
+        } errorCompletion: { err in
+            print(err)
+        }
+
+    }
         
     
     

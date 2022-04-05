@@ -26,7 +26,7 @@ struct Event: Codable{
     let teamDelegateCard: Bool
     let prize: String?
     let eventHeads: [EventHead]
-    let delegateCards: [DelegateCard]?
+    let delegateCards: [String]?
 
     init() {
         _id = "0"
@@ -43,7 +43,7 @@ struct Event: Codable{
         teamDelegateCard = false
         prize = ""
         eventHeads = [EventHead(_id: "", name: "", phoneNo: 1234567890, email: "")]
-        delegateCards = [DelegateCard()]
+        delegateCards = [String()]
     }
 }
 
