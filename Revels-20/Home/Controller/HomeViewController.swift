@@ -159,7 +159,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
    
-    
+    //MARK: -News  Letter
     @objc func showNewsLetter(){
         let newsLetterVC = OrderPDFViewController()
         newsLetterVC.hidesBottomBarWhenPushed = true

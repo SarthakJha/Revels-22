@@ -239,6 +239,7 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
     var eventName: String?
     var registeredEventsViewController: RegisteredEventsViewController?
     var teamDetails: TeamDetails?
+    var eventCategory : Event?
     var schedule: Schedule?{
         didSet{
 //            guard let event = registeredEvent else { return }
@@ -277,7 +278,9 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
             break
         case 1:
             textLabel = "Category"
-            let event = eventDict?[teamDetails?.eventID ?? 0]
+          //  let event = eventDict?[teamDetails?.eventID ?? 0]
+            let event = eventDict?[teamDetails!.eventID]
+            
             detailedTextLabel = ""
             imageName = "timer"
             break

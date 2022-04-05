@@ -135,7 +135,7 @@ class UsersViewController: UITableViewController {
         self.present(actionSheet, animated: true, completion: nil)
     }
 
-
+//MARK: Registered Events
     func showRegisteredEvents(RegisteredEvents: [TeamDetails]){
         let vc = RegisteredEventsViewController()
         vc.registeredEvents = RegisteredEvents

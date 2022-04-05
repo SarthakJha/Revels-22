@@ -42,11 +42,10 @@ class TagsEventsViewController: UIViewController, TagsControllerDelegate, UITabl
         
         
         self.filteredEvents = self.events.filter({ (event) -> Bool in
+           
             event.tags!.contains(tag)
             
         })
-       // eventsTableView.reloadData()
-//        print(self.filteredEvents)
     }
     
     
@@ -156,7 +155,8 @@ class TagsEventsViewController: UIViewController, TagsControllerDelegate, UITabl
     func handleEventTap(withEvent event: Event){
         AudioServicesPlaySystemSound(1519)
         let eventViewController = EventsViewController()
-        slideInTransitioningDelegate.categoryName = ""   //"\(event.description)"
+        slideInTransitioningDelegate.categoryName = ""
+        //"\(event.description)"
         eventViewController.modalPresentationStyle = .custom
         eventViewController.transitioningDelegate = slideInTransitioningDelegate
         eventViewController.event = event
@@ -333,6 +333,7 @@ class TagCell: UICollectionViewCell {
         fatalError()
     }
 }
+//MARK: Capitalize the Letter
 extension String {
     func capitalizingFirstLetter() -> String {
         return prefix(1).capitalized + dropFirst()
