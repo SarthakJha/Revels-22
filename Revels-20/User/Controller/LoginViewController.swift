@@ -276,39 +276,39 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
             Caching.sharedInstance.saveUserDetailsToCache(user: user)
             
             FloatingMessage().longFloatingMessage(Message: "Successfully logged in!", Color:  UIColor.CustomColors.Theme.themeColor!, onPresentation: {
-//                Networking.sharedInstance.getRegisteredEvents(dataCompletion: { (data) in
-//                    var subscribeDictionary = [String: Bool]()
-//                   if let subsDict = UserDefaults.standard.dictionary(forKey: "subsDictionary") as? [String: Bool]{
-//                       subscribeDictionary = subsDict
-//                   }
-//                    for event in data{
-//                        subscribeDictionary["event-\(event.event)"] = true
-//                        print(event.event)
-//                        Messaging.messaging().subscribe(toTopic: "event-\(event.event)") { (err) in
-//                        if let err = err{
-//                            print(err)
-//                            print("Error in Subscribe - \(event.event)")
-//                        }else{
-//                            print("Subscribe Successful - \(event.event)")
-//                        }
-//
-//                        }
-//                    }
-//                    Messaging.messaging().subscribe(toTopic: "user-\(user[0].userID)") { (err) in
-//                        if let err = err{
-//                            print(err)
-//                            print("Error in Subscribe - User with ID: \(user[0].userID)")
-//                        }else{
-//                            print("Subscribe Successful - User with ID: \(user[0].userID)")
-//                        }
-//                    }
-//
-//                    subscribeDictionary["user-\(user[0].userID)"] = true
-//                    UserDefaults.standard.set(subscribeDictionary, forKey: "subsDictionary")
-//                    UserDefaults.standard.synchronize()
-//                    }) { (message) in
-//                    print(message)
-//                }
+                Networking.sharedInstance.getRegisteredEvents(dataCompletion: { (data) in
+                    var subscribeDictionary = [String: Bool]()
+                   if let subsDict = UserDefaults.standard.dictionary(forKey: "subsDictionary") as? [String: Bool]{
+                       subscribeDictionary = subsDict
+                   }
+                    for event in data{
+                        subscribeDictionary["event-\(event.event)"] = true
+                        print(event.event)
+                        Messaging.messaging().subscribe(toTopic: "event-\(event.event)") { (err) in
+                        if let err = err{
+                            print(err)
+                            print("Error in Subscribe - \(event.event)")
+                        }else{
+                            print("Subscribe Successful - \(event.event)")
+                        }
+
+                        }
+                    }
+                    Messaging.messaging().subscribe(toTopic: "user-\(user.userID)") { (err) in
+                        if let err = err{
+                            print(err)
+                            print("Error in Subscribe - User with ID: \(user.userID)")
+                        }else{
+                            print("Subscribe Successful - User with ID: \(user.userID)")
+                        }
+                    }
+
+                    subscribeDictionary["user-\(user.userID)"] = true
+                    UserDefaults.standard.set(subscribeDictionary, forKey: "subsDictionary")
+                    UserDefaults.standard.synchronize()
+                    }) { (message) in
+                    print(message)
+                }
                 self.dismiss(animated: true)
             }) {
             }

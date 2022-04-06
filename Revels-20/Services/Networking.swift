@@ -342,7 +342,6 @@ struct Networking {
         let parameters = [
             "email": emailCached,
             "password": passwordCached,
-            "key": apiKey
             ] as [String : Any]
 
         Alamofire.request(userLoginURL, method: .post, parameters: parameters, encoding: URLEncoding()).response { response in

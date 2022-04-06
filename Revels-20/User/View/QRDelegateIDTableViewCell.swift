@@ -172,16 +172,16 @@ class QRDelegateIDTableViewCell: UITableViewCell {
             self.eventsButton.hideLoading()
             self.eventsButton.isEnabled = true
             print(data)
-            var teamDetails = [TeamDetails]()
-            for x in data{
-                let td = TeamDetails(eventID: x.event.eventID, teamID: x.teamID)
-                teamDetails.append(td)
-            }
+//            var teamDetails = [TeamDetails]()
+//            for x in data{
+//                let td = TeamDetails(eventID: x.event.eventID, teamID: x.teamID)
+//                teamDetails.append(td)
+//            }
             if data.count == 0{
                 FloatingMessage().longFloatingMessage(Message: "You have not registered for any events.", Color: .orange, onPresentation: {}) {}
                 return
             }else{
-                self.usersViewController?.showRegisteredEvents(RegisteredEvents: teamDetails)
+                self.usersViewController?.showRegisteredEvents(RegisteredEvents: data)
             }
 
         }) { (message) in

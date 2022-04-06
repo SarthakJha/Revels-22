@@ -136,7 +136,7 @@ class UsersViewController: UITableViewController {
     }
 
 //MARK: Registered Events
-    func showRegisteredEvents(RegisteredEvents: [TeamDetails]){
+    func showRegisteredEvents(RegisteredEvents: [RegEvents]){
         let vc = RegisteredEventsViewController()
         vc.registeredEvents = RegisteredEvents
         navigationController?.pushViewController(vc, animated: true)

@@ -19,23 +19,7 @@ struct RegisteredEventsResponse: Codable {
 struct RegEvents: Codable{
     let _id: String
     let teamID: String
-    let event: Event
-}
-struct RegisteredEvent: Codable{
-        let tags : [String]
-        let eventID: Int?
-        let name: String
-        let category: String
-        let description: String
-        let eventType: String
-        let mode: String?
-        let participationCriteria: String?
-        let minMembers: Int?
-        let maxMembers: Int?
-        let prize: Int?
-        let eventHead: [EventHead]?
-        let __v: Int
-        let deadline: String?
+    let event: RegEventData
 }
 
 struct EventHead : Codable{
@@ -45,3 +29,39 @@ struct EventHead : Codable{
     let email: String
 }
 
+struct RegEventData: Codable{
+
+    let _id: String
+    let eventID: Int
+    let category: Category?
+    let name: String
+    let eventType: String
+    let mode: String
+    let description: String
+    let minMembers: Int
+    let maxMembers: Int
+    let tags: [String]?
+    let isActive: Bool
+    let teamDelegateCard: Bool
+    let prize: String?
+    let eventHeads: [EventHead]
+    let delegateCards: [String]?
+
+    init() {
+        _id = "0"
+        eventID = 0
+        category = Category(type: "", category: "", description: "", categoryId: "")
+        tags = [""]
+        name = ""
+        eventType = ""
+        mode = ""
+        description = ""
+        minMembers = 0
+        maxMembers = 0
+        isActive = false
+        teamDelegateCard = false
+        prize = ""
+        eventHeads = [EventHead(_id: "", name: "", phoneNo: 1234567890, email: "")]
+        delegateCards = [String()]
+    }
+}

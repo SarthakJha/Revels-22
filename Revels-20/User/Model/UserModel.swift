@@ -28,10 +28,8 @@ struct User: Codable{
     let mobileNumber: Int64?
     let college: String?
     let isMahe: Int?
-    let driveLink: String?
     let __v:Int
-    let teamDetails:[TeamDetails]?
-    let qr: String?
+    let status: String?
 }
 
 struct TeamDetails:Codable{

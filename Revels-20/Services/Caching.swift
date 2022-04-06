@@ -14,6 +14,7 @@ let eventResultDictionary = "eventResultDictionary"
 let scheduleCache = "schedule.json"
 let categoriesDictionaryCache = "categoriesDictionary.json"
 let userDetailsCache = "userDetails.json"
+let registeredEventDetailsCache = "regEvents.json"
 let scheduleDictCache = "scheduleDictCache.json"
 let delegateCardsDictionaryCache = "delegateCards.json"
 let tagsCache = "tags.json"
@@ -120,11 +121,29 @@ struct Caching{
         }
     }
     
+    func saveRegisteredEventsToCache(data: [RegEvents]?){
+        do{
+            try Disk.save(data, to: .caches, as: registeredEventDetailsCache)
+        }catch let error{
+            print(error)
+        }
+    }
+    
     func saveTeamDetailsToCache(dict: [Int: MemberInfo]?){
         do{
             try Disk.save(dict, to: .caches, as: memberDictCache)
         }catch let error{
             print(error)
+        }
+    }
+    func getRegisteredEventsFromCache() -> [RegEvents]?{
+        do{
+            let retData = try Disk.retrieve(registeredEventDetailsCache, from: .caches, as: [RegEvents].self)
+            return retData
+        }catch let error{
+            print("error fetching registered events from cache")
+            print(error)
+            return nil
         }
     }
     

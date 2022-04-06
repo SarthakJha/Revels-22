@@ -16,7 +16,7 @@ class RegisteredEventsViewController: UIViewController, UITableViewDataSource, U
     
     
 //    let teamDetailsButton = LoadingButton(type: .system)
-    var user: User? {
+    var regEvents: [RegEvents]? {
         didSet{
             tableView.isScrollEnabled = false
             tableView.reloadData()
@@ -40,21 +40,35 @@ class RegisteredEventsViewController: UIViewController, UITableViewDataSource, U
     }()
     
     @objc func refreshRegisteredData(){
-        Networking.sharedInstance.getStatusUpdate { (userData) in
+//        Networking.sharedInstance.getStatusUpdate { (userData) in
+//            DispatchQueue.main.async {
+//           self.regEvents = userData
+//          Caching.sharedInstance.saveUserDetailsToCache(user: userData)
+////        print(userData)
+//          self.registeredEvents = userData.teamDetails
+//          self.refreshControl.endRefreshing()
+////            self.updateView()
+//            }
+//        }
+        Networking.sharedInstance.getRegisteredEvents { reData in
             DispatchQueue.main.async {
-           self.user = userData
-          Caching.sharedInstance.saveUserDetailsToCache(user: userData)
+           self.regEvents = reData
+          Caching.sharedInstance.saveRegisteredEventsToCache(data: reData)
 //        print(userData)
-          self.registeredEvents = userData.teamDetails
+          self.registeredEvents = reData
           self.refreshControl.endRefreshing()
 //            self.updateView()
             }
+        } errorCompletion: { ErrorMessage in
+//            print(ErrorMessage)
+            print("error saving registered event to cache")
         }
+
 }
    
     
     
-    var registeredEvents : [TeamDetails]!{
+    var registeredEvents : [RegEvents]!{
         didSet{
             tableView.reloadData()
         }
@@ -89,8 +103,8 @@ class RegisteredEventsViewController: UIViewController, UITableViewDataSource, U
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.title = "Registered Events"
-        if let user = Caching.sharedInstance.getUserDetailsFromCache() {
-            self.user = user
+        if let user = Caching.sharedInstance.getRegisteredEventsFromCache() {
+            self.regEvents = user
         }
         if let eventsDictionary = Caching.sharedInstance.getEventsDataDictionary(){
             self.eventsDictionary = eventsDictionary
@@ -148,12 +162,13 @@ class RegisteredEventsViewController: UIViewController, UITableViewDataSource, U
 //            print("failed here")
 //            return cell
 //        cell.schedule = eventSchedule
-        if let event = eventsDictionary?[regEvent.eventID]{
+        if let event = eventsDictionary?[regEvent.event.eventID]{
             cell.eventName = event.name
         }
        
         cell.contentView.isUserInteractionEnabled = false
-        cell.teamDetails = regEvent
+        
+        cell.teamDetails = TeamDetails(eventID: regEvent.event.eventID, teamID: regEvent.teamID)
         cell.registeredEventsViewController = self
         return cell
     }
@@ -179,11 +194,12 @@ class RegisteredEventsViewController: UIViewController, UITableViewDataSource, U
         let actionSheet = UIAlertController(title: "Are you Sure?", message: nil, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let sureAction = UIAlertAction(title: "Yes", style: .destructive) { (_) in
-            guard  let userId = self.user?.userID else {return}
+//            guard  let userId = self.user.userID else {return}
             print("Team id:",teamId)
             print("Event id:",eventId)
             
-            Networking.sharedInstance.leaveTeamForEventWith(userID: userId, teamID: teamId, eventID: eventId, successCompletion: { (message) in
+            // MARK: - random cvalue for leave team
+            Networking.sharedInstance.leaveTeamForEventWith(userID: 123, teamID: teamId, eventID: eventId, successCompletion: { (message) in
                 print(message)
                 FloatingMessage().floatingMessage(Message: message, Color: .orange, onPresentation: {
                     Networking.sharedInstance.getStatusUpdate { (user) in

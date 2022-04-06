@@ -177,13 +177,13 @@ class UserIDTableViewCell: UITableViewCell {
             self.eventsButton.hideLoading()
             self.eventsButton.isEnabled = true
         
-        guard let userReg = Caching.sharedInstance.getUserDetailsFromCache() else {return}
+        guard let userReg = Caching.sharedInstance.getRegisteredEventsFromCache() else {return}
         
-        if userReg.regEvents?.count == 0{
+        if userReg.count == 0{
                 FloatingMessage().longFloatingMessage(Message: "You have not registered for any events.", Color: .orange, onPresentation: {}) {}
                 return
             }else{
-                self.usersViewController?.showRegisteredEvents(RegisteredEvents: userReg.teamDetails ?? [])
+                self.usersViewController?.showRegisteredEvents(RegisteredEvents: userReg)
             }
         self.eventsButton.hideLoading()
         self.eventsButton.isEnabled = true

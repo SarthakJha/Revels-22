@@ -172,10 +172,10 @@ class DelegateCardsController: UITableViewController {
              DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                  popUp.animateOut()
              }
-            let vc = PaymentsWebViewController()
-            vc.delegateCardID = id
-            vc.delegateCardsController = self
-            self.navigationController?.pushViewController(vc, animated: true)
+//            let vc = PaymentsWebViewController()
+//            vc.delegateCardID = id
+//            vc.delegateCardsController = self
+//            self.navigationController?.pushViewController(vc, animated: true)
         }else{
             DispatchQueue.main.async(execute: {
                 let alertController = UIAlertController(title: "Sign in to Buy Delegate Cards", message: "You need to be signed in to buy a Delegate Card.", preferredStyle: UIAlertController.Style.actionSheet)
