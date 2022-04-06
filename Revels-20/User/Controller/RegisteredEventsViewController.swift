@@ -18,7 +18,7 @@ class RegisteredEventsViewController: UIViewController, UITableViewDataSource, U
 //    let teamDetailsButton = LoadingButton(type: .system)
     var regEvents: [RegEvents]? {
         didSet{
-            tableView.isScrollEnabled = false
+            tableView.isScrollEnabled = true
             tableView.reloadData()
             tableView.showsVerticalScrollIndicator = false
         }
@@ -156,6 +156,7 @@ class RegisteredEventsViewController: UIViewController, UITableViewDataSource, U
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! RegisteredEventTableViewCell
+    
         let regEvent = self.registeredEvents[indexPath.row]
 
 //        guard let eventSchedule = self.scheduleDict?["\(regEvent.event)+\(regEvent.round)"] else {
@@ -174,7 +175,8 @@ class RegisteredEventsViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 220
+        return UITableView.automaticDimension
+        //return 220
     }
     
 
@@ -295,7 +297,7 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
         case 1:
             textLabel = "Category"
           //  let event = eventDict?[teamDetails?.eventID ?? 0]
-            let event = eventDict?[teamDetails!.eventID]
+            let event = "Not Available"
             
             detailedTextLabel = ""
             imageName = "timer"
@@ -319,7 +321,8 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 35
+        return UITableView.automaticDimension
+//        return 35
     }
     
 //    let teamDetailsButton = LoadingButton(type: .system)
@@ -368,10 +371,10 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
         
         
         view.addSubview(teamDetailsButton)
-        _ = teamDetailsButton.anchor(top: label.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: nil, topConstant: 8, leftConstant: 16, bottomConstant: 8, rightConstant: 0, widthConstant: frame.width/2 - 40, heightConstant: 0)
+        _ = teamDetailsButton.anchor(top: label.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: nil, topConstant: 8, leftConstant: 16, bottomConstant: 14, rightConstant: 0, widthConstant: frame.width/2 - 40, heightConstant: 0)
         
         view.addSubview(button2)
-        _ = button2.anchor(top: label.bottomAnchor, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 8, leftConstant: 0, bottomConstant: 8, rightConstant: 16, widthConstant: frame.width/2 - 40, heightConstant: 0)
+        _ = button2.anchor(top: label.bottomAnchor, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 8, leftConstant: 0, bottomConstant: 14, rightConstant: 16, widthConstant: frame.width/2 - 40, heightConstant: 0)
         
         return view
     }

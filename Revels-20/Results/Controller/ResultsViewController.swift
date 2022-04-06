@@ -10,6 +10,7 @@ import UIKit
 import Disk
 
 class ResultsViewController: UICollectionViewController {
+
     
     //MARK: - Properties
     
@@ -26,11 +27,16 @@ class ResultsViewController: UICollectionViewController {
         }
     }
        
+    
+    let slideInTransitioningDelegate = SlideInPresentationManager(from: UIViewController(), to: UIViewController())
         
     
     
     
     var filteredEventsWithResults = [Event]()
+    
+    var filteredEvents: [Event]?
+    
     
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -75,6 +81,7 @@ class ResultsViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         self.eventsWithResults = Caching.sharedInstance.getEventsFromCache()
         self.filteredEventsWithResults = Caching.sharedInstance.getEventsFromCache()
+        self.filteredEvents = Caching.sharedInstance.getEventsFromCache()
         if let eventsDict = Caching.sharedInstance.getEventsDataDictionary(){
             self.eventsDictionary = eventsDict
         }
@@ -85,7 +92,7 @@ class ResultsViewController: UICollectionViewController {
     
     fileprivate func setupNavigationBar(){
         let titleLabel = UILabel()
-        titleLabel.text = "Results"
+        titleLabel.text = "Events"
         titleLabel.textColor = .white
         titleLabel.font = UIFont.boldSystemFont(ofSize: 22)
         titleLabel.sizeToFit()
@@ -243,23 +250,48 @@ extension ResultsViewController: UICollectionViewDelegateFlowLayout{
        // cell.eventNameLabel.text = eventsDictionary[selectedEventID]!.name
         return cell
 }
-    
+    //MARK: Did Select Item At
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let resultsDetailViewController = ResultsDetailViewController(collectionViewLayout: UICollectionViewFlowLayout())
-//        if let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID{
-//            print(selectedEventID)
-//            guard let selectedEvent = eventsDictionary[selectedEventID] else {return}
-//            resultsDetailViewController.event = selectedEvent
-//            resultsDetailViewController.firstRoundResults = selectedEvent.round1
-//            resultsDetailViewController.secondRoundResults = selectedEvent.round2
-//            resultsDetailViewController.thirdRoundResults = selectedEvent.round3
-//        }
-        let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID
-        print(selectedEventID)
-     //   guard let selectedEvent = eventsDictionary[selectedEventID] else {return}
+//        let resultsDetailViewController = ResultsDetailViewController(collectionViewLayout: UICollectionViewFlowLayout())
+////        if let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID{
+////            print(selectedEventID)
+////            guard let selectedEvent = eventsDictionary[selectedEventID] else {return}
+////            resultsDetailViewController.event = selectedEvent
+////            resultsDetailViewController.firstRoundResults = selectedEvent.round1
+////            resultsDetailViewController.secondRoundResults = selectedEvent.round2
+////            resultsDetailViewController.thirdRoundResults = selectedEvent.round3
+////        }
+//        let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID
+//        print(selectedEventID)
+//     //   guard let selectedEvent = eventsDictionary[selectedEventID] else {return}
+//
+//        navigationController?.pushViewController(resultsDetailViewController, animated: true)
         
-        navigationController?.pushViewController(resultsDetailViewController, animated: true)
         
+        if let event = filteredEvents?[indexPath.row]{
+            self.handleEventTap(withEvent: event)
+        }
+        
+        
+        
+    }
+    
+   
+    
+    func handleEventTap(withEvent event: Event){
+       // AudioServicesPlaySystemSound(1519)
+        let eventViewController = EventsViewController()
+        slideInTransitioningDelegate.categoryName = ""
+        //"\(event.description)"
+        eventViewController.modalPresentationStyle = .custom
+        eventViewController.transitioningDelegate = slideInTransitioningDelegate
+        eventViewController.event = event
+        eventViewController.schedule = nil
+        eventViewController.resultsViewControoller = self
+        eventViewController.fromTags = true
+        present(eventViewController, animated: true, completion: nil)
+//        print(event.eventID)
+//        print(event.name)
     }
     
 }

@@ -15,6 +15,7 @@ class EventsViewController: UITableViewController {
     
     var scheduleController: ScheduleController?
     var tagsEventController: TagsEventsViewController?
+    var resultsViewControoller: ResultsViewController?
 //    var featuredEventController: FeaturedEventsConroller?
     
     var fromTags :Bool = false
@@ -112,7 +113,7 @@ class EventsViewController: UITableViewController {
             }else{
             //    textLabel = "Category"
                 print("ye hai event",event)
-                textLabel = "Category: \(category!.category)"
+                textLabel = "Category: \(category?.category ?? "N/A")"
                // detailedTextLabel = category?.name ?? ""
                 imageName = "category"
             }
