@@ -13,6 +13,8 @@ import FirebaseMessaging
 
 class EventsViewController: UITableViewController {
     
+    //MARK: Declarations
+    
     var scheduleController: ScheduleController?
     var tagsEventController: TagsEventsViewController?
     var resultsViewControoller: ResultsViewController?
@@ -46,6 +48,7 @@ class EventsViewController: UITableViewController {
     var categoriesDictionary = [String: Category]()
     var delegateDictionary = [Int: DelegateCard]()
     
+    //MARK: - View DID Load
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor.CustomColors.Black.background
@@ -58,6 +61,7 @@ class EventsViewController: UITableViewController {
         getCachedDelegatedCardDictionary()
     }
 
+    //MARK: Cached Dict
     func getCachedCategoriesDictionary(){
         do{
             let retrievedCategoriesDictionary = try Disk.retrieve(categoriesDictionaryCache, from: .caches, as: [String: Category].self)
@@ -113,7 +117,7 @@ class EventsViewController: UITableViewController {
             }else{
             //    textLabel = "Category"
                 print("ye hai event",event)
-                textLabel = "Category: \(category?.category ?? "N/A")"
+                textLabel = "Event Type: \(event.eventType ?? "N/A")"
                // detailedTextLabel = category?.name ?? ""
                 imageName = "category"
             }
@@ -187,6 +191,9 @@ class EventsViewController: UITableViewController {
                 imageName = "timer"
             }else{
                 textLabel = "\(String(describing: event.eventHeads[0].phoneNo!))"
+                if let number = event.eventHeads[0].phoneNo{
+                    callNumber(number: UInt64(number))
+                }
 //                detailedTextLabel = category?.cc?[0].name ?? "N/A"
 //                if detailedTextLabel != "N/A" {
 //                    cell.selectionStyle = .gray
@@ -203,11 +210,14 @@ class EventsViewController: UITableViewController {
             }else{
                 if event.eventHeads.count > 1{
                     textLabel = "\(event.eventHeads[1].phoneNo!)"
+                    if let number = event.eventHeads[1].phoneNo{
+                        callNumber(number: UInt64(number))
+                    }
                     imageName = "contact"
                 }
                 else{
                     textLabel = "\(event.eventHeads[0].email)"
-                    imageName = "email"
+                    imageName = "developer"
                 }
               
                 //    detailedTextLabel = category?.cc?[1].name ?? "N/A"
@@ -584,14 +594,14 @@ class EventsViewController: UITableViewController {
         default: return
         }
     }
-    
+    //MARK: Call Nmber Function
     fileprivate func callNumber(number: UInt64){
         AudioServicesPlaySystemSound(1519)
         if let url = URL(string: "tel://\(number)") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-    
+    //MARK: -Delegate Card Info
     fileprivate func presentDelegateCardInfo(categoryName: String){
         
             DispatchQueue.main.async(execute: {
@@ -617,7 +627,7 @@ class EventsViewController: UITableViewController {
 }
 
 
-
+//MARK: -Event Cell
 class EventCell: UITableViewCell{
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

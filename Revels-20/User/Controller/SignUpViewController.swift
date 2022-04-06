@@ -640,6 +640,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             }) {}
             return
         }
+        if reg.count != 9{
+            FloatingMessage().floatingMessage(Message: "Please enter the 9-Digit registeration no", Color: .red, onPresentation: {
+                self.branchName.becomeFirstResponder()
+            }) {}
+            return
+        }
         
         
         registerButton.showLoading()

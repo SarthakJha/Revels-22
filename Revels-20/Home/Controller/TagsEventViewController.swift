@@ -13,7 +13,7 @@ struct taggedEvents: Decodable{
     let name: String
     let tags: [String]
 }
-
+//MARK: Tag Events View Controller
 class TagsEventsViewController: UIViewController, TagsControllerDelegate, UITableViewDelegate, UITableViewDataSource{
     
     let slideInTransitioningDelegate = SlideInPresentationManager(from: UIViewController(), to: UIViewController())
@@ -39,10 +39,10 @@ class TagsEventsViewController: UIViewController, TagsControllerDelegate, UITabl
             self.filteredEvents = self.events
             return
         }
-        
+        debugPrint("Reached here")
         
         self.filteredEvents = self.events.filter({ (event) -> Bool in
-           
+            
             event.tags!.contains(tag)
             
         })
@@ -69,7 +69,7 @@ class TagsEventsViewController: UIViewController, TagsControllerDelegate, UITabl
     fileprivate let cellId = "cellId"
     fileprivate let menuCellId = "menuCellId"
     
-    
+    //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
@@ -127,7 +127,6 @@ class TagsEventsViewController: UIViewController, TagsControllerDelegate, UITabl
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  filteredEvents?.count ?? 0
-//       return
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -164,8 +163,7 @@ class TagsEventsViewController: UIViewController, TagsControllerDelegate, UITabl
         eventViewController.tagsEventController = self
         eventViewController.fromTags = true
         present(eventViewController, animated: true, completion: nil)
-//        print(event.eventID)
-//        print(event.name)
+        
     }
     
 
@@ -175,7 +173,7 @@ class TagsEventsViewController: UIViewController, TagsControllerDelegate, UITabl
 protocol TagsControllerDelegate {
     func didTapTag(indexPath: IndexPath)
 }
-
+//MARK: -Tags Controller
 class TagsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellId = "cellId"

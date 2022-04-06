@@ -58,7 +58,7 @@ class QRDelegateIDTableViewCell: UITableViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 14
-        view.layer.shadowColor = UIColor.white.cgColor
+      //  view.layer.shadowColor = UIColor.white.cgColor
         view.layer.shadowOffset = CGSize.zero
         view.layer.shadowOpacity = 0.3
         view.layer.shadowRadius = 12
@@ -159,7 +159,7 @@ class QRDelegateIDTableViewCell: UITableViewCell {
         return button
     }()
 
-
+//MARK: Show Registered Events
     @objc func showRegisteredEvents(){
         eventsButton.showLoading()
         eventsButton.activityIndicator.tintColor = .white
@@ -190,7 +190,7 @@ class QRDelegateIDTableViewCell: UITableViewCell {
             self.eventsButton.isEnabled = true
         }
     }
-
+    //MARK: Show Delegate Cards
     @objc func showDelegateCards(){
         delegateCardButton.showLoading()
         delegateCardButton.activityIndicator.tintColor = .white
