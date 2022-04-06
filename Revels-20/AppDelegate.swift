@@ -128,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
 
     fileprivate func getDelegateCards(){
         var delegateCardsDictionary = [String: DelegateCard]()
-        let tok = UserDefaults.standard.object(forKey: "token") as! String
+        guard let tok = UserDefaults.standard.string(forKey: "token") else {return}
         let headers: HTTPHeaders = [
             "authorization":tok
         ]
@@ -151,13 +151,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                 UserDefaults.standard.removeObject(forKey: "token")
                 UserDefaults.standard.setIsLoggedIn(value: false)
                 UserDefaults.standard.synchronize()
+                let lvc = UsersViewController()
+                lvc.setupViewForLoggedOutUser()
+                
             }else{
                 print("token is valid")
             }
         } errorCompletion: { err in
             print(err)
         }
-
     }
         
     

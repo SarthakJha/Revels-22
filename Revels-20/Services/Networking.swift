@@ -442,7 +442,7 @@ struct Networking {
         }
     }
     func checkTokenExpiry(dataCompletion: @escaping (_ Data: Bool) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
-        let tok = UserDefaults.standard.object(forKey: "token") as! String
+        guard let tok = UserDefaults.standard.string(forKey: "token") else {return}
         print("ye hai check karne ka tok", tok)
         let headers: HTTPHeaders = [
             "authorization": tok
