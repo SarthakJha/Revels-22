@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62155BBC27FDA0E8003A006B /* CollegesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62155BBB27FDA0E8003A006B /* CollegesTableViewController.swift */; };
+		62155BBE27FDA145003A006B /* DelegateCardsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62155BBD27FDA145003A006B /* DelegateCardsController.swift */; };
+		62155BC027FDA191003A006B /* DelegateCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62155BBF27FDA191003A006B /* DelegateCardTableViewCell.swift */; };
 		6F0F7DDF23144A2300631BF9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0F7DDE23144A2300631BF9 /* Categories.swift */; };
 		6F0F7DE323144B3E00631BF9 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0F7DE223144B3E00631BF9 /* CategoryTableViewController.swift */; };
 		6F0F7DED23144BD100631BF9 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0F7DEC23144BD100631BF9 /* CategoryCell.swift */; };
@@ -116,6 +119,9 @@
 
 /* Begin PBXFileReference section */
 		3C5E9B01138746473B88B2F4 /* Pods-Revels-20.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels-20.debug.xcconfig"; path = "Target Support Files/Pods-Revels-20/Pods-Revels-20.debug.xcconfig"; sourceTree = "<group>"; };
+		62155BBB27FDA0E8003A006B /* CollegesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegesTableViewController.swift; sourceTree = "<group>"; };
+		62155BBD27FDA145003A006B /* DelegateCardsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateCardsController.swift; sourceTree = "<group>"; };
+		62155BBF27FDA191003A006B /* DelegateCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateCardTableViewCell.swift; sourceTree = "<group>"; };
 		6F0F7DDE23144A2300631BF9 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		6F0F7DE223144B3E00631BF9 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		6F0F7DEC23144BD100631BF9 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -394,6 +400,7 @@
 				C621151C254C822300ABDA32 /* TeamTableViewController.swift */,
 				B2D944FA233DF77200DA14D1 /* ResetPassword.swift */,
 				B268457523FEE0690075CA16 /* collegeSearchTableViewController.swift */,
+				62155BBB27FDA0E8003A006B /* CollegesTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -455,6 +462,7 @@
 				B2B73C1423EAE201002DE75F /* MITPostTableViewCell.swift */,
 				C6DEE282254BFB33000DE896 /* DevelopersTableViewCell.swift */,
 				B2B73C1623EAE542002DE75F /* SectionTableViewCell.swift */,
+				62155BBF27FDA191003A006B /* DelegateCardTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -468,6 +476,7 @@
 				B2EDA16C234431D3009D5613 /* DeveloperViewController.swift */,
 				B20720FF23E1CD6700C21A4D /* TagsEventViewController.swift */,
 				B262A13B23FBFD04003CE814 /* PDFViewController.swift */,
+				62155BBD27FDA145003A006B /* DelegateCardsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -806,6 +815,7 @@
 				B2D94508233E00CE00DA14D1 /* FloatingMessage.swift in Sources */,
 				B2D94505233DF85500DA14D1 /* BulletinDataSource.swift in Sources */,
 				B2DE581D2313EAD200082EC1 /* EventsModel.swift in Sources */,
+				62155BC027FDA191003A006B /* DelegateCardTableViewCell.swift in Sources */,
 				B2C112C223D8D2150014B36D /* PopUp.swift in Sources */,
 				B268457723FEE06A0075CA16 /* collegeSearchTableViewController.swift in Sources */,
 				C621151F254C8C2000ABDA32 /* TweetTableViewCell.swift in Sources */,
@@ -833,6 +843,7 @@
 				6F0F7DDF23144A2300631BF9 /* Categories.swift in Sources */,
 				6F0F7DE323144B3E00631BF9 /* CategoryTableViewController.swift in Sources */,
 				B25FAEA423421C950065C763 /* HomeViewController.swift in Sources */,
+				62155BBE27FDA145003A006B /* DelegateCardsController.swift in Sources */,
 				B2D945232340E1C300DA14D1 /* QRViewController.swift in Sources */,
 				B2D94503233DF85500DA14D1 /* BackgroundStyles.swift in Sources */,
 				8DA48A9927ECF35C006FB773 /* QRDelegateIDTableViewCell.swift in Sources */,
@@ -846,6 +857,7 @@
 				B2D9452C2340E1C300DA14D1 /* ToggleTorchButton.swift in Sources */,
 				B2EDA16B23436A23009D5613 /* LiveBlogController.swift in Sources */,
 				6F0F7DED23144BD100631BF9 /* CategoryCell.swift in Sources */,
+				62155BBC27FDA0E8003A006B /* CollegesTableViewController.swift in Sources */,
 				B2D972A923E49EFE001270E2 /* ProshowViewController.swift in Sources */,
 				B25F94F82407B2A60067F848 /* Ratings.swift in Sources */,
 				B207210023E1CD6700C21A4D /* TagsEventViewController.swift in Sources */,

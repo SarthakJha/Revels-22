@@ -111,7 +111,8 @@ class EventsViewController: UITableViewController {
                 imageName = "assessment"
             }else{
             //    textLabel = "Category"
-                textLabel = "Category: \(event.category!.category)"
+                print("ye hai event",event)
+                textLabel = "Category: \(category!.category)"
                // detailedTextLabel = category?.name ?? ""
                 imageName = "category"
             }
