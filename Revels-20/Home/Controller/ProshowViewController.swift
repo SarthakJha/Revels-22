@@ -439,6 +439,7 @@ class ProshowDay2Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
                 cell.locationLabel.text = "MiT FootBall Ground"
                 cell.artistImage1.image = UIImage(named: "Kenny Sebastian")
                 cell.artistImage1.contentMode = .scaleToFill
+              //  cell.artistImage1.contentMode = .scaleToFill
                 cell.artistImage2.image = UIImage(named: "Aakash Mehta")
                 cell.artistImage2.contentMode = .scaleToFill
                 cell.selectionStyle = .none
@@ -522,6 +523,7 @@ class ProshowDay3Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
            // let url1 = URL(string: schedule.artist_1_image_url ?? "")
             cell.artistImage1.image = UIImage(named: "Shruti")
             cell.artistImage1.contentMode = .scaleToFill
+        //    cell.artistImage1.contentMode = .scaleToFill
 //            let url2 = URL(string: schedule.artist_2_image_url ?? "")
 //            cell.artistImage2.sd_setImage(with: url2!, placeholderImage: nil)
             cell.locationLabel.text = "Schedule"
@@ -791,10 +793,11 @@ class ProshowDay5Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
         backgroundColor = .clear
        
         addSubview(artistImage1)
-        _ = artistImage1.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 16, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: height)
+//        _ = artistImage1.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 16, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: height)
+        _ = artistImage1.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: contentView.frame.width/4, bottomConstant: 0, rightConstant: contentView.frame.width/4, widthConstant: 0, heightConstant: height)
         
         addSubview(artistImage2)
-        _ = artistImage2.anchor(top: artistImage1.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 16, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: height)
+        _ = artistImage2.anchor(top: artistImage1.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: contentView.frame.width/4, bottomConstant: 0, rightConstant: contentView.frame.width/4, widthConstant: 0, heightConstant: height)
         
         addSubview(venueBackgroundText)
         _ = venueBackgroundText.anchor(top: artistImage2.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: -32, bottomConstant: 0, rightConstant: -32, widthConstant: 0, heightConstant: 0)
@@ -921,7 +924,8 @@ class ProshowDay5Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
          backgroundColor = .clear
         
          addSubview(artistImage1)
-         _ = artistImage1.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 16, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: height)
+//         _ = artistImage1.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 16, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: height)
+         _ = artistImage1.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: contentView.frame.width/4, bottomConstant: 0, rightConstant: contentView.frame.width/4, widthConstant: 0, heightConstant: height)
          
          addSubview(venueBackgroundText)
          _ = venueBackgroundText.anchor(top: artistImage1.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: -32, bottomConstant: 0, rightConstant: -32, widthConstant: 0, heightConstant: 0)
