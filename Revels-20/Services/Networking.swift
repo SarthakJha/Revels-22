@@ -40,8 +40,8 @@ let eventsURL = "\(testURL)/api/user/event/getallevents"
 let scheduleURL = "https://techtatvadata.herokuapp.com/schedule"
 let collegesURL = "\(testURL)/api/colleges"
 //let categoriesURL = "https://api.mitrevels.in/categories"
-let categoriesURL = "\(baseURL)/api/category/getall"
-let delegateCardsURL = "\(testURL)/delegate_cards"
+let categoriesURL = "\(testURL)/api/category/getall"
+let delegateCardsURL = "\(testURL)/api/user/delegatecard/getall"
 let boughtDelegateCardsURL = "\(testURL)/api/user/delegatecard/getmydelegatecards"
 //let paymentsURL = "https://register.mitrevels.in/buy?card="
 //let mapsDataURL = "https://appdev.mitrevels.in/maps"
@@ -73,8 +73,8 @@ struct Networking {
     let registerEventURL = "\(testURL)/api/user/event/register"
     let getRegisteredEventsURL = "\(testURL)/api/user/event/getevents"
     let checkTokenURL = "\(testURL)/api/user/getuser"
-    let leaveTeamURL = "https://techtatva.in/app/leaveteam"
-    let joinTeamURL = "https://techtatva.in/app/jointeam"
+    let leaveTeamURL = "\(testURL)/api/user/team/leave"
+    let joinTeamURL = "\(testURL)/api/user/team/join"
     let removeTeammateURL = "https://techtatva.in/app/removeuser"
     let updateDriveLinkURL = "https://techtatva.in/app/updatedrive"
     
@@ -298,6 +298,7 @@ struct Networking {
                         defaults.set(response1.data?.userID, forKey: "userID")
                         defaults.set(response1.data?.name, forKey: "name")
                         defaults.synchronize()
+                        print("Login ka token: ",UserDefaults.standard.object(forKey: "token") as! String)
                         dataCompletion(response1.data!)
                     }else{
                         print("FFFFFF")
@@ -470,8 +471,8 @@ struct Networking {
         let parameters = [
             "teamID":teamID
             ] as [String : Any]
-        let tok = UserDefaults.standard.object(forKey: "token") as! String
-
+        let tok = UserDefaults.standard.string(forKey: "token") ?? " "
+        print("leave team token:",tok)
         let headers: HTTPHeaders = [
             "authorization": tok
         ]
@@ -482,7 +483,7 @@ struct Networking {
                     let response = try JSONDecoder().decode(RegisterResponse.self, from: data)
                     if response.success{
                         print(response.msg)
-                        successCompletion(response.msg ?? "Successful")
+                        successCompletion(response.msg ?? "Successfully joined team!")
                     }else{
                         print(response)
                         errorCompletion(response.msg ?? "Something went wrong")
@@ -524,18 +525,18 @@ struct Networking {
         }
     }
     
-    func joinTeam( eventId: String,userID:Int,category :String,partyCode:String, successCompletion: @escaping (_ SuccessMessage: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
+    func joinTeam( eventId: Int,teamId:String, successCompletion: @escaping (_ SuccessMessage: String) -> (),  errorCompletion: @escaping (_ ErrorMessage: String) -> ()){
         let parameters = [
-            "userID":userID,
             "eventID": eventId,
-            "category":category,
-            "partyCode": partyCode,
-            "email":emailCached,
-            "password":passwordCached,
-            "key":apiKey
+            "teamID":teamId
             ] as [String : Any]
+        let tok = UserDefaults.standard.string(forKey: "token") ?? " "
+
+        let headers: HTTPHeaders = [
+            "authorization": tok
+        ]
         
-        Alamofire.request(joinTeamURL, method: .post, parameters: parameters, encoding: URLEncoding()).response { response in
+        Alamofire.request(joinTeamURL, method: .post, parameters: parameters, encoding: URLEncoding(), headers: headers).response { response in
             if let data = response.data{
                 do{
                     let response = try JSONDecoder().decode(JoinTeamResponse.self, from: data)

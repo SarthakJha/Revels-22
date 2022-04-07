@@ -272,6 +272,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         Networking.sharedInstance.loginUser(Email: email, Password: password, dataCompletion: { (user) in
             self.loginButton.hideLoading()
             UserDefaults.standard.setIsLoggedIn(value: true)
+            UserDefaults.standard.set(user.token, forKey: "token")
+            UserDefaults.standard.synchronize()
 //            guard let user = user[0] else { return}
             Caching.sharedInstance.saveUserDetailsToCache(user: user)
             

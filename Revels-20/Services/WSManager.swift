@@ -65,7 +65,7 @@ class WSManager {
     func getJSONResponse<D: Decodable>(apiStruct: ApiStruct, success:@escaping (_ response: D) -> Void, failure:@escaping(_ error: URLError)-> Void) {
         //   let queue = DispatchQueue(label: "com.test.com", qos: .background, attributes: .concurrent)
         //let url = URL.init(string: ApiManager.sharedInstance.KBASEURL + apiStruct.url)!
-        apiRequest = self.manager.request(apiStruct.url, method: apiStruct.method , parameters: apiStruct.body, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+        apiRequest = self.manager.request(apiStruct.url, method: apiStruct.method , parameters: apiStruct.body, encoding: URLEncoding.default, headers: apiStruct.headers).responseJSON { (response) in
             
             if response.result.isSuccess {
                 do {

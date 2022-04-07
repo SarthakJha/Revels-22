@@ -297,9 +297,8 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
         case 1:
             textLabel = "Category"
           //  let event = eventDict?[teamDetails?.eventID ?? 0]
-            let event = "Not Available"
-            
-            detailedTextLabel = ""
+            let event = eventDict?[teamDetails?.eventID ?? 0]
+            detailedTextLabel = event?.category?.category ?? "N/A"
             imageName = "timer"
             break
         case 2:
@@ -328,22 +327,22 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
 //    let teamDetailsButton = LoadingButton(type: .system)
     
     
-    lazy var teamDetailsButton : LoadingButton = {
-        let button = LoadingButton(type: .system)
-        button.backgroundColor = UIColor.CustomColors.Theme.themeColor
-        button.setTitle("Team Details", for: UIControl.State())
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.white, for: UIControl.State())
-        if (UIViewController().isSmalliPhone()){
-           button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-        }else{
-           button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-        }
-        button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(showTeamDetails), for: .touchUpInside)
-//        return teamDetailsButton
-        return button
-    }()
+//    lazy var teamDetailsButton : LoadingButton = {
+//        let button = LoadingButton(type: .system)
+//        button.backgroundColor = UIColor.CustomColors.Theme.themeColor
+//        button.setTitle("Team Details", for: UIControl.State())
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.setTitleColor(UIColor.white, for: UIControl.State())
+//        if (UIViewController().isSmalliPhone()){
+//           button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+//        }else{
+//           button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+//        }
+//        button.layer.cornerRadius = 10
+//        button.addTarget(self, action: #selector(showTeamDetails), for: .touchUpInside)
+////        return teamDetailsButton
+//        return button
+//    }()
     //MARK: -Ui Cell
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
@@ -370,11 +369,11 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
         _ = label.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 16, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 25)
         
         
-        view.addSubview(teamDetailsButton)
-        _ = teamDetailsButton.anchor(top: label.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: nil, topConstant: 8, leftConstant: 16, bottomConstant: 14, rightConstant: 0, widthConstant: frame.width/2 - 40, heightConstant: 0)
+//        view.addSubview(teamDetailsButton)
+//        _ = teamDetailsButton.anchor(top: label.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: nil, topConstant: 8, leftConstant: 16, bottomConstant: 14, rightConstant: 0, widthConstant: frame.width/2 - 40, heightConstant: 0)
         
         view.addSubview(button2)
-        _ = button2.anchor(top: label.bottomAnchor, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 8, leftConstant: 0, bottomConstant: 14, rightConstant: 16, widthConstant: frame.width/2 - 40, heightConstant: 0)
+        _ = button2.anchor(top: label.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 8, leftConstant: 16, bottomConstant: 14, rightConstant: 16, widthConstant: frame.width/2 - 40, heightConstant: 0)
         
         return view
     }
@@ -434,13 +433,13 @@ class RegisteredEventTableViewCell: UITableViewCell, UITableViewDelegate, UITabl
         tableView.fillSuperview()
     }
     
-    @objc func showTeamDetails(){
-        guard let teamDetails = teamDetails else {return}
-        self.teamDetailsButton.showLoading()
-        teamDetailsButton.activityIndicator.tintColor = .white
-        self.registeredEventsViewController?.showTeamDetails(Cell: self, teamDetails: teamDetails, teamButton: teamDetailsButton)
-//        self.teamDetailsButton.hideLoading()
-    }
+//    @objc func showTeamDetails(){
+//        guard let teamDetails = teamDetails else {return}
+//        self.teamDetailsButton.showLoading()
+//        teamDetailsButton.activityIndicator.tintColor = .white
+//        self.registeredEventsViewController?.showTeamDetails(Cell: self, teamDetails: teamDetails, teamButton: teamDetailsButton)
+////        self.teamDetailsButton.hideLoading()
+//    }
     
     
     @objc func leaveTeam(){
