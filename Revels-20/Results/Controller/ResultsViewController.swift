@@ -201,7 +201,13 @@ extension ResultsViewController: UISearchResultsUpdating {
         filteredEventsWithResults = eventsWithResults.filter({ (event: Event) -> Bool in
             return event.name.lowercased().contains(searchText.lowercased())
         })
+        
+        filteredEvents =  eventsWithResults.filter({ (event: Event) -> Bool in
+            return event.name.lowercased().contains(searchText.lowercased())
+        })
+        
         collectionView.reloadData()
+        
 //        self.collectionView.reloadData()
         }
     
@@ -247,7 +253,7 @@ extension ResultsViewController: UICollectionViewDelegateFlowLayout{
         let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID
         cell.event = eventsDictionary[selectedEventID]
         print("Selected Event ID: \(eventsDictionary[selectedEventID]?.name)")
-       // cell.eventNameLabel.text = eventsDictionary[selectedEventID]!.name
+        cell.eventNameLabel.text = eventsDictionary[selectedEventID]!.name
         return cell
 }
     //MARK: Did Select Item At
@@ -263,14 +269,14 @@ extension ResultsViewController: UICollectionViewDelegateFlowLayout{
 ////        }
 //        let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID
 //        print(selectedEventID)
-//     //   guard let selectedEvent = eventsDictionary[selectedEventID] else {return}
-//
-//        navigationController?.pushViewController(resultsDetailViewController, animated: true)
+     //   guard let selectedEvent = eventsDictionary[selectedEventID] else {return}
+
+        //navigationController?.pushViewController(resultsDetailViewController, animated: true)
         
+        print("indexPath.row:\(indexPath.row)")
+        let event = filteredEventsWithResults[indexPath.row]
+        self.handleEventTap(withEvent: event)
         
-        if let event = filteredEvents?[indexPath.row]{
-            self.handleEventTap(withEvent: event)
-        }
         
         
         
