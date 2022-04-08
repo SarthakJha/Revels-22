@@ -105,7 +105,7 @@ class DelegateCardsController: UITableViewController {
 //                    c1.id < c2.id
 //                })
                 for card in data{
-                    delegateCardsDictionary[card._id] = card
+                        delegateCardsDictionary[card._id] = card
                 }
                 Caching.sharedInstance.saveDelegateCardsToCache(cards: data)
                 Caching.sharedInstance.saveDelegateCardsDictionaryToCache(dict: delegateCardsDictionary)

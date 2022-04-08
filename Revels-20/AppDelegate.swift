@@ -96,24 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
    
         print("Before Data")
             Networking.sharedInstance.getEvents (dataCompletion: { (data) in
-//                for event in data{
-//                    var eventID: Int  {
-//                        if let guardedTags = event.tags{
-//                        let uncapitalizedArray = guardedTags.map { $0.lowercased()}
-////                            print(event.name)
-////                            print(event.eventID)
-////                            event.tags = uncapitalizedArray
-//                            for tag in uncapitalizedArray{
-//                                if !tags.contains(tag){
-//                                    tags.append(tag)
-//                                }
-//                            }
-//                        }
-//                        return event.eventID
-//                    }
-//                    eventsDictionary[eventID] = event
-//                }
-
                 for event in data{
                         let eventID = event.eventID
                                         eventsDictionary[eventID] = event

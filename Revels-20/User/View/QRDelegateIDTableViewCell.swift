@@ -177,11 +177,13 @@ class QRDelegateIDTableViewCell: UITableViewCell {
             }else{
                 self.usersViewController?.showRegisteredEvents(RegisteredEvents: data)
             }
-
         }) { (message) in
             print(message)
             // MARK: -  logout here
             FloatingMessage().longFloatingMessage(Message: "Can't fetch your event. Try logging in again!", Color: .orange, onPresentation: {}) {}
+            NotificationCenter.default
+                        .post(name: NSNotification.Name("user.logout"),
+                         object: nil)
             UserDefaults.standard.setIsLoggedIn(value: false)
             UserDefaults.standard.synchronize()
             self.eventsButton.hideLoading()
@@ -218,7 +220,9 @@ class QRDelegateIDTableViewCell: UITableViewCell {
                 print(error)
                 // MARK: -  also logout here
                 FloatingMessage().longFloatingMessage(Message: "Can't fetch delegate cards. Try logging in again!", Color: .orange, onPresentation: {}) {}
-                
+            NotificationCenter.default
+                        .post(name: NSNotification.Name("user.logout"),
+                         object: nil)
                 self.delegateCardButton.hideLoading()
                 self.delegateCardButton.isEnabled = true
         }

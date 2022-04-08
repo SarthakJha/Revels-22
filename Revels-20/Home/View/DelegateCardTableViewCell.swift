@@ -52,6 +52,8 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLayout()
+        guard let ca = Caching.sharedInstance.getUserDetailsFromCache() else {return}
+        self.cachedUser = ca
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -94,20 +96,26 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
             cell.infoImageView.isHidden = true
         }else{
             if self.cachedUser.isMahe == 1 && self.cachedUser.college == "MANIPAL INSTITUTE OF TECHNOLOGY" {
-                if card.mitPrice !=  0{
+                if card.mitPrice == -1{
+                    cell.costLabel.text = "Not Eligible"
+                }else if card.mitPrice !=  0{
                     cell.costLabel.text = "₹\(card.mitPrice)"
                 }else{
                     cell.costLabel.text = "FREE"
                 }
             }else if self.cachedUser.isMahe == 1 && self.cachedUser.college != "MANIPAL INSTITUTE OF TECHNOLOGY" {
-                if card.mahePrice !=  0{
+                if card.mahePrice == -1{
+                    cell.costLabel.text = "Not Eligible"
+                }else if card.mahePrice !=  0{
                     cell.costLabel.text = "₹\(card.mahePrice)"
-                }else{
+                } else{
                     cell.costLabel.text = "FREE"
                 }
                 
             }else{
-                if card.nonMahePrice !=  0{
+                if card.nonMahePrice == -1{
+                    cell.costLabel.text = "Not Eligible"
+                }else if card.nonMahePrice !=  0{
                     cell.costLabel.text = "₹\(card.nonMahePrice)"
                 }else{
                     cell.costLabel.text = "FREE"
@@ -279,8 +287,8 @@ class DelegateCardCollectionViewCell: UICollectionViewCell, UIGestureRecognizerD
 //
         _ = backgroundCard.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 6, leftConstant: 16, bottomConstant: 16, rightConstant: 16, widthConstant: 0, heightConstant: 0)
         
-        backgroundCard.addSubview(infoImageView)
-        infoImageView.anchor(top: nil, left: nil, bottom: backgroundCard.bottomAnchor, right: backgroundCard.rightAnchor, topConstant: 0, leftConstant: 16, bottomConstant: 16, rightConstant: 16, widthConstant: 25, heightConstant: 25)
+//        backgroundCard.addSubview(infoImageView)
+//        infoImageView.anchor(top: nil, left: nil, bottom: backgroundCard.bottomAnchor, right: backgroundCard.rightAnchor, topConstant: 0, leftConstant: 16, bottomConstant: 16, rightConstant: 16, widthConstant: 25, heightConstant: 25)
     }
 
     required init?(coder: NSCoder) {

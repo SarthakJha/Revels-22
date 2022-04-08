@@ -20,17 +20,9 @@ struct Developer {
     let linkdinURL: String
 }
 
-/*
- https://i.ibb.co/Hz23WNq/FB-IMG-1539010471675.jpg
- https://i.ibb.co/gFHQCS4/IMG-20190922-175740-Bokeh.jpg
- https://i.ibb.co/rxgN4qx/Whats-App-Image-2020-02-21-at-5-31-30-PM.jpg
- https://i.ibb.co/wQMTFcy/Whats-App-Image-2020-02-21-at-5-31-37-PM.jpg
- https://i.ibb.co/MG71RRQ/Whats-App-Image-2020-02-21-at-5-36-29-PM.jpg
- https://i.ibb.co/gj2qhQt/Whats-App-Image-2020-02-21-at-5-54-58-PM.jpg
- https://i.ibb.co/K7fWNMJ/Whats-App-Image-2020-02-21-at-5-56-45-PM.jpg
- https://i.ibb.co/W6yHcCC/Whats-App-Image-2020-02-21-at-5-57-57-PM.jpg
- https://i.ibb.co/PgfJXWL/Whats-App-Image-2020-02-21-at-6-17-49-PM.jpg
- 
+
+/**
+
  */
 
 class DeveloperViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -38,16 +30,17 @@ class DeveloperViewController: UICollectionViewController, UICollectionViewDeleg
     fileprivate let cellID = "cellID"
     var homeViewController: HomeViewController?
     let developersData = [
-          Developer(name: "Tushar", domain: "iOS", imageURL: "https://i.ibb.co/wQMTFcy/Whats-App-Image-2020-02-21-at-5-31-37-PM.jpg", post: "Category Head", instaURL: "https://www.instagram.com/tushar_tapadia/", linkdinURL: "https://www.linkedin.com/in/tushar-tapadia"),
-          Developer(name: "Rohit", domain: "iOS", imageURL: "https://i.ibb.co/pPdXWMD/IMG-0530.jpg", post: "Category Head", instaURL: "https://www.instagram.com/rohitkuber/", linkdinURL: "https://www.linkedin.com/in/rohit-kuber-b55280164/"),
-          Developer(name: "Hardik", domain: "Android", imageURL: "https://i.ibb.co/PgfJXWL/Whats-App-Image-2020-02-21-at-6-17-49-PM.jpg", post: "Category Head", instaURL: "https://www.instagram.com/hardik.bharunt/", linkdinURL: "https://www.linkedin.com/in/hardik-bharunt/"),
-          Developer(name: "Chakshu", domain: "Android", imageURL: "https://i.ibb.co/G5K0V9F/DSC8136.jpg", post: "Category Head", instaURL: "https://www.instagram.com/chakshusaraswat/", linkdinURL: "https://www.linkedin.com/in/chakshu-saraswat-836160171/"),
-            Developer(name: "Anant", domain: "Android", imageURL: "https://i.ibb.co/rxgN4qx/Whats-App-Image-2020-02-21-at-5-31-30-PM.jpg", post: "Category Head", instaURL: "https://www.instagram.com/infinite_verma/", linkdinURL: "https://www.linkedin.com/in/anant-verma/"),
-            Developer(name: "Sarthak", domain: "iOS", imageURL: "https://i.ibb.co/4gK6pz2/Whats-App-Image-2020-11-02-at-6-51-41-PM.jpg", post: "Organiser", instaURL: "https://instagram.com/ssarthakj?igshid=10qkoxeniyrvm", linkdinURL: "http://linkedin.com/in/sarthak-jha-a665941a2"),
-            Developer(name: "Tushar", domain: "iOS", imageURL: "https://i.ibb.co/JqwcRDY/Whats-App-Image-2020-10-28-at-10-40-28-AM.jpg", post: "Organiser", instaURL: "https://www.instagram.com/tushar_elangovan/", linkdinURL: "https://www.linkedin.com/in/tushar-elangovan-3622391a5/"),
-            Developer(name: "Pranshul", domain: "Android", imageURL: "https://i.ibb.co/rwc7dDc/Whats-App-Image-2020-11-02-at-6-24-06-PM.jpg", post: "Organiser", instaURL: "https://www.instagram.com/pranshul_2002/", linkdinURL: "https://www.linkedin.com/in/pranshul-goyal"),
-            Developer(name: "Sanya", domain: "Android", imageURL: "https://i.ibb.co/8dVSnr5/Whats-App-Image-2020-11-02-at-6-46-23-PM.jpg", post: "Organiser", instaURL: "https://www.instagram.com/saannya_/", linkdinURL: "https://www.linkedin.com/in/sanya-gupta-5a2a06185/"),
-            Developer(name: "Sonalika", domain: "Android", imageURL: "https://i.ibb.co/7rSS2GF/Sonalika.jpg", post: "Organiser", instaURL: "https://www.instagram.com/aureate_halcyon/", linkdinURL: "https://www.linkedin.com/in/sonalika-sahoo")
+            Developer(name: "Sarthak", domain: "iOS", imageURL: "https://i.ibb.co/4gK6pz2/Whats-App-Image-2020-11-02-at-6-51-41-PM.jpg", post: "Category Head", instaURL: "https://instagram.com/ssarthakj?igshid=10qkoxeniyrvm", linkdinURL: "http://linkedin.com/in/sarthak-jha-a665941a2"),
+            Developer(name: "Tushar", domain: "iOS", imageURL: "https://i.ibb.co/JqwcRDY/Whats-App-Image-2020-10-28-at-10-40-28-AM.jpg", post: "Category Head", instaURL: "https://www.instagram.com/tushar_elangovan/", linkdinURL: "https://www.linkedin.com/in/tushar-elangovan-3622391a5/"),
+            Developer(name: "Pranshul", domain: "Android", imageURL: "https://i.ibb.co/rwc7dDc/Whats-App-Image-2020-11-02-at-6-24-06-PM.jpg", post: "Category Head", instaURL: "https://www.instagram.com/pranshul_2002/", linkdinURL: "https://www.linkedin.com/in/pranshul-goyal"),
+            Developer(name: "Prakhar", domain: "Android", imageURL: "", post: "Category Head", instaURL: "", linkdinURL: ""),
+            Developer(name: "Sanya", domain: "Android", imageURL: "https://i.ibb.co/8dVSnr5/Whats-App-Image-2020-11-02-at-6-46-23-PM.jpg", post: "Category Head", instaURL: "https://www.instagram.com/saannya_/", linkdinURL: "https://www.linkedin.com/in/sanya-gupta-5a2a06185/"),
+            Developer(name: "Ankit Mishra", domain: "iOS", imageURL: "https://i.imgur.com/IH4W0HV.jpeg", post: "Organiser", instaURL: "https://www.instagram.com/i.am.ankit.mishra/", linkdinURL: "https://www.linkedin.com/in/ankit-mishra-2ba38a1b7/"),
+            Developer(name: "Chitrala", domain: "iOS", imageURL: "https://i.ibb.co/hLgc6yt/IMG-2952.jpg", post: "Organiser", instaURL: "https://www.instagram.com/chitrala_dhruv/", linkdinURL: "https://www.linkedin.com/in/chitraladhruv/"),
+            Developer(name: "Kavya Goel", domain: "Android", imageURL: "https://i.imgur.com/mHX86LG.jpeg", post: "Organiser", instaURL: " https://www.instagram.com/kavya_goel/", linkdinURL: "https://www.linkedin.com/in/kavya-goel-7ba0aa202/"),
+            Developer(name: "Praveen", domain: "Android", imageURL: "https://i.ibb.co/mCjrYX3/res-pic.png", post: "Organiser", instaURL: "https://www.instagram.com/_praveenvarma_/", linkdinURL: "https://www.linkedin.com/in/praveen-varma-a4b27b1b5/"),
+            Developer(name: "Shikhar", domain: "Android", imageURL: "https://i.ibb.co/RNBFRsB/7617-B6-CB-137-F-4-CD7-B561-442-E1-F76-D425.jpg", post: "Organiser", instaURL: "https://www.instagram.com/shikharr_ag/", linkdinURL: "https://www.linkedin.com/in/shikhar-agarwal-98a239168/"),
+            Developer(name: "Divyansh", domain: "Android", imageURL: "https://avatars.githubusercontent.com/u/34028379", post: "Organiser", instaURL: "https://instagram.com/divvyansh.__", linkdinURL: "https://www.linkedin.com/in/divyanshkul/"),
         ]
     
     override func viewDidLoad() {
@@ -263,8 +256,8 @@ class AboutCollectionViewCell: UICollectionViewCell {
             _ = titleLabel.anchor(top: imageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 8, leftConstant: 16, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 0)
             _ = postLabel.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 4, leftConstant: 16, bottomConstant: 6, rightConstant: 16, widthConstant: 0, heightConstant: 0)
             _ = platformLabel.anchor(top: postLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 8, leftConstant: 16, bottomConstant: 16, rightConstant: 16, widthConstant: 0, heightConstant: 0)
-            _ = instaButton.anchor(top: platformLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 16, leftConstant: 32, bottomConstant: 16, rightConstant: 0, widthConstant: width, heightConstant: width)
-            _ = facebookButton.anchor(top: platformLabel.bottomAnchor, left: nil, bottom: bottomAnchor, right: rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 16, rightConstant: 32, widthConstant: width, heightConstant: width)
+            _ = instaButton.anchor(top: platformLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, topConstant: 16, leftConstant: 32, bottomConstant: 16, rightConstant: 0, widthConstant: width-7, heightConstant: width-7)
+            _ = facebookButton.anchor(top: platformLabel.bottomAnchor, left: nil, bottom: bottomAnchor, right: rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 16, rightConstant: 32, widthConstant: width-7, heightConstant: width-7)
             spinnerView.fillSuperview()
         }
 }
