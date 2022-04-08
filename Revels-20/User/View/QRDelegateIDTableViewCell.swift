@@ -171,12 +171,6 @@ class QRDelegateIDTableViewCell: UITableViewCell {
         Networking.sharedInstance.getRegisteredEvents(dataCompletion: { (data) in
             self.eventsButton.hideLoading()
             self.eventsButton.isEnabled = true
-            print(data)
-//            var teamDetails = [TeamDetails]()
-//            for x in data{
-//                let td = TeamDetails(eventID: x.event.eventID, teamID: x.teamID)
-//                teamDetails.append(td)
-//            }
             if data.count == 0{
                 FloatingMessage().longFloatingMessage(Message: "You have not registered for any events.", Color: .orange, onPresentation: {}) {}
                 return
@@ -186,6 +180,10 @@ class QRDelegateIDTableViewCell: UITableViewCell {
 
         }) { (message) in
             print(message)
+            // MARK: -  logout here
+            FloatingMessage().longFloatingMessage(Message: "Can't fetch your event. Try logging in again!", Color: .orange, onPresentation: {}) {}
+            UserDefaults.standard.setIsLoggedIn(value: false)
+            UserDefaults.standard.synchronize()
             self.eventsButton.hideLoading()
             self.eventsButton.isEnabled = true
         }
@@ -199,7 +197,7 @@ class QRDelegateIDTableViewCell: UITableViewCell {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
             self.delegateCardButton.animateUp(sender: self.delegateCardButton)
         }
-        let tok = UserDefaults.standard.object(forKey: "token") as! String
+        let tok = UserDefaults.standard.string(forKey: "token") ?? " "
         let headers: HTTPHeaders = [
             "authorization": tok
         ]
@@ -212,12 +210,14 @@ class QRDelegateIDTableViewCell: UITableViewCell {
             for card in boughtCards.data{
                 cards.append(card.type)
             }
-//            self.usersViewController?.showDelegateCards(BoughtCards: cards)
+            self.usersViewController?.showDelegateCards(BoughtCards: cards)
         }) { (error) in
-           print(error)
-            print("lmaooo FF")
-            self.delegateCardButton.hideLoading()
-            self.delegateCardButton.isEnabled = true
+                print(error)
+                // MARK: -  also logout here
+                FloatingMessage().longFloatingMessage(Message: "Can't fetch delegate cards. Try logging in again!", Color: .orange, onPresentation: {}) {}
+                
+                self.delegateCardButton.hideLoading()
+                self.delegateCardButton.isEnabled = true
         }
     }
 

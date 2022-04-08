@@ -141,7 +141,6 @@ struct Caching{
             let retData = try Disk.retrieve(registeredEventDetailsCache, from: .caches, as: [RegEvents].self)
             return retData
         }catch let error{
-            print("error fetching registered events from cache")
             print(error)
             return nil
         }
