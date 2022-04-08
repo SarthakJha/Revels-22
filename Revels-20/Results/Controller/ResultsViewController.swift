@@ -131,7 +131,7 @@ class ResultsViewController: UICollectionViewController {
         let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
         searchController.searchBar.barStyle = UIBarStyle.black
         textFieldInsideSearchBar?.textColor = .white
-        searchController.searchBar.tintColor = UIColor.CustomColors.Purple.accent
+        searchController.searchBar.tintColor = UIColor.CustomColors.Theme.themeColor
         
         definesPresentationContext = true
     }

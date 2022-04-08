@@ -247,7 +247,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.separatorStyle = .none
         tableView.register(SectionTableViewCell.self, forCellReuseIdentifier: "SectionTableViewCell")
         tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: "DescriptionTableViewCell")
-        tableView.register(MITPostTableViewCell.self, forCellReuseIdentifier: "MITPostTableViewCell")
+     //   tableView.register(MITPostTableViewCell.self, forCellReuseIdentifier: "MITPostTableViewCell")
         tableView.register(DevelopersTableViewCell.self, forCellReuseIdentifier: "DeveloperTableViewCell")
         
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200)
@@ -336,31 +336,34 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 5{
+        if indexPath.row == 4{
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionTableViewCell") as! DescriptionTableViewCell
             cell.homeViewController = self
             cell.selectionStyle = .none
             return cell
             
-        }else if indexPath.row == 3{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MITPostTableViewCell") as! MITPostTableViewCell
-            cell.homeViewController = self
-            cell.contentView.isUserInteractionEnabled = false
-            cell.selectionStyle = .none
-            return cell
-            
-        }else if indexPath.row == 4 {
+        }
+//        else if indexPath.row == 3{
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "MITPostTableViewCell") as! MITPostTableViewCell
+//            cell.homeViewController = self
+//            cell.contentView.isUserInteractionEnabled = false
+//            cell.selectionStyle = .none
+//            return cell
+//
+//        }
+        else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DeveloperTableViewCell", for: indexPath) as! DevelopersTableViewCell
             cell.homeViewController = self
             cell.contentView.isUserInteractionEnabled = false
             cell.selectionStyle = .none
             return cell
         
-        }else{
+        }
+        else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SectionTableViewCell") as! SectionTableViewCell
             cell.accessoryType = .disclosureIndicator
             switch indexPath.row {
@@ -396,7 +399,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
-            case 5:
+            case 4:
                 return UITableView.automaticDimension
             default:
                 if isSmalliPhone(){
