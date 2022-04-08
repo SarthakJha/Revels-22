@@ -356,12 +356,12 @@ class ProshowDay1Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
 //        cell.descriptionLabel.text = schedule.description ?? ""
 //        cell.ruleLabel.text = self.rules
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdSingle", for: indexPath ) as! ProTableViewCellSingle
-        cell.locationLabel.text = "Location"
+     //   cell.locationLabel.text = "Location"
         cell.artistImage1.image = UIImage(named: "Tribhukti")
         cell.artistImage1.contentMode = .scaleToFill
         cell.selectionStyle = .none
-        cell.descriptionLabel.text = "Description"
-        cell.ruleLabel.text = "Rules"
+    //    cell.descriptionLabel.text = "Description"
+      //  cell.ruleLabel.text = "Rules"
         return cell
     }
 
@@ -436,15 +436,15 @@ class ProshowDay2Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdSingle", for: indexPath ) as! ProTableViewCell
             
 //            if indexPath.section == 0{
-                cell.locationLabel.text = "MiT FootBall Ground"
+           //     cell.locationLabel.text = "MiT FootBall Ground"
                 cell.artistImage1.image = UIImage(named: "Kenny Sebastian")
                 cell.artistImage1.contentMode = .scaleToFill
               //  cell.artistImage1.contentMode = .scaleToFill
                 cell.artistImage2.image = UIImage(named: "Aakash Mehta")
                 cell.artistImage2.contentMode = .scaleToFill
                 cell.selectionStyle = .none
-                cell.descriptionLabel.text = "Description"
-                cell.ruleLabel.text = "Rules"
+       //         cell.descriptionLabel.text = "Description"
+       //         cell.ruleLabel.text = "Rules"
          //   }
 //            if indexPath.section == 1{
 //                cell.locationLabel.text = "MiT FootBall Ground"
@@ -526,9 +526,9 @@ class ProshowDay3Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
         //    cell.artistImage1.contentMode = .scaleToFill
 //            let url2 = URL(string: schedule.artist_2_image_url ?? "")
 //            cell.artistImage2.sd_setImage(with: url2!, placeholderImage: nil)
-            cell.locationLabel.text = "Schedule"
-            cell.descriptionLabel.text = "Description"
-            cell.ruleLabel.text = self.rules
+      //      cell.locationLabel.text = "Schedule"
+      //      cell.descriptionLabel.text = "Description"
+      //      cell.ruleLabel.text = self.rules
 //            cell.artistImage1.image = UIImage(named: "")
 //            cell.artistImage2.sd_setImage(with: url2!, placeholderImage: nil)
 //            cell.locationLabel.text = "\(schedule.venue )\n\(schedule.time )"
@@ -606,9 +606,9 @@ class ProshowDay4Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
           //  let url2 = URL(string: schedule.artist_2_image_url ?? "")
             cell.artistImage2.image = UIImage(named: "Naalayak")
             cell.artistImage2.contentMode = .scaleToFill
-            cell.locationLabel.text = "MiT Ground"
-            cell.descriptionLabel.text = "Desription"
-            cell.ruleLabel.text = "Rules"
+        //    cell.locationLabel.text = "MiT Ground"
+        //    cell.descriptionLabel.text = "Desription"
+        //    cell.ruleLabel.text = "Rules"
             return cell
         }
     
@@ -682,9 +682,9 @@ class ProshowDay5Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
           //  let url2 = URL(string: schedule.artist_2_image_url ?? "")
             cell.artistImage2.image = UIImage(named: "DJ Zephyrtone")
             cell.artistImage2.contentMode = .scaleToFill
-            cell.locationLabel.text = "MiT Ground"
-            cell.descriptionLabel.text = "Desription"
-            cell.ruleLabel.text = "Rules"
+        //    cell.locationLabel.text = "MiT Ground"
+         //   cell.descriptionLabel.text = "Desription"
+         //   cell.ruleLabel.text = "Rules"
             return cell
         }
     
@@ -723,7 +723,7 @@ class ProshowDay5Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
     
     lazy var venueBackgroundText: UILabel = {
         let label = UILabel()
-        label.text = "VENUE"
+    //    label.text = "VENUE"
         label.font = UIFont.systemFont(ofSize: 100, weight: .bold)
         label.textColor = UIColor(white: 0.3, alpha: 0.1)
         label.textAlignment = .center
@@ -742,7 +742,7 @@ class ProshowDay5Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
     
     lazy var locationLabel: UILabel = {
         let label = UILabel()
-        label.text = "VENUE"
+    //    label.text = "VENUE"
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 23, weight: .bold)
         label.textColor = UIColor(white: 1, alpha: 1)
@@ -752,7 +752,7 @@ class ProshowDay5Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
     
     lazy var rulesTextLabel: UILabel = {
         let label = UILabel()
-        label.text = "RULES"
+    //    label.text = "RULES"
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 23, weight: .bold)
         label.textColor = UIColor(white: 1, alpha: 1)
@@ -763,7 +763,7 @@ class ProshowDay5Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
     
     lazy var rulesBackgroundText: UILabel = {
            let label = UILabel()
-           label.text = "RULES"
+      //     label.text = "RULES"
            label.font = UIFont.systemFont(ofSize: 100, weight: .bold)
            label.textColor = UIColor(white: 0.3, alpha: 0.1)
            label.textAlignment = .center
@@ -844,7 +844,7 @@ class ProshowDay5Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
      
      lazy var venueBackgroundText: UILabel = {
          let label = UILabel()
-         label.text = "VENUE"
+        // label.text = "VENUE"
          label.font = UIFont.systemFont(ofSize: 100, weight: .bold)
          label.textColor = UIColor(white: 0.3, alpha: 0.1)
          label.textAlignment = .center
@@ -863,7 +863,7 @@ class ProshowDay5Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
      
      lazy var locationLabel: UILabel = {
          let label = UILabel()
-         label.text = "VENUE"
+    //     label.text = "VENUE"
          label.numberOfLines = 0
          label.font = UIFont.systemFont(ofSize: 23, weight: .bold)
          label.textColor = UIColor(white: 1, alpha: 1)
@@ -873,7 +873,7 @@ class ProshowDay5Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
      
      lazy var rulesTextLabel: UILabel = {
          let label = UILabel()
-         label.text = "RULES"
+   //      label.text = "RULES"
          label.numberOfLines = 0
          label.font = UIFont.systemFont(ofSize: 23, weight: .bold)
          label.textColor = UIColor(white: 1, alpha: 1)
@@ -884,7 +884,7 @@ class ProshowDay5Cell: UICollectionViewCell, UITableViewDelegate, UITableViewDat
      
      lazy var rulesBackgroundText: UILabel = {
             let label = UILabel()
-            label.text = "RULES"
+      //      label.text = "RULES"
             label.font = UIFont.systemFont(ofSize: 100, weight: .bold)
             label.textColor = UIColor(white: 0.3, alpha: 0.1)
             label.textAlignment = .center
