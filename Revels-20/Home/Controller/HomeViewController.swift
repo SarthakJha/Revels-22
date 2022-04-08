@@ -421,8 +421,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.navigationController?.pushViewController(tagsEventsController, animated: true)
             break
         case 2:
-            let socialController = SocialController(collectionViewLayout: UICollectionViewFlowLayout())
-            self.navigationController?.pushViewController(socialController, animated: true)
+            let SVC = SocialsViewController()
+            self.navigationController?.pushViewController(SVC, animated: true)
+            
+            
+//
+//            let socialController = SocialController(collectionViewLayout: UICollectionViewFlowLayout())
+//            self.navigationController?.pushViewController(socialController, animated: true)
             break
 //        case 3:
 //            let featuredViewController = FeaturedEventsConroller()

@@ -14,6 +14,8 @@
 		6F0F7DE323144B3E00631BF9 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0F7DE223144B3E00631BF9 /* CategoryTableViewController.swift */; };
 		6F0F7DED23144BD100631BF9 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0F7DEC23144BD100631BF9 /* CategoryCell.swift */; };
 		72A8820D5B0405880C1C6CDD /* Pods_Revels_20.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6684DF29D7A8EB4EFF7588F /* Pods_Revels_20.framework */; };
+		8D1649A628003C3400B1E2DC /* SocialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1649A528003C3400B1E2DC /* SocialsViewController.swift */; };
+		8D1649A828003CE300B1E2DC /* SocialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1649A728003CE300B1E2DC /* SocialCollectionViewCell.swift */; };
 		8DA48A9927ECF35C006FB773 /* QRDelegateIDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA48A9827ECF35C006FB773 /* QRDelegateIDTableViewCell.swift */; };
 		B2014B2D23D8358D00C69B97 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2014B2C23D8358D00C69B97 /* SystemConfiguration.framework */; };
 		B207210023E1CD6700C21A4D /* TagsEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20720FF23E1CD6700C21A4D /* TagsEventViewController.swift */; };
@@ -126,6 +128,8 @@
 		6F0F7DE223144B3E00631BF9 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		6F0F7DEC23144BD100631BF9 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		76365DD00AE6ECBB96286438 /* Pods-Revels-20.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels-20.release.xcconfig"; path = "Target Support Files/Pods-Revels-20/Pods-Revels-20.release.xcconfig"; sourceTree = "<group>"; };
+		8D1649A528003C3400B1E2DC /* SocialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialsViewController.swift; sourceTree = "<group>"; };
+		8D1649A728003CE300B1E2DC /* SocialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialCollectionViewCell.swift; sourceTree = "<group>"; };
 		8DA48A9827ECF35C006FB773 /* QRDelegateIDTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDelegateIDTableViewCell.swift; sourceTree = "<group>"; };
 		B2014B2C23D8358D00C69B97 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B20720FF23E1CD6700C21A4D /* TagsEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsEventViewController.swift; sourceTree = "<group>"; };
@@ -638,6 +642,8 @@
 				C62CC8EC25210CA900066CB4 /* Youtube */,
 				C62CC8E525210B5A00066CB4 /* Twitter */,
 				C62CC8E02521092600066CB4 /* Instagram */,
+				8D1649A528003C3400B1E2DC /* SocialsViewController.swift */,
+				8D1649A728003CE300B1E2DC /* SocialCollectionViewCell.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -836,6 +842,7 @@
 				C633B6AC254B063800E4A8CB /* RegisteredTeamModel.swift in Sources */,
 				B2D944FB233DF77200DA14D1 /* ResetPassword.swift in Sources */,
 				B2D945262340E1C300DA14D1 /* QRCodeReaderViewContainer.swift in Sources */,
+				8D1649A828003CE300B1E2DC /* SocialCollectionViewCell.swift in Sources */,
 				C62CC8DD2521086C00066CB4 /* InstagramCell.swift in Sources */,
 				B283D98B231BCD6900B48217 /* NoEventCell.swift in Sources */,
 				C60DC9882535716100E7FFAF /* TwitterCell.swift in Sources */,
@@ -859,6 +866,7 @@
 				6F0F7DED23144BD100631BF9 /* CategoryCell.swift in Sources */,
 				62155BBC27FDA0E8003A006B /* CollegesTableViewController.swift in Sources */,
 				B2D972A923E49EFE001270E2 /* ProshowViewController.swift in Sources */,
+				8D1649A628003C3400B1E2DC /* SocialsViewController.swift in Sources */,
 				B25F94F82407B2A60067F848 /* Ratings.swift in Sources */,
 				B207210023E1CD6700C21A4D /* TagsEventViewController.swift in Sources */,
 				B25D43C123125E1900920FDA /* Networking.swift in Sources */,

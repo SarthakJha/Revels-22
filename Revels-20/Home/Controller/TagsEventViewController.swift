@@ -43,7 +43,7 @@ class TagsEventsViewController: UIViewController, TagsControllerDelegate, UITabl
         
         self.filteredEvents = self.events.filter({ (event) -> Bool in
             
-            event.tags!.contains(tag)
+            event.tags!.contains(tag.description.uppercased())
             
         })
     }
@@ -74,6 +74,8 @@ class TagsEventsViewController: UIViewController, TagsControllerDelegate, UITabl
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         self.events = Caching.sharedInstance.getEventsFromCache()
+        print(events[0])
+        print(events)
 //        print(events)
         self.tags = Caching.sharedInstance.getTagsFromCache()
         setupTagsController()

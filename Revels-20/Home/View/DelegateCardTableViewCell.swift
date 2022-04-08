@@ -13,10 +13,13 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
     var delegateCardsController: DelegateCardsController?
     var Cards: [DelegateCard]?{
         didSet{
+//            let selectedIndexPath = IndexPath(item: 0, section: 0)
+//            collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
             collectionView.reloadData()
           
         }
     }
+
     let cellId = "cellId"
     
     lazy var titleLabel: UILabel = {
@@ -39,7 +42,7 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
         cv.register(DelegateCardCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         return cv
     }()
-    
+ 
     lazy var seperatorLineView: UIView = {
         let view = UIView()
 //        view.backgroundColor = .darkGray

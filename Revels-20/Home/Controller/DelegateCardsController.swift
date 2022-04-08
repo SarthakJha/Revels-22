@@ -153,6 +153,8 @@ class DelegateCardsController: UITableViewController {
         cell.titleLabel.text = self.Titles[indexPath.row]
         cell.Cards = self.CardsData[indexPath.row]
         cell.delegateCardsController = self
+        //MARK: IMPORTANT
+        cell.contentView.isUserInteractionEnabled = false
         cell.selectionStyle = .none
         return cell
     }
