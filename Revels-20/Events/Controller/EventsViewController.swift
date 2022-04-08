@@ -443,7 +443,7 @@ class EventsViewController: UITableViewController {
     @objc func registerTeammate(){
         
         DispatchQueue.main.async(execute:{
-        let alertController = UIAlertController(title: "Join Team", message: "\n Enter party code to register with a team", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Join Team", message: "\n Enter team ID to register with a team", preferredStyle: .alert)
     
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let sureAction = UIAlertAction(title: "Continue", style: .default) { (_) in
@@ -459,15 +459,15 @@ class EventsViewController: UITableViewController {
                 let categoryName = eventInfo.name
                 print("User id:",userID)
                 
-                if partyCodeValue.count != 6{
-            FloatingMessage().floatingMessage(Message: "Party code format is wrong", Color: .red, onPresentation: {
+                if partyCodeValue.count > 8{
+            FloatingMessage().floatingMessage(Message: "Team ID format is wrong", Color: .red, onPresentation: {
                 self.joinTeam.hideLoading()
             }) {}
             return
         }
 
                 
-        Networking.sharedInstance.joinTeam(eventId: eventID, userID: userID, category: categoryName, partyCode: partyCodeValue, successCompletion: { (message) in
+                Networking.sharedInstance.joinTeam(eventId: eventInfo.eventID, teamId: partyCodeValue, successCompletion: { (message) in
                     self.joinTeam.hideLoading()
                     print(message)
             FloatingMessage().longFloatingMessage(Message: "Successfully joined the team for \(eventInfo.name). ", Color: UIColor.CustomColors.Theme.themeColor!, onPresentation: {
@@ -526,7 +526,7 @@ class EventsViewController: UITableViewController {
             alertController.addAction(sureAction)
             alertController.addAction(cancel)
             alertController.addTextField(configurationHandler: {(textField: UITextField!) in
-                        textField.placeholder = "Enter Party Code"
+                        textField.placeholder = "Enter Team ID"
                         self.partyCode = textField
                     })
             
