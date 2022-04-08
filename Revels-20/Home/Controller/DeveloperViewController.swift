@@ -33,7 +33,7 @@ class DeveloperViewController: UICollectionViewController, UICollectionViewDeleg
             Developer(name: "Sarthak", domain: "iOS", imageURL: "https://i.ibb.co/4gK6pz2/Whats-App-Image-2020-11-02-at-6-51-41-PM.jpg", post: "Category Head", instaURL: "https://instagram.com/ssarthakj?igshid=10qkoxeniyrvm", linkdinURL: "http://linkedin.com/in/sarthak-jha-a665941a2"),
             Developer(name: "Tushar", domain: "iOS", imageURL: "https://i.ibb.co/JqwcRDY/Whats-App-Image-2020-10-28-at-10-40-28-AM.jpg", post: "Category Head", instaURL: "https://www.instagram.com/tushar_elangovan/", linkdinURL: "https://www.linkedin.com/in/tushar-elangovan-3622391a5/"),
             Developer(name: "Pranshul", domain: "Android", imageURL: "https://i.ibb.co/rwc7dDc/Whats-App-Image-2020-11-02-at-6-24-06-PM.jpg", post: "Category Head", instaURL: "https://www.instagram.com/pranshul_2002/", linkdinURL: "https://www.linkedin.com/in/pranshul-goyal"),
-            Developer(name: "Prakhar", domain: "Android", imageURL: "", post: "Category Head", instaURL: "", linkdinURL: ""),
+            Developer(name: "Prakhar", domain: "Android", imageURL: "https://i.ibb.co/s3HV8k9/HUP3975.jpg", post: "Category Head", instaURL: "https://instagram.com/prakhar_b10?igshid=YmMyMTA2M2Y=", linkdinURL: "https://www.prakharb10.com/"),
             Developer(name: "Sanya", domain: "Android", imageURL: "https://i.ibb.co/8dVSnr5/Whats-App-Image-2020-11-02-at-6-46-23-PM.jpg", post: "Category Head", instaURL: "https://www.instagram.com/saannya_/", linkdinURL: "https://www.linkedin.com/in/sanya-gupta-5a2a06185/"),
             Developer(name: "Ankit Mishra", domain: "iOS", imageURL: "https://i.imgur.com/IH4W0HV.jpeg", post: "Organiser", instaURL: "https://www.instagram.com/i.am.ankit.mishra/", linkdinURL: "https://www.linkedin.com/in/ankit-mishra-2ba38a1b7/"),
             Developer(name: "Chitrala", domain: "iOS", imageURL: "https://i.ibb.co/hLgc6yt/IMG-2952.jpg", post: "Organiser", instaURL: "https://www.instagram.com/chitrala_dhruv/", linkdinURL: "https://www.linkedin.com/in/chitraladhruv/"),
@@ -106,11 +106,11 @@ class DeveloperViewController: UICollectionViewController, UICollectionViewDeleg
         func openInstragram(cell: UICollectionViewCell){
         guard let indexPath = collectionView.indexPath(for: cell) else { return }
         print(developersData[indexPath.item].name)
-        let appURL = URL(string: developersData[indexPath.item].instaURL)
+            guard let appURL = URL(string: developersData[indexPath.item].instaURL) else {return}
             let webURL = developersData[indexPath.item].instaURL
         let application = UIApplication.shared
-            if application.canOpenURL(appURL!) {
-                application.open(appURL!)
+            if application.canOpenURL(appURL) {
+                application.open(appURL)
         }else{
             homeViewController?.openURL(url: webURL)
             }
@@ -120,11 +120,11 @@ class DeveloperViewController: UICollectionViewController, UICollectionViewDeleg
         func openLinkedIn(cell: UICollectionViewCell){
         guard let indexPath = collectionView.indexPath(for: cell) else { return }
         print(developersData[indexPath.item].name)
-        let appURL = URL(string: developersData[indexPath.item].linkdinURL)
+            guard let appURL = URL(string: developersData[indexPath.item].linkdinURL) else {return}
         let webURL = developersData[indexPath.item].linkdinURL
         let application = UIApplication.shared
-        if application.canOpenURL(appURL as! URL) {
-            application.open(appURL as! URL)
+        if application.canOpenURL(appURL) {
+            application.open(appURL)
             }else{
                 homeViewController?.openURL(url: webURL)
                 }
