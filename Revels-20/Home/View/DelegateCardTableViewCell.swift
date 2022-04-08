@@ -30,6 +30,7 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.collectionView?.isScrollEnabled = true
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
@@ -135,7 +136,7 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
     
 }
 
-
+//MARK: - Delegate Card Collection View Cell
 class DelegateCardCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate{
     
     var delegateCardTableViewCell: DelegateCardTableViewCell?
