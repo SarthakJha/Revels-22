@@ -176,7 +176,6 @@ class UserIDTableViewCell: UITableViewCell {
         }
             self.eventsButton.hideLoading()
             self.eventsButton.isEnabled = true
-        
         guard let userReg = Caching.sharedInstance.getRegisteredEventsFromCache() else {return}
         
         if userReg.count == 0{

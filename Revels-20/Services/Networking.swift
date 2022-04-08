@@ -453,12 +453,7 @@ struct Networking {
             if let data = response.data{
                 do{
                     let resultsResponse = try JSONDecoder().decode(CheckTokenRes.self, from: data)
-                    print("ye hai registered events ka data", resultsResponse)
-                    if resultsResponse.success{
-                        dataCompletion(true)
-                    }else{
-                        errorCompletion("Coudn't Fetch Registered Events")
-                    }
+                    dataCompletion(resultsResponse.success)
                 }catch let error{
                     print(error)
                     errorCompletion("Decoding Error")

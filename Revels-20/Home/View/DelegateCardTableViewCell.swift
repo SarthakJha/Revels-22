@@ -14,7 +14,7 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
     var Cards: [DelegateCard]?{
         didSet{
             collectionView.reloadData()
-            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
+//            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
         }
     }
     let cellId = "cellId"

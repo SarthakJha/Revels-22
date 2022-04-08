@@ -29,14 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        checkTokenForExpiry()
         getEvents()
-        getSchedule()
+//        getSchedule()
         getCategories()
-        getNewsletterURL()
+//        getNewsletterURL()
         getColleges()
         getDelegateCards()
-        checkTokenForExpiry()
         
         window = UIWindow()
         window?.makeKeyAndVisible()
@@ -144,11 +143,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     
     fileprivate func checkTokenForExpiry(){
         Networking.sharedInstance.checkTokenExpiry { res in
+            print("ye hai res: ",res)
             if(!res){
                 print("invalid token, logging user off")
                 UserDefaults.standard.removeObject(forKey: "token")
                 UserDefaults.standard.setIsLoggedIn(value: false)
                 UserDefaults.standard.synchronize()
+                print("is logged in? ",UserDefaults.standard.isLoggedIn())
                 let lvc = UsersViewController()
                 lvc.setupViewForLoggedOutUser()
                 
@@ -156,7 +157,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                 print("token is valid")
             }
         } errorCompletion: { err in
-            print(err)
+            print("error in check token:", err)
+
         }
     }
         
