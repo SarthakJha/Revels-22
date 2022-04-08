@@ -19,7 +19,7 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
           
         }
     }
-
+    var cachedUser: User!
     let cellId = "cellId"
     
     lazy var titleLabel: UILabel = {
@@ -52,7 +52,6 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLayout()
-
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -89,29 +88,37 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! DelegateCardCollectionViewCell
         let card = Cards?[indexPath.item] ?? DelegateCard()
         cell.titleLabel.text = card.name
-        if card.name == "Proshow Pass"{
-            cell.descriptionLabel.text = "A delegate pass that gives you access to our Ground Zero proshow concert for the the last two nights of the fest."
-        }else{
-            cell.descriptionLabel.text = "\(card.description)"
-        }
         if self.titleLabel.text == "Bought Cards"{
             cell.titleLabel.textColor = UIColor.CustomColors.Blue.accent
             cell.costLabel.text = "PURCHASED"
             cell.infoImageView.isHidden = true
         }else{
-            if card.mahePrice == 0 {
-                cell.costLabel.text = "NON MAHE PRICE : ₹\(card.nonMahePrice)"
-            }else if card.nonMahePrice == 0 {
-                cell.costLabel.text = "MAHE PRICE : ₹\(card.mahePrice)"
+            if self.cachedUser.isMahe == 1 && self.cachedUser.college == "MANIPAL INSTITUTE OF TECHNOLOGY" {
+                if card.mitPrice !=  0{
+                    cell.costLabel.text = "₹\(card.mitPrice)"
+                }else{
+                    cell.costLabel.text = "FREE"
+                }
+            }else if self.cachedUser.isMahe == 1 && self.cachedUser.college != "MANIPAL INSTITUTE OF TECHNOLOGY" {
+                if card.mahePrice !=  0{
+                    cell.costLabel.text = "₹\(card.mahePrice)"
+                }else{
+                    cell.costLabel.text = "FREE"
+                }
+                
             }else{
-                cell.costLabel.text = "MAHE PRICE : ₹\(card.mahePrice)\nNON MAHE PRICE : ₹\(card.nonMahePrice)"
+                if card.nonMahePrice !=  0{
+                    cell.costLabel.text = "₹\(card.nonMahePrice)"
+                }else{
+                    cell.costLabel.text = "FREE"
+                }
             }
             cell.titleLabel.textColor = UIColor.CustomColors.Skin.accent
             cell.infoImageView.isHidden = false
             
         }
 //        cell.descriptionLabel.tag = card._id
-        cell.descriptionLabel.tag = 1
+//        cell.descriptionLabel.tag = 1
 
         cell.delegateCardTableViewCell = self
         guard let delCard = Cards?[indexPath.item] else { return cell }
@@ -191,23 +198,23 @@ class DelegateCardCollectionViewCell: UICollectionViewCell, UIGestureRecognizerD
             return view
         }()
         
-        lazy var descriptionLabel: UITextView = {
-            let label = UITextView()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.font = UIFont.systemFont(ofSize: 13)
-            label.textAlignment = .left
-            label.backgroundColor = .clear
-            label.textColor = .init(white: 1, alpha: 0.8)
-            label.isUserInteractionEnabled = true
-//            label.isScrollEnabled = true
-            label.isEditable = false
-            label.isSelectable = false
-            label.textAlignment = .center
-            let tap = UITapGestureRecognizer(target: self, action: #selector(handleCardTap(_:)))
-            tap.delegate = self
-            label.addGestureRecognizer(tap)
-            return label
-        }()
+//        lazy var descriptionLabel: UITextView = {
+//            let label = UITextView()
+//            label.translatesAutoresizingMaskIntoConstraints = false
+//            label.font = UIFont.systemFont(ofSize: 13)
+//            label.textAlignment = .left
+//            label.backgroundColor = .clear
+//            label.textColor = .init(white: 1, alpha: 0.8)
+//            label.isUserInteractionEnabled = true
+////            label.isScrollEnabled = true
+//            label.isEditable = false
+//            label.isSelectable = false
+//            label.textAlignment = .center
+//            let tap = UITapGestureRecognizer(target: self, action: #selector(handleCardTap(_:)))
+//            tap.delegate = self
+//            label.addGestureRecognizer(tap)
+//            return label
+//        }()
     
     let costLabel: UILabel = {
         let label = UILabel()
@@ -243,6 +250,7 @@ class DelegateCardCollectionViewCell: UICollectionViewCell, UIGestureRecognizerD
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
+
     }
     
     func setupLayout(){
@@ -250,7 +258,7 @@ class DelegateCardCollectionViewCell: UICollectionViewCell, UIGestureRecognizerD
         isUserInteractionEnabled = true
         if UIViewController().isSmalliPhone(){
             titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
-            descriptionLabel.font = UIFont.systemFont(ofSize: 12)
+//            descriptionLabel.font = UIFont.systemFont(ofSize: 12)
             costLabel.font = UIFont.boldSystemFont(ofSize: 14)
         }
         
@@ -266,9 +274,9 @@ class DelegateCardCollectionViewCell: UICollectionViewCell, UIGestureRecognizerD
         addSubview(costLabel)
         _ = costLabel.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 32, bottomConstant: 32, rightConstant: 32, widthConstant: 0, heightConstant: 0)
         
-        addSubview(descriptionLabel)
-        _ = descriptionLabel.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, bottom: costLabel.topAnchor, right: rightAnchor, topConstant: 16, leftConstant: 32, bottomConstant: 16, rightConstant: 32, widthConstant: 0, heightConstant: 0)
-        
+//        addSubview(descriptionLabel)
+//        _ = descriptionLabel.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, bottom: costLabel.topAnchor, right: rightAnchor, topConstant: 16, leftConstant: 32, bottomConstant: 16, rightConstant: 32, widthConstant: 0, heightConstant: 0)
+//
         _ = backgroundCard.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 6, leftConstant: 16, bottomConstant: 16, rightConstant: 16, widthConstant: 0, heightConstant: 0)
         
         backgroundCard.addSubview(infoImageView)
@@ -278,4 +286,4 @@ class DelegateCardCollectionViewCell: UICollectionViewCell, UIGestureRecognizerD
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}      
+}

@@ -45,6 +45,7 @@ class DelegateCardsController: UITableViewController {
             })
             CardsData = [self.BoughtCards,self.ProShowCards, self.GeneralCards,self.GamingCards, self.SportsCards]
 //            tableView.reloadData()
+            print("this is all the cards: ",CardsData)
             tableView.reloadSections(IndexSet(0..<1), with: .automatic)
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
@@ -116,7 +117,7 @@ class DelegateCardsController: UITableViewController {
     }
     
     func getBoughtDelegateCards(){
-        let tok = UserDefaults.standard.object(forKey: "token") as! String
+        let tok = UserDefaults.standard.string(forKey: "token") ?? " "
         let headers: HTTPHeaders = [
             "authorization": tok
         ]
@@ -128,10 +129,12 @@ class DelegateCardsController: UITableViewController {
             }
             print(cards)
             DispatchQueue.main.async {
+                print("ye hai bought cards",cards)
                 self.boughtCards = cards
             }
         }) { (error) in
            print(error)
+            print("bought cards mai bt")
         }
     }
     
