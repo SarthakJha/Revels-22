@@ -62,6 +62,8 @@ class DelegateCardsController: UITableViewController {
         tableView.backgroundColor = UIColor.CustomColors.Black.background
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
+        tableView.isUserInteractionEnabled = true
+    
     }
     
     func setupView(){

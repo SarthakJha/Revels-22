@@ -134,6 +134,7 @@ class ResultsViewController: UICollectionViewController {
         searchController.searchBar.tintColor = UIColor.CustomColors.Theme.themeColor
         
         definesPresentationContext = true
+        
     }
     
     
@@ -273,9 +274,18 @@ extension ResultsViewController: UICollectionViewDelegateFlowLayout{
 
         //navigationController?.pushViewController(resultsDetailViewController, animated: true)
         
-        print("indexPath.row:\(indexPath.row)")
-        let event = filteredEventsWithResults[indexPath.row]
-        self.handleEventTap(withEvent: event)
+        if filteredEventsWithResults.isEmpty {
+            debugPrint("BHEEM")
+            self.filteredEventsWithResults = Caching.sharedInstance.getEventsFromCache()
+            let event = filteredEventsWithResults[indexPath.row]
+            self.handleEventTap(withEvent: event)
+        }else{
+            print("indexPath.row:\(indexPath.row)")
+            let event = filteredEventsWithResults[indexPath.row]
+            self.handleEventTap(withEvent: event)
+        }
+        
+       
         
         
         

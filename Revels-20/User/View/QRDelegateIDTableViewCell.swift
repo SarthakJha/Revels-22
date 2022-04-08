@@ -201,14 +201,17 @@ class QRDelegateIDTableViewCell: UITableViewCell {
         let headers: HTTPHeaders = [
             "authorization": tok
         ]
+        let DCTVC = DelegateCardTableViewCell()
         let apiStruct = ApiStruct(url: boughtDelegateCardsURL, method: .get, body: nil, headers: headers)
         WSManager.shared.getJSONResponse(apiStruct: apiStruct, success: { (boughtCards: BoughtDelegateCard) in
            self.delegateCardButton.hideLoading()
            self.delegateCardButton.isEnabled = true
             debugPrint("aagye aap :)")
+           
             var cards = [String]()
             for card in boughtCards.data{
                 cards.append(card.type)
+                DCTVC.viebWillAppear(true)
             }
             self.usersViewController?.showDelegateCards(BoughtCards: cards)
         }) { (error) in

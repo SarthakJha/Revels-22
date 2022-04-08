@@ -14,7 +14,7 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
     var Cards: [DelegateCard]?{
         didSet{
             collectionView.reloadData()
-//            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
+          
         }
     }
     let cellId = "cellId"
@@ -30,7 +30,7 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.collectionView?.isScrollEnabled = true
+        layout.collectionView?.isUserInteractionEnabled = true
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
@@ -49,10 +49,16 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLayout()
+
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func viebWillAppear(_ animated: Bool) {
+    let selectedIndexPath = IndexPath(item: 0, section: 0)
+        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
     }
     
     //MARK: - Setup
@@ -238,6 +244,7 @@ class DelegateCardCollectionViewCell: UICollectionViewCell, UIGestureRecognizerD
     
     func setupLayout(){
         
+        isUserInteractionEnabled = true
         if UIViewController().isSmalliPhone(){
             titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
             descriptionLabel.font = UIFont.systemFont(ofSize: 12)
