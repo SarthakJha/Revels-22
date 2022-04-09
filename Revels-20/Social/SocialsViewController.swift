@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SafariServices
+
 
 class SocialsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -82,9 +84,29 @@ class SocialsViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 40
     }
-    
+    func openURL(url: String){
+        guard let url = URL(string: url) else { return }
+        let svc = SFSafariViewController(url: url)
+        svc.preferredBarTintColor = .black
+        svc.preferredControlTintColor = .white
+        present(svc, animated: true, completion: nil)
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Cell Selected")
+        
+        switch(indexPath.row){
+        case 0:
+            openURL(url: "https://www.instagram.com/revelsmit/?hl=en")
+            break
+        case 1:
+            openURL(url: "https://twitter.com/revelsmit")
+            break
+        case 2:
+            openURL(url: "https://www.youtube.com/channel/UC9gwWd47a0q042qwEgutjWw")
+            break
+        default:
+            print("something went wrong")
+            break
+        }
     }
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
