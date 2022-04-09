@@ -423,6 +423,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 2:
             let SVC = SocialsViewController()
             self.navigationController?.pushViewController(SVC, animated: true)
+//            navigationController?.title = "Socials"
+//            title = "Socials"
             
             
 //
