@@ -94,29 +94,34 @@ class SocialCollectionViewCell: UICollectionViewCell,CAAnimationDelegate{
 
         setupGradient()
         animateGradient()
-        contentView.layer.cornerRadius = 20
+        contentView.layer.cornerRadius = 38
+        contentView.backgroundColor = .red
         
-        contentView.addSubview(bgView)
-        bgView.addSubview(bgImageView)
-        NSLayoutConstraint.activate([
+//        contentView.addSubview(bgView)
+//        addSubview(bgView)
+        addSubview(bgImageView)
+        bgImageView.setDimensions(width: 80, height: 80)
+        bgImageView.center(inView: self)
         
-            
-            bgView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor),
-            bgView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-            bgView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-            bgView.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor),
-        
-            bgImageView.topAnchor.constraint(equalTo: bgView.layoutMarginsGuide.topAnchor, constant: contentView.frame.height/4),
-            bgImageView.leadingAnchor.constraint(equalTo: bgView.layoutMarginsGuide.leadingAnchor, constant: contentView.frame.width/4),
-            bgImageView.trailingAnchor.constraint(equalTo: bgView.layoutMarginsGuide.trailingAnchor, constant: -contentView.frame.width/4),
-            bgImageView.bottomAnchor.constraint(equalTo: bgView.layoutMarginsGuide.bottomAnchor, constant: -contentView.frame.height/4),
-            
-//            nameLbl.topAnchor.constraint(equalTo: bgImageView.layoutMarginsGuide.topAnchor, constant: 10),
-//            nameLbl.leadingAnchor.constraint(equalTo: bgImageView.layoutMarginsGuide.leadingAnchor),
-//            nameLbl.trailingAnchor.constraint(equalTo: bgImageView.layoutMarginsGuide.trailingAnchor),
-//            nameLbl.bottomAnchor.constraint(equalTo: bgImageView.layoutMarginsGuide.bottomAnchor, constant: -10),
-    
-        ])
+//        NSLayoutConstraint.activate([
+//
+//
+//            bgView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor),
+//            bgView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+//            bgView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+//            bgView.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor),
+//
+//            bgImageView.topAnchor.constraint(equalTo: bgView.layoutMarginsGuide.topAnchor, constant: contentView.frame.height/4),
+//            bgImageView.leadingAnchor.constraint(equalTo: bgView.layoutMarginsGuide.leadingAnchor, constant: contentView.frame.width/4),
+//            bgImageView.trailingAnchor.constraint(equalTo: bgView.layoutMarginsGuide.trailingAnchor, constant: -contentView.frame.width/4),
+//            bgImageView.bottomAnchor.constraint(equalTo: bgView.layoutMarginsGuide.bottomAnchor, constant: -contentView.frame.height/4),
+//
+////            nameLbl.topAnchor.constraint(equalTo: bgImageView.layoutMarginsGuide.topAnchor, constant: 10),
+////            nameLbl.leadingAnchor.constraint(equalTo: bgImageView.layoutMarginsGuide.leadingAnchor),
+////            nameLbl.trailingAnchor.constraint(equalTo: bgImageView.layoutMarginsGuide.trailingAnchor),
+////            nameLbl.bottomAnchor.constraint(equalTo: bgImageView.layoutMarginsGuide.bottomAnchor, constant: -10),
+//
+//        ])
     }
     
     func setGradientBackground() {
@@ -130,6 +135,15 @@ class SocialCollectionViewCell: UICollectionViewCell,CAAnimationDelegate{
         gradientLayer.frame = self.contentView.bounds
         gradientLayer.colors = [colorBottom, colorTop]
         self.contentView.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame:frame)
+        setupLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

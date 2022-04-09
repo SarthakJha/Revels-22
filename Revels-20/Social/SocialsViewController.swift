@@ -17,24 +17,24 @@ class SocialsViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellID", for: indexPath) as! SocialCollectionViewCell
-        cell.contentView.layer.cornerRadius = 12.0
+        cell.layer.cornerRadius = 38
         cell.contentView.layer.masksToBounds = true
         if indexPath.row == 0{
             cell.nameLbl.text = "@revelsmit"
             cell.bgImageView.image = UIImage(named: "instagram")
-            cell.setupLayout()
+         //   cell.setupLayout()
             
 //            cell.bgView.backgroundColor = Colors.gl
         }
         if indexPath.row == 1{
             cell.nameLbl.text = "@RevelsMIT"
             cell.bgImageView.image = UIImage(named: "twitter")
-            cell.setupLayout()
+         //   cell.setupLayout()
         }
         if indexPath.row == 2{
             cell.nameLbl.text = "REVELS,MIT MANIPAL"
             cell.bgImageView.image = UIImage(named: "youtube")
-            cell.setupLayout()
+       //     cell.setupLayout()
         }
        
        // cell.backgroundColor = .red
@@ -76,6 +76,7 @@ class SocialsViewController: UIViewController, UICollectionViewDelegate, UIColle
         cv.delegate = self
         cv.dataSource = self
         cv.showsHorizontalScrollIndicator = false
+        cv.showsVerticalScrollIndicator = false
         cv.register(SocialCollectionViewCell.self, forCellWithReuseIdentifier: "CellID")
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
@@ -149,7 +150,7 @@ class SocialsViewController: UIViewController, UICollectionViewDelegate, UIColle
 
 extension SocialsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height/3.5)
+        return CGSize(width: view.frame.width - 40, height: view.frame.height/3.5)
     }
 }
 

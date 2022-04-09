@@ -1,11 +1,12 @@
 {
   "images" : [
     {
+      "filename" : "icons8-star-50.png",
       "idiom" : "universal",
-      "filename" : "star_filled.pdf",
       "scale" : "1x"
     },
     {
+      "filename" : "icons8-star-51.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -15,7 +16,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
