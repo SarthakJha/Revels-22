@@ -142,17 +142,17 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
         return -16
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        guard let card = Cards?[indexPath.item] else { return }
-        print(card._id)
-        if card.isActive {
-            delegateCardsController?.buyCard(id: card.cardID)
-        }else{
-            FloatingMessage().floatingMessage(Message: "Card is not available for online purchase!", Color: .orange, onPresentation: {}) {
-            }
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//
+//        guard let card = Cards?[indexPath.item] else { return }
+//        print(card._id)
+//        if card.isActive {
+//            delegateCardsController?.buyCard(id: card.cardID)
+//        }else{
+//            FloatingMessage().floatingMessage(Message: "Card is not available for online purchase!", Color: .orange, onPresentation: {}) {
+//            }
+//        }
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width - 44 , height: frame.height - 44)
