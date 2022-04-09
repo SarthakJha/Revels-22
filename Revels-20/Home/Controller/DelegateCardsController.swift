@@ -90,9 +90,6 @@ class DelegateCardsController: UITableViewController {
         do{
             let retCards = try Disk.retrieve(delegateCardsCache, from: .caches, as: [DelegateCard].self)
             self.Cards = retCards
-//            self.Cards = retCards.sorted(by: { (c1, c2) -> Bool in
-//                c1.id < c2.id
-//            })
         }
         catch let error{
             var delegateCardsDictionary = [String: DelegateCard]()
@@ -101,9 +98,7 @@ class DelegateCardsController: UITableViewController {
                 "authorization":tok
             ]
             Networking.sharedInstance.getData(url: delegateCardsURL,headers: headers, decode: DelegateCard(), dataCompletion: { (data) in
-//                self.Cards = data.sorted(by: { (c1, c2) -> Bool in
-//                    c1.id < c2.id
-//                })
+                self.Cards = data
                 for card in data{
                         delegateCardsDictionary[card._id] = card
                 }

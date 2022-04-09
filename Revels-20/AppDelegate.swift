@@ -212,6 +212,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
 
 }
+
+// MARK: Cloud messaging delegate
 extension AppDelegate: MessagingDelegate{
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
       print("Firebase registration token: \(String(describing: fcmToken))")

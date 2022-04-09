@@ -15,11 +15,11 @@ class SocialsViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellID", for: indexPath) as! SocialCollectionViewCell
+        cell.contentView.layer.cornerRadius = 12.0
+        cell.contentView.layer.masksToBounds = true
         if indexPath.row == 0{
             cell.nameLbl.text = "@revelsmit"
             cell.bgImageView.image = UIImage(named: "instagram")
-            cell.layer.cornerRadius = 10
-            cell.layer.masksToBounds = true
             cell.setupLayout()
             
 //            cell.bgView.backgroundColor = Colors.gl
@@ -80,7 +80,7 @@ class SocialsViewController: UIViewController, UICollectionViewDelegate, UIColle
     }()
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        return 40
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -127,7 +127,7 @@ class SocialsViewController: UIViewController, UICollectionViewDelegate, UIColle
 
 extension SocialsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height/4)
+        return CGSize(width: view.frame.width, height: view.frame.height/3.5)
     }
 }
 
