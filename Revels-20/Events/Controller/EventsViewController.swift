@@ -392,7 +392,14 @@ class EventsViewController: UITableViewController {
                     print(message)
                     if message == "User already registered for event" {
                         FloatingMessage().longFloatingMessage(Message: "You have already registered for \(self.event.name)", Color: .orange, onPresentation: {}) {}
-                    }else{
+                    }else if message == "Access Denied"{
+                        print("access denied aagya bhau")
+                        NotificationCenter.default
+                                    .post(name: NSNotification.Name("user.logout"),
+                                     object: nil)
+                        FloatingMessage().longFloatingMessage(Message: "Session expired. Login again!", Color: .orange, onPresentation: {}) {}
+                    }
+                    else{
                         FloatingMessage().longFloatingMessage(Message: message, Color: .orange, onPresentation: {}) {}
                     }
                 }
@@ -453,10 +460,8 @@ class EventsViewController: UITableViewController {
                 self.joinTeam.activityIndicator.color = .white
                 guard let eventInfo = self.event else { return  }
               //  guard let eventID = eventInfo.id else {return }
-                let eventID = eventInfo._id
                 guard let userID = self.user?.userID else {return}
                 guard let partyCodeValue = self.partyCode.text else{return}
-                let categoryName = eventInfo.name
                 print("User id:",userID)
                 
                 if partyCodeValue.count > 8{
@@ -482,7 +487,13 @@ class EventsViewController: UITableViewController {
                     print(message)
                     if message == "User already registered for event" {
                         FloatingMessage().longFloatingMessage(Message: "You have already registered for \(self.event.name)", Color: .orange, onPresentation: {}) {}
-                    }else{
+                    }else if message == "Access Denied"{
+                        NotificationCenter.default
+                                    .post(name: NSNotification.Name("user.logout"),
+                                     object: nil)
+                        FloatingMessage().longFloatingMessage(Message: "Session expired. Login again!", Color: .orange, onPresentation: {}) {}
+                    }
+                    else{
                         self.joinTeam.hideLoading()
                         FloatingMessage().longFloatingMessage(Message: message, Color: .red, onPresentation: {
 //                            self.joinTeam.hideLoading()

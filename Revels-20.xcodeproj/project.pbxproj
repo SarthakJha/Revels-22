@@ -10,10 +10,13 @@
 		62155BBC27FDA0E8003A006B /* CollegesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62155BBB27FDA0E8003A006B /* CollegesTableViewController.swift */; };
 		62155BBE27FDA145003A006B /* DelegateCardsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62155BBD27FDA145003A006B /* DelegateCardsController.swift */; };
 		62155BC027FDA191003A006B /* DelegateCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62155BBF27FDA191003A006B /* DelegateCardTableViewCell.swift */; };
+		62155BC42800BF24003A006B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62155BC32800BF24003A006B /* GoogleService-Info.plist */; };
 		6F0F7DDF23144A2300631BF9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0F7DDE23144A2300631BF9 /* Categories.swift */; };
 		6F0F7DE323144B3E00631BF9 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0F7DE223144B3E00631BF9 /* CategoryTableViewController.swift */; };
 		6F0F7DED23144BD100631BF9 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0F7DEC23144BD100631BF9 /* CategoryCell.swift */; };
 		72A8820D5B0405880C1C6CDD /* Pods_Revels_20.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6684DF29D7A8EB4EFF7588F /* Pods_Revels_20.framework */; };
+		8D1649A628003C3400B1E2DC /* SocialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1649A528003C3400B1E2DC /* SocialsViewController.swift */; };
+		8D1649A828003CE300B1E2DC /* SocialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1649A728003CE300B1E2DC /* SocialCollectionViewCell.swift */; };
 		8DA48A9927ECF35C006FB773 /* QRDelegateIDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA48A9827ECF35C006FB773 /* QRDelegateIDTableViewCell.swift */; };
 		B2014B2D23D8358D00C69B97 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2014B2C23D8358D00C69B97 /* SystemConfiguration.framework */; };
 		B207210023E1CD6700C21A4D /* TagsEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20720FF23E1CD6700C21A4D /* TagsEventViewController.swift */; };
@@ -81,7 +84,6 @@
 		B2EDA16B23436A23009D5613 /* LiveBlogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EDA16A23436A23009D5613 /* LiveBlogController.swift */; };
 		B2EDA16D234431D3009D5613 /* DeveloperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EDA16C234431D3009D5613 /* DeveloperViewController.swift */; };
 		B2F5F32523E4025E0011E937 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5F32423E4025E0011E937 /* DescriptionTableViewCell.swift */; };
-		BB00F505254EBC8B00D66909 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB00F504254EBC8B00D66909 /* GoogleService-Info.plist */; };
 		BB7FB57325389A7900F1183B /* IndiaMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7FB57225389A7900F1183B /* IndiaMapController.swift */; };
 		BB7FB57525389AB600F1183B /* LaunchViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7FB57425389AB600F1183B /* LaunchViewcontroller.swift */; };
 		BB927E2D254C753A0070D947 /* TwitterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB927E2C254C753A0070D947 /* TwitterModel.swift */; };
@@ -122,10 +124,13 @@
 		62155BBB27FDA0E8003A006B /* CollegesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegesTableViewController.swift; sourceTree = "<group>"; };
 		62155BBD27FDA145003A006B /* DelegateCardsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateCardsController.swift; sourceTree = "<group>"; };
 		62155BBF27FDA191003A006B /* DelegateCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateCardTableViewCell.swift; sourceTree = "<group>"; };
+		62155BC32800BF24003A006B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6F0F7DDE23144A2300631BF9 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		6F0F7DE223144B3E00631BF9 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		6F0F7DEC23144BD100631BF9 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		76365DD00AE6ECBB96286438 /* Pods-Revels-20.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Revels-20.release.xcconfig"; path = "Target Support Files/Pods-Revels-20/Pods-Revels-20.release.xcconfig"; sourceTree = "<group>"; };
+		8D1649A528003C3400B1E2DC /* SocialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialsViewController.swift; sourceTree = "<group>"; };
+		8D1649A728003CE300B1E2DC /* SocialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialCollectionViewCell.swift; sourceTree = "<group>"; };
 		8DA48A9827ECF35C006FB773 /* QRDelegateIDTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDelegateIDTableViewCell.swift; sourceTree = "<group>"; };
 		B2014B2C23D8358D00C69B97 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B20720FF23E1CD6700C21A4D /* TagsEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsEventViewController.swift; sourceTree = "<group>"; };
@@ -195,7 +200,6 @@
 		B2EDA16A23436A23009D5613 /* LiveBlogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBlogController.swift; sourceTree = "<group>"; };
 		B2EDA16C234431D3009D5613 /* DeveloperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperViewController.swift; sourceTree = "<group>"; };
 		B2F5F32423E4025E0011E937 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
-		BB00F504254EBC8B00D66909 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB7FB57225389A7900F1183B /* IndiaMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndiaMapController.swift; sourceTree = "<group>"; };
 		BB7FB57425389AB600F1183B /* LaunchViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewcontroller.swift; sourceTree = "<group>"; };
 		BB927E2C254C753A0070D947 /* TwitterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterModel.swift; sourceTree = "<group>"; };
@@ -288,13 +292,13 @@
 		B21C5D5B231242A9000DCF32 /* Revels-20 */ = {
 			isa = PBXGroup;
 			children = (
+				62155BC32800BF24003A006B /* GoogleService-Info.plist */,
 				BBB46A4824630113008489D0 /* RevelsDebug.entitlements */,
 				B29DB0582401B7C8006D9811 /* Sounds */,
 				B21C5D5C231242A9000DCF32 /* AppDelegate.swift */,
 				B2D9450D233F20CF00DA14D1 /* Secrets.swift */,
 				B21C5D63231242AB000DCF32 /* Assets.xcassets */,
 				B21C5D65231242AB000DCF32 /* LaunchScreen.storyboard */,
-				BB00F504254EBC8B00D66909 /* GoogleService-Info.plist */,
 				B21C5D68231242AB000DCF32 /* Info.plist */,
 				B25D43B923125C1900920FDA /* Master */,
 				B2D70B0B2341EB90003C9830 /* Home */,
@@ -638,6 +642,8 @@
 				C62CC8EC25210CA900066CB4 /* Youtube */,
 				C62CC8E525210B5A00066CB4 /* Twitter */,
 				C62CC8E02521092600066CB4 /* Instagram */,
+				8D1649A528003C3400B1E2DC /* SocialsViewController.swift */,
+				8D1649A728003CE300B1E2DC /* SocialCollectionViewCell.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -675,7 +681,7 @@
 				B21C5D57231242A9000DCF32 /* Resources */,
 				25375C6B95BF45D3B7D7061B /* [CP] Embed Pods Frameworks */,
 				B2014B3923D83B7B00C69B97 /* Embed Frameworks */,
-				B20BA57623D98C8700D41FC8 /* ShellScript */,
+				62155BC52800C13D003A006B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -733,9 +739,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B21C5D67231242AB000DCF32 /* LaunchScreen.storyboard in Resources */,
+				62155BC42800BF24003A006B /* GoogleService-Info.plist in Resources */,
 				B239C50A23CF7F1B00438212 /* notification.wav in Resources */,
 				B21C5D64231242AB000DCF32 /* Assets.xcassets in Resources */,
-				BB00F505254EBC8B00D66909 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,7 +787,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B20BA57623D98C8700D41FC8 /* ShellScript */ = {
+		62155BC52800C13D003A006B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -790,6 +796,7 @@
 			);
 			inputPaths = (
 				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			outputFileListPaths = (
 			);
@@ -797,7 +804,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/FirebaseCrashlytics/run\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -836,6 +843,7 @@
 				C633B6AC254B063800E4A8CB /* RegisteredTeamModel.swift in Sources */,
 				B2D944FB233DF77200DA14D1 /* ResetPassword.swift in Sources */,
 				B2D945262340E1C300DA14D1 /* QRCodeReaderViewContainer.swift in Sources */,
+				8D1649A828003CE300B1E2DC /* SocialCollectionViewCell.swift in Sources */,
 				C62CC8DD2521086C00066CB4 /* InstagramCell.swift in Sources */,
 				B283D98B231BCD6900B48217 /* NoEventCell.swift in Sources */,
 				C60DC9882535716100E7FFAF /* TwitterCell.swift in Sources */,
@@ -859,6 +867,7 @@
 				6F0F7DED23144BD100631BF9 /* CategoryCell.swift in Sources */,
 				62155BBC27FDA0E8003A006B /* CollegesTableViewController.swift in Sources */,
 				B2D972A923E49EFE001270E2 /* ProshowViewController.swift in Sources */,
+				8D1649A628003C3400B1E2DC /* SocialsViewController.swift in Sources */,
 				B25F94F82407B2A60067F848 /* Ratings.swift in Sources */,
 				B207210023E1CD6700C21A4D /* TagsEventViewController.swift in Sources */,
 				B25D43C123125E1900920FDA /* Networking.swift in Sources */,
@@ -1058,7 +1067,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tushartapadia.TechTatva20;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sarthakjha.revels22;
 				PRODUCT_NAME = Revels;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1087,7 +1096,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tushartapadia.TechTatva20;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sarthakjha.revels22;
 				PRODUCT_NAME = Revels;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

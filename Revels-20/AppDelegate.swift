@@ -29,14 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        checkTokenForExpiry()
         getEvents()
-        getSchedule()
+//        getSchedule()
         getCategories()
-        getNewsletterURL()
+//        getNewsletterURL()
         getColleges()
         getDelegateCards()
-        checkTokenForExpiry()
         
         window = UIWindow()
         window?.makeKeyAndVisible()
@@ -98,23 +97,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         print("Before Data")
             Networking.sharedInstance.getEvents (dataCompletion: { (data) in
                 for event in data{
-                    var eventID: Int  {
-                        if let guardedTags = event.tags{
-                        let uncapitalizedArray = guardedTags.map { $0.lowercased()}
-//                            print(event.name)
-//                            print(event.eventID)
-//                            event.tags = uncapitalizedArray
-                            for tag in uncapitalizedArray{
-                                if !tags.contains(tag){
-                                    tags.append(tag)
-                                }
-                            }
-                        }
-                        return event.eventID
-                    }
-                    eventsDictionary[eventID] = event
-                }
+                        let eventID = event.eventID
+                                        eventsDictionary[eventID] = event
+                                        if let guardedTags = event.tags{
+                                        let uncapitalizedArray = guardedTags.map { $0.lowercased()}
+                //                            print(event.name)
+                //                            print(event.eventID)
+                //                            event.tags = uncapitalizedArray
+                                            for tag in uncapitalizedArray{
+                                                if !tags.contains(tag){
+                                                    tags.append(tag)
+                                                }
+                                            }
+                                        }
+                                    }
 
+                print(tags)
+                
                 Caching.sharedInstance.saveEventsToCache(events: data)
                 Caching.sharedInstance.saveEventsDictionaryToCache(eventsDictionary: eventsDictionary)
                 Caching.sharedInstance.saveTagsToCache(tags: tags)
@@ -144,11 +143,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     
     fileprivate func checkTokenForExpiry(){
         Networking.sharedInstance.checkTokenExpiry { res in
+            print("ye hai res: ",res)
             if(!res){
                 print("invalid token, logging user off")
                 UserDefaults.standard.removeObject(forKey: "token")
                 UserDefaults.standard.setIsLoggedIn(value: false)
                 UserDefaults.standard.synchronize()
+                print("is logged in? ",UserDefaults.standard.isLoggedIn())
                 let lvc = UsersViewController()
                 lvc.setupViewForLoggedOutUser()
                 
@@ -156,7 +157,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                 print("token is valid")
             }
         } errorCompletion: { err in
-            print(err)
+            print("error in check token:", err)
+
         }
     }
         
@@ -210,6 +212,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
 
 }
+
+// MARK: Cloud messaging delegate
 extension AppDelegate: MessagingDelegate{
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
       print("Firebase registration token: \(String(describing: fcmToken))")

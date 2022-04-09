@@ -171,21 +171,21 @@ class QRDelegateIDTableViewCell: UITableViewCell {
         Networking.sharedInstance.getRegisteredEvents(dataCompletion: { (data) in
             self.eventsButton.hideLoading()
             self.eventsButton.isEnabled = true
-            print(data)
-//            var teamDetails = [TeamDetails]()
-//            for x in data{
-//                let td = TeamDetails(eventID: x.event.eventID, teamID: x.teamID)
-//                teamDetails.append(td)
-//            }
             if data.count == 0{
                 FloatingMessage().longFloatingMessage(Message: "You have not registered for any events.", Color: .orange, onPresentation: {}) {}
                 return
             }else{
                 self.usersViewController?.showRegisteredEvents(RegisteredEvents: data)
             }
-
         }) { (message) in
             print(message)
+            // MARK: -  logout here
+            FloatingMessage().longFloatingMessage(Message: "Can't fetch your event. Try logging in again!", Color: .orange, onPresentation: {}) {}
+            NotificationCenter.default
+                        .post(name: NSNotification.Name("user.logout"),
+                         object: nil)
+            UserDefaults.standard.setIsLoggedIn(value: false)
+            UserDefaults.standard.synchronize()
             self.eventsButton.hideLoading()
             self.eventsButton.isEnabled = true
         }
@@ -199,25 +199,32 @@ class QRDelegateIDTableViewCell: UITableViewCell {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
             self.delegateCardButton.animateUp(sender: self.delegateCardButton)
         }
-        let tok = UserDefaults.standard.object(forKey: "token") as! String
+        let tok = UserDefaults.standard.string(forKey: "token") ?? " "
         let headers: HTTPHeaders = [
             "authorization": tok
         ]
+        let DCTVC = DelegateCardTableViewCell()
         let apiStruct = ApiStruct(url: boughtDelegateCardsURL, method: .get, body: nil, headers: headers)
         WSManager.shared.getJSONResponse(apiStruct: apiStruct, success: { (boughtCards: BoughtDelegateCard) in
            self.delegateCardButton.hideLoading()
            self.delegateCardButton.isEnabled = true
             debugPrint("aagye aap :)")
+           
             var cards = [String]()
             for card in boughtCards.data{
                 cards.append(card.type)
+                DCTVC.viebWillAppear(true)
             }
-//            self.usersViewController?.showDelegateCards(BoughtCards: cards)
+            self.usersViewController?.showDelegateCards(BoughtCards: cards)
         }) { (error) in
-           print(error)
-            print("lmaooo FF")
-            self.delegateCardButton.hideLoading()
-            self.delegateCardButton.isEnabled = true
+                print(error)
+                // MARK: -  also logout here
+                FloatingMessage().longFloatingMessage(Message: "Can't fetch delegate cards. Try logging in again!", Color: .orange, onPresentation: {}) {}
+            NotificationCenter.default
+                        .post(name: NSNotification.Name("user.logout"),
+                         object: nil)
+                self.delegateCardButton.hideLoading()
+                self.delegateCardButton.isEnabled = true
         }
     }
 

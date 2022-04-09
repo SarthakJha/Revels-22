@@ -46,7 +46,7 @@ struct Blog: Codable{
 
 struct BoughtDelegateCard: Codable {
     var success: Bool
-    var msg: String
+    var msg: String?
     var data: [CardTypeStruct]
 }
 

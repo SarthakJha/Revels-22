@@ -31,26 +31,21 @@ class DelegateCardsController: UITableViewController {
             BoughtCards = cards.filter({ (card) -> Bool in
                 boughtCards.contains(card._id)
             })
-            OtherCards = cards.filter({ (card) -> Bool in
-                !boughtCards.contains(card._id) && card.type == "OTHERS" && card.isActive == true
+            ProShowCards = cards.filter({ (card) -> Bool in
+                !boughtCards.contains(card._id) && card.type == "PROSHOW" && card.isActive == true
             })
             GeneralCards = cards.filter({ (card) -> Bool in
                 !boughtCards.contains(card._id) && card.type == "GENERAL" && card.isActive == true
             })
-            FeaturedCards = cards.filter({ (card) -> Bool in
-                !boughtCards.contains(card._id) && card.type == "FEATURED" && card.isActive == true
-            })
             GamingCards = cards.filter({ (card) -> Bool in
                 !boughtCards.contains(card._id) && card.type == "GAMING" && card.isActive == true
-            })
-            WorkshopCards = cards.filter({ (card) -> Bool in
-                !boughtCards.contains(card._id) && card.type == "WORKSHOP" && card.isActive == true
             })
             SportsCards = cards.filter({ (card) -> Bool in
                 !boughtCards.contains(card._id) && card.type == "SPORTS" && card.isActive == true
             })
-            CardsData = [self.BoughtCards, self.GeneralCards, self.FeaturedCards, self.GamingCards, self.WorkshopCards, self.SportsCards]
+            CardsData = [self.BoughtCards,self.ProShowCards, self.GeneralCards,self.GamingCards, self.SportsCards]
 //            tableView.reloadData()
+            print("this is all the cards: ",CardsData)
             tableView.reloadSections(IndexSet(0..<1), with: .automatic)
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
@@ -68,6 +63,8 @@ class DelegateCardsController: UITableViewController {
         tableView.backgroundColor = UIColor.CustomColors.Black.background
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
+        tableView.isUserInteractionEnabled = true
+    
     }
     
     func setupView(){
@@ -82,32 +79,28 @@ class DelegateCardsController: UITableViewController {
     var GamingCards = [DelegateCard]()
     var WorkshopCards = [DelegateCard]()
     var SportsCards = [DelegateCard]()
-    var OtherCards = [DelegateCard]()
+    var ProShowCards = [DelegateCard]()
     
     var CardsData = [[DelegateCard]]()
-    var Titles = ["Bought Cards", "General Cards", "Flagship Cards", "Gaming Cards", "Workshop Cards", "Sports Cards"]
+    var Titles = ["Bought Cards","Proshow Cards", "General Cards", "Gaming Cards", "Sports Cards"]
     
     var Cards : [DelegateCard]?
     
     func getCachedCards(){
         do{
             let retCards = try Disk.retrieve(delegateCardsCache, from: .caches, as: [DelegateCard].self)
-//            self.Cards = retCards.sorted(by: { (c1, c2) -> Bool in
-//                c1.id < c2.id
-//            })
+            self.Cards = retCards
         }
         catch let error{
             var delegateCardsDictionary = [String: DelegateCard]()
-            let tok = UserDefaults.standard.object(forKey: "token") as! String
+            let tok = UserDefaults.standard.string(forKey: "token") ?? " "
             let headers: HTTPHeaders = [
                 "authorization":tok
             ]
             Networking.sharedInstance.getData(url: delegateCardsURL,headers: headers, decode: DelegateCard(), dataCompletion: { (data) in
-//                self.Cards = data.sorted(by: { (c1, c2) -> Bool in
-//                    c1.id < c2.id
-//                })
+                self.Cards = data
                 for card in data{
-                    delegateCardsDictionary[card._id] = card
+                        delegateCardsDictionary[card._id] = card
                 }
                 Caching.sharedInstance.saveDelegateCardsToCache(cards: data)
                 Caching.sharedInstance.saveDelegateCardsDictionaryToCache(dict: delegateCardsDictionary)
@@ -119,7 +112,7 @@ class DelegateCardsController: UITableViewController {
     }
     
     func getBoughtDelegateCards(){
-        let tok = UserDefaults.standard.object(forKey: "token") as! String
+        let tok = UserDefaults.standard.string(forKey: "token") ?? " "
         let headers: HTTPHeaders = [
             "authorization": tok
         ]
@@ -131,10 +124,12 @@ class DelegateCardsController: UITableViewController {
             }
             print(cards)
             DispatchQueue.main.async {
+                print("ye hai bought cards",cards)
                 self.boughtCards = cards
             }
         }) { (error) in
            print(error)
+            print("bought cards mai bt")
         }
     }
     
@@ -156,6 +151,8 @@ class DelegateCardsController: UITableViewController {
         cell.titleLabel.text = self.Titles[indexPath.row]
         cell.Cards = self.CardsData[indexPath.row]
         cell.delegateCardsController = self
+        //MARK: IMPORTANT
+        cell.contentView.isUserInteractionEnabled = false
         cell.selectionStyle = .none
         return cell
     }

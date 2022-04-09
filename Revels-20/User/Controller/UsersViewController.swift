@@ -54,12 +54,20 @@ class UsersViewController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.CustomColors.Black.background
         tableView.register(QRDelegateIDTableViewCell.self, forCellReuseIdentifier: "cellId")
+        NotificationCenter.default
+                          .addObserver(self,
+                                       selector: #selector(logoutByNotification),
+                         name: NSNotification.Name ("user.logout"),
+                                       object: nil)
        // tableView.register(UserIDTableViewCell.self, forCellReuseIdentifier: "cellId")
         if UserDefaults.standard.isLoggedIn(){
 
         }else{
             setupViewForLoggedOutUser()
         }
+    }
+    @objc func logoutByNotification(){
+        setupViewForLoggedOutUser()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +86,7 @@ class UsersViewController: UITableViewController {
                 fromLogin = false
             }
         }else{
+            
             print("not logged in")
         }
     }

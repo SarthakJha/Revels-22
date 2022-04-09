@@ -62,25 +62,21 @@ class WSManager {
         return apiHeaders
     }
     
-    func getJSONResponse<D: Decodable>(apiStruct: ApiStruct, success:@escaping (_ response: D) -> Void, failure:@escaping(_ error: URLError)-> Void) {
+    func getJSONResponse<D: Decodable>(apiStruct: ApiStruct, success:@escaping (_ response: D) -> Void, failure:@escaping(_ error: String)-> Void) {
         //   let queue = DispatchQueue(label: "com.test.com", qos: .background, attributes: .concurrent)
         //let url = URL.init(string: ApiManager.sharedInstance.KBASEURL + apiStruct.url)!
         apiRequest = self.manager.request(apiStruct.url, method: apiStruct.method , parameters: apiStruct.body, encoding: URLEncoding.default, headers: apiStruct.headers).responseJSON { (response) in
-            
+            print("delegate card ka response: ",response)
             if response.result.isSuccess {
                 do {
                     let result: D = try JSONDecoder().decode(D.self, from: response.data!)
                     success(result)
                 } catch {
-                    debugPrint(error.localizedDescription)
+                    failure(error.localizedDescription)
                 }
             }
             else {
-                if let err = response.result.error as? URLError {
-                    failure(err)
-                }else {
-                    print("something went wrong")
-                }
+                    failure("something went wrong")
             }
         }
         
