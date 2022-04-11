@@ -52,4 +52,5 @@ struct BoughtDelegateCard: Codable {
 
 struct CardTypeStruct: Codable{
     var type: String
+    var _id: String
 }

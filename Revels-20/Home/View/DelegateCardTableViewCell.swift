@@ -61,8 +61,8 @@ class DelegateCardTableViewCell: UITableViewCell, UICollectionViewDelegateFlowLa
     }
     
     func viebWillAppear(_ animated: Bool) {
-    let selectedIndexPath = IndexPath(item: 0, section: 0)
-        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
+//    let selectedIndexPath = IndexPath(item: 0, section: 0)
+//        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .left)
     }
     
     //MARK: - Setup

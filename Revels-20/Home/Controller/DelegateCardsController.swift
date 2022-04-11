@@ -22,6 +22,7 @@ class DelegateCardsController: UITableViewController {
             }
             guard let boughtCards = boughtCards else {
                 print("stuck here here")
+                print("ye hai bought cards",boughtCards)
                 return
             }
             
@@ -31,6 +32,7 @@ class DelegateCardsController: UITableViewController {
             BoughtCards = cards.filter({ (card) -> Bool in
                 boughtCards.contains(card._id)
             })
+            print("ye hai og", BoughtCards)
             ProShowCards = cards.filter({ (card) -> Bool in
                 !boughtCards.contains(card._id) && card.type == "PROSHOW" && card.isActive == true
             })
@@ -47,12 +49,13 @@ class DelegateCardsController: UITableViewController {
 //            tableView.reloadData()
             print("this is all the cards: ",CardsData)
             tableView.reloadSections(IndexSet(0..<1), with: .automatic)
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+//            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getBoughtDelegateCards()
         setupView()
     }
     
@@ -120,7 +123,7 @@ class DelegateCardsController: UITableViewController {
         WSManager.shared.getJSONResponse(apiStruct: apiStruct, success: { (boughtCards: BoughtDelegateCard) in
             var cards = [String]()
             for card in boughtCards.data{
-                cards.append(card.type)
+                cards.append(card._id)
             }
             print(cards)
             DispatchQueue.main.async {

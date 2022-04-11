@@ -192,7 +192,7 @@ class EventsViewController: UITableViewController {
             }else{
                 textLabel = "\(String(describing: event.eventHeads[0].phoneNo!))"
                 if let number = event.eventHeads[0].phoneNo{
-                    callNumber(number: UInt64(number))
+//                    callNumber(number: UInt64(number))
                 }
 //                detailedTextLabel = category?.cc?[0].name ?? "N/A"
 //                if detailedTextLabel != "N/A" {
@@ -211,7 +211,7 @@ class EventsViewController: UITableViewController {
                 if event.eventHeads.count > 1{
                     textLabel = "\(event.eventHeads[1].phoneNo!)"
                     if let number = event.eventHeads[1].phoneNo{
-                        callNumber(number: UInt64(number))
+//                        callNumber(number: UInt64(number))
                     }
                     imageName = "contact"
                 }
@@ -575,16 +575,16 @@ class EventsViewController: UITableViewController {
         case 3:
             if (fromTags){
                 let category = categoriesDictionary[event.category?.category ?? "ded"]
-//            if let number = category?.cc?[0].phoneNo{
-//                self.callNumber(number: number)
-//            }
+            if let number = event.eventHeads[0].phoneNo{
+                self.callNumber(number: number)
+            }
             }
         case 4:
             if (fromTags){
                 let category = categoriesDictionary[event.category?.category ?? "ded"]
-//            if let number = category?.cc?[1].phoneNo{
-//                self.callNumber(number: number)
-//            }
+            if let number = event.eventHeads[1].phoneNo{
+                self.callNumber(number: number)
+            }
         }
             
         case 6:
@@ -593,20 +593,20 @@ class EventsViewController: UITableViewController {
             
         case 7:
             let category = categoriesDictionary[event.category?.category ?? "ded"]
-//        //    if let number = category.cc?[0].ph
-//            if let number = category?.cc?[0].phoneNo{
-//                self.callNumber(number: number)
-//            }
+        //    if let number = category.cc?[0].ph
+            if let number = event.eventHeads[0].phoneNo{
+                self.callNumber(number: number)
+            }
         case 8:
             let category = categoriesDictionary[event.category?.category ?? "ded"]
-//            if let number = category?.cc?[1].phoneNo{
-//                self.callNumber(number: number)
-//            }
+            if let number = event.eventHeads[1].phoneNo{
+                self.callNumber(number: number)
+            }
         default: return
         }
     }
     //MARK: Call Nmber Function
-    fileprivate func callNumber(number: UInt64){
+    fileprivate func callNumber(number: Int64){
         AudioServicesPlaySystemSound(1519)
         if let url = URL(string: "tel://\(number)") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
