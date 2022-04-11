@@ -17,7 +17,7 @@ class ResultsCell: UICollectionViewCell{
         didSet{
             guard let event = event else { return }
             eventNameLabel.text = event.name
-            debugPrint("Event Names: \(event.name)")
+//            debugPrint("Event Names: \(event.name)")
         }
     }
     

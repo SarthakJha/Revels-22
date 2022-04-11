@@ -10,6 +10,7 @@
 struct RegisteredEventsResponse: Codable {
     let success: Bool
     let data : [RegEvents]?
+    let msg: String?
 }
 
 //struct RegEvent: Codable {

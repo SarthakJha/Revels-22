@@ -136,6 +136,7 @@ class SocialsViewController: UIViewController, UICollectionViewDelegate, UIColle
       //  view.backgroundColor = .green
       //  setupLayout()
         navigationController?.isNavigationBarHidden = false
+//        self.collectionView.isScrollEnabled = false
         setupView()
         
 //        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeBack))
@@ -150,7 +151,7 @@ class SocialsViewController: UIViewController, UICollectionViewDelegate, UIColle
 
 extension SocialsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - 40, height: view.frame.height/3.5)
+        return CGSize(width: view.frame.width - 50, height: view.frame.height/3.5)
     }
 }
 

@@ -180,6 +180,12 @@ class QRDelegateIDTableViewCell: UITableViewCell {
         }) { (message) in
             print(message)
             // MARK: -  logout here
+            if message == "Event Not FOund"{
+                FloatingMessage().longFloatingMessage(Message: "You have not registered for any events.", Color: .orange, onPresentation: {}) {}
+                self.eventsButton.hideLoading()
+                self.eventsButton.isEnabled = true
+                return
+            }
             FloatingMessage().longFloatingMessage(Message: "Can't fetch your event. Try logging in again!", Color: .orange, onPresentation: {}) {}
             NotificationCenter.default
                         .post(name: NSNotification.Name("user.logout"),

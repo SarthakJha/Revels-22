@@ -433,7 +433,7 @@ struct Networking {
                             dataCompletion(data)
                         }
                     }else{
-                        errorCompletion("Coudn't Fetch Registered Events")
+                        errorCompletion(resultsResponse.msg ?? " ")
                     }
                 }catch let error{
                     print(error)

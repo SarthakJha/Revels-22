@@ -253,7 +253,6 @@ extension ResultsViewController: UICollectionViewDelegateFlowLayout{
 //        }
         let selectedEventID = isFiltering() ? filteredEventsWithResults[indexPath.item].eventID: eventsWithResults[indexPath.item].eventID
         cell.event = eventsDictionary[selectedEventID]
-        print("Selected Event ID: \(eventsDictionary[selectedEventID]?.name)")
         cell.eventNameLabel.text = eventsDictionary[selectedEventID]!.name
         return cell
 }
@@ -275,7 +274,6 @@ extension ResultsViewController: UICollectionViewDelegateFlowLayout{
         //navigationController?.pushViewController(resultsDetailViewController, animated: true)
         
         if filteredEventsWithResults.isEmpty {
-            debugPrint("BHEEM")
             self.filteredEventsWithResults = Caching.sharedInstance.getEventsFromCache()
             let event = filteredEventsWithResults[indexPath.row]
             self.handleEventTap(withEvent: event)
