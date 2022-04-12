@@ -34,7 +34,7 @@ struct RegEventData: Codable{
 
     let _id: String
     let eventID: Int
-    let category: Category?
+    let category: String?
     let name: String
     let eventType: String
     let mode: String
@@ -46,12 +46,12 @@ struct RegEventData: Codable{
     let teamDelegateCard: Bool
     let prize: String?
     let eventHeads: [EventHead]
-    let delegateCards: [String]?
+    let delegateCards: [DelegateCard]?
 
     init() {
         _id = "0"
         eventID = 0
-        category = Category(type: "", category: "", description: "", categoryId: "")
+        category = ""
         tags = [""]
         name = ""
         eventType = ""
@@ -63,6 +63,6 @@ struct RegEventData: Codable{
         teamDelegateCard = false
         prize = ""
         eventHeads = [EventHead(_id: "", name: "", phoneNo: 1234567890, email: "")]
-        delegateCards = [String()]
+        delegateCards = [DelegateCard()]
     }
 }
