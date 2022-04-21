@@ -1,28 +1,26 @@
-<img src="https://i.ibb.co/LCptMTW/i-Tunes-Artwork-1x.png" align="left" hspace="20" vspace="20" height="150" width="150" style="border-radius: 20%">
+<img src="https://is5-ssl.mzstatic.com/image/thumb/Purple116/v4/15/8a/54/158a546d-501b-cbd7-6df4-797d57a85675/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1024x1024bb.png" align="left" hspace="20" vspace="20" height="150" width="150" style="border-radius: 20%">
 
-# Revels
+# Revels'22
 
 The official iOS Application for the National Fest of Manipal Institute of Technology.
 <br>
-**Revels 2020**
+**Revels 2022**
 
 ---
 
 ### Screenshots
 
 <p float="left">
-<img src="Screenshots/s1.jpg" width="300">
-<img src="Screenshots/s2.jpg" width="300">
-<img src="Screenshots/s3.jpg" width="300">
-<img src="Screenshots/s4.jpg" width="300">
-<img src="Screenshots/s6.jpg" width="300">
-<img src="Screenshots/s7.jpg" width="300">
-<img src="Screenshots/s11.jpg" width="300">
-<img src="Screenshots/s12.jpg" width="300">
-<img src="Screenshots/s5.jpg" width="300">
-<img src="Screenshots/s8.jpg" width="300">
-<img src="Screenshots/s9.jpg" width="300">
-<img src="Screenshots/s10.jpg" width="300">
+<img src="Screenshots/s1.png" width="300">
+<img src="Screenshots/s2.png" width="300">
+<img src="Screenshots/s3.png" width="300">
+<img src="Screenshots/s4.png" width="300">
+<img src="Screenshots/s6.png" width="300">
+<img src="Screenshots/s7.png" width="300">
+<img src="Screenshots/s5.png" width="300">
+<img src="Screenshots/s8.png" width="300">
+<img src="Screenshots/s9.png" width="300">
+<img src="Screenshots/s10.png" width="300">
 </p>
 
 
@@ -52,38 +50,11 @@ replace token in Secrets.swift
 ```
 
 
-
-**Note:
-This app was officially developed for Manipal Institute of Technology.
-Chances are it may not be fully functional and may not load the dynamic content due to the changes in the APIs and architecture.**
-
 ### Download 📦
-App is available on App Store. You can donwload on your iOS device from [here](https://apps.apple.com/in/app/revels20/id1500173604).
+App is available on App Store. You can donwload on your iOS device from [here](https://apps.apple.com/in/app/revels22/id1500173604).
 
 
 ### Developer Partners 👨🏻‍💻
-- [Akhilesh Shenoy](https://github.com/akhileshshenoy) ( Core Member )
-- [Rohit Kuber](https://github.com/rohitkuber2000) ( Organiser )
-- [Tushar Tapadia](https://github.com/TusharTapadia) ( Organiser )
-
-
-### Contributions 👷🏻‍♂️
-
-You are more than welcome to make changes and/or add features to this repository.
-Please issue a PR with your changes.
-
-### Coding standards 🔒
-
-Followed the following guides and code standards:
-[Swift Style Guide](https://github.com/linkedin/swift-style-guide)
-
-### License 📝
-
-This repo aims to provide the students a product to learn good programming practices and concepts used in a small-scale production app. 
-
-Feel Free to use the code base in any way you'd like!
-
-
-[MIT License](https://github.com/naman17/Revels/blob/master/LICENSE)
-
+- [Sarthak Jha](https://github.com/sarthakjha)
+- [Tushar Elangovan](https://github.com/tushar0509)
 
