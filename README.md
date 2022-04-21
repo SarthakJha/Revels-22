@@ -28,7 +28,7 @@ The official iOS Application for the National Fest of Manipal Institute of Techn
 
 1. Clone the repo via git clone command.
 ```
-https://github.com/naman17/Revels.git
+https://github.com/SarthakJha/Revels-22
 ```
 2. Run the following command to install all the third-party libraries.
 ```
@@ -36,7 +36,7 @@ pod install
 ```
 3. Open in Xcode
 ```
-open Revels-20.xcworkspace
+open Revels-22.xcworkspace
 ```
 ```
 Build and Run
