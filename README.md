@@ -36,7 +36,7 @@ pod install
 ```
 3. Open in Xcode
 ```
-open Revels-22.xcworkspace
+open Revels-20.xcworkspace
 ```
 ```
 Build and Run
